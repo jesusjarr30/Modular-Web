@@ -1,3 +1,5 @@
+import React from 'react'
+
 function Principal() {
     return (
       <div className="App">

@@ -1,22 +1,11 @@
 import React from 'react'
+import {NavBar} from "./ComPrincipal/NavBar";
 
 function Principal() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <a>Como estas</a>
-        </header>
-        
-      </div>
-    );
+
+      <NavBar/>
+    )
   }
   
   export default Principal;

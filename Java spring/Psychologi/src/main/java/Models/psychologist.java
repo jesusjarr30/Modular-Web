@@ -1,10 +1,21 @@
 package Models;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.UUID;
 
+@Getter
+@Setter
+@ToString
+
+@Document(collection = "Psychologist")
 public class psychologist {
 
-
+    @Id
     private String id;
     private String nombre;
     private String apellidos;

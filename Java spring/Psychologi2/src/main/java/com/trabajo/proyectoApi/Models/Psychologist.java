@@ -1,4 +1,4 @@
-package com.example.Psychologi.Models;
+package com.trabajo.proyectoApi.Models;
 
 import lombok.Getter;
 import lombok.Setter;

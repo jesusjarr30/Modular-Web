@@ -1,6 +1,7 @@
-package com.example.Psychologi.Repository;
+package com.trabajo.proyectoApi.Repository;
 
-import com.example.Psychologi.Models.Psychologist;
+
+import com.trabajo.proyectoApi.Models.Psychologist;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

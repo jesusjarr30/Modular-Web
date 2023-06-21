@@ -1,7 +1,6 @@
-package com.example.Psychologi.Services;
+package com.trabajo.proyectoApi.Services;
 
-import com.example.Psychologi.Models.Customer;
-import com.example.Psychologi.Repository.CustomerRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;

@@ -31,5 +31,4 @@ public class CustomerAPI {
         customerRepository.deleteById(id);
         return id;
     }
-
 }

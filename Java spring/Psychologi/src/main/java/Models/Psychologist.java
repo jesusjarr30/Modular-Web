@@ -13,7 +13,7 @@ import java.util.UUID;
 @ToString
 
 @Document(collection = "Psychologist")
-public class psychologist {
+public class Psychologist {
 
     @Id
     private String id;

@@ -1,6 +1,8 @@
 package com.trabajo.proyectoApi.Services;
 
 
+import com.trabajo.proyectoApi.Models.Customer;
+import com.trabajo.proyectoApi.Repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +12,7 @@ import java.util.List;
 @CrossOrigin("http://localhost:3000/")
 @RestController
 public class CustomerAPI {
-/*
+
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -18,6 +20,7 @@ public class CustomerAPI {
     //only add the require
     @PostMapping("/AddCustomer")
     public String addCustsomer(@RequestBody Customer customer){
+        customer.generateId();
         customerRepository.save(customer);
         return customer.getName();
     }
@@ -30,5 +33,5 @@ public class CustomerAPI {
         customerRepository.deleteById(id);
         return id;
     }
-*/
+
 }

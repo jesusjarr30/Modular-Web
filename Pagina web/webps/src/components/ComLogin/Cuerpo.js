@@ -1,6 +1,28 @@
 import React from 'react'
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
+///fañta importar los recursos que se necesitan
 function Cuerpo () {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http:');
+        console.log(response.data); // Process the response data here
+      } catch (error) {
+        console.error(error);
+
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">

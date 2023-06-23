@@ -13,7 +13,7 @@ import java.util.List;
 public interface PsychologistRepository extends MongoRepository<Psychologist,String> {
 
     //Se requiere el modelo
-    @Query("({ $and: [ { \"_id\": \"?0\" }, { \"password\": \"?1\" } ] })")
+    @Query("{ $and: [ { \"_id\": \"?0\" }, { \"password\": \"?1\" } ] }")
     Psychologist findUser(@Param("id")String id, @Param("password") String password);
 }
 

@@ -254,3 +254,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
+/*****Estilo para el login*******/
+.hero2 {
+  display: grid;
+  width: 80%;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+}
+.hero2 > * {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}

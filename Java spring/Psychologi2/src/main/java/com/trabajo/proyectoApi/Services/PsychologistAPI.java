@@ -1,7 +1,6 @@
 package com.trabajo.proyectoApi.Services;
 
 
-
 import com.trabajo.proyectoApi.Models.Psychologist;
 import com.trabajo.proyectoApi.Repository.PsychologistRepository;
 import org.springframework.beans.factory.annotation.Autowired;

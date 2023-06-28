@@ -7,12 +7,17 @@ function Cuerpo () {
 
   const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
+  const [data,setData]=useState('');
 
-  
-  function verDatos(){
-    console.log('El correo es ',correo)
-    console.log('la contraseña es',password)
-  }
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/find/{correo}/{pass}?correo='+ correo +'&password=' + password);
+      setData(response.data);
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
+    }
+    console.log("Se termino la request la respuesta es "+JSON.stringify(data,null,2));
+  };
 
 
   return (
@@ -40,7 +45,7 @@ function Cuerpo () {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button onClick={verDatos}className="btn btn-primary">Ingresar</button>
+              <button onClick={fetchData}className="btn btn-primary">Ingresar</button>
             </div>
           </div>
         </div>

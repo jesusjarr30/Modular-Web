@@ -13,10 +13,12 @@ function Cuerpo () {
     try {
       const response = await axios.get('http://localhost:8080/find/{correo}/{pass}?correo='+ correo +'&password=' + password);
       setData(response.data);
+      console.log("Se termino la request la respuesta es "+JSON.stringify(data));
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
     }
-    console.log("Se termino la request la respuesta es "+JSON.stringify(data,null,2));
+   
+    
   };
 
 

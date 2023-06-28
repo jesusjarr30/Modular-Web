@@ -18,7 +18,12 @@ public class PsychologistAPI {
     @PostMapping("/addPsychologist")
     public String addPsychologist(@RequestBody Psychologist p){
         p.generateId();
-        psychologistRepository.save(p);
+        ///Antes de agregar una cuenta validar los correos
+        if(psychologistRepository.valCorreo(p.getEmail()).equals("")){
+            return "500";
+        }else{
+            psychologistRepository.save(p);
+        }
         return p.getNombre();
     }
 

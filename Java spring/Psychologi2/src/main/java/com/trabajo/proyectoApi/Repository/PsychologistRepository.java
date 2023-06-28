@@ -19,5 +19,9 @@ public interface PsychologistRepository extends MongoRepository<Psychologist,Str
 
     @Query("{ $and: [ { \"email\": \"?0\" }, { \"password\": \"?1\" } ] }")
     Psychologist login(@Param("correo")String correo,@Param("password")String password);
+
+    @Query("{\"email\":\"?0\"}")
+    String valCorreo(@Param("Correo")String correo);
+
 }
 

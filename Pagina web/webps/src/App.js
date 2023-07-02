@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Principal from "./components/Principal";
 import Login from "./components/Login";
 import Registro from "./components/Registro";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

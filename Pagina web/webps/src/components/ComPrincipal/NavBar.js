@@ -40,8 +40,11 @@ export const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home" className={activeLink === 'Inicio' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-            <Nav.Link href="#skills" className={activeLink === 'Projecto' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-            <Nav.Link href="#projects" className={activeLink === 'Unete a nosotros' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
+            <Nav.Link href="#Mision" className={activeLink === 'Mision' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('Mision')}>Mision</Nav.Link>
+            <Nav.Link href="#Objetivos" className={activeLink === 'Objetivos' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('Objetivos')}>Objetivos</Nav.Link>
+            <Nav.Link href="#projects" className={activeLink === 'Productos' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('Productos')}>Productos</Nav.Link>
+
+
           </Nav>
           <span className="navbar-text">
             <div className="social-icon d-flex">
@@ -50,7 +53,7 @@ export const NavBar = () => {
               <a href="https://github.com/jesusjarr30"><img src={gitHub} alt="" /></a>
             </div>
             <Link to="/Login">
-              <button className="vvd" onClick={() => console.log('connect')}><span>Login</span></button>
+              <button className="vvd" onClick={() => console.log('Inicio Seccio')}><span>Inicio Seccion</span></button>
             </Link>
           </span>
         </Navbar.Collapse>

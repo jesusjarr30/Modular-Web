@@ -27,7 +27,7 @@ export const NavBar = () => {
   }
 
   return (
-    <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
+    <Navbar bg="primary" data-bs-theme="dark" expand="lg" className={scrolled ? "scrolled" : ""}>
       <Container>
         <Navbar.Brand href="#home">
           <div className="iconos">
@@ -44,7 +44,6 @@ export const NavBar = () => {
             <Nav.Link href="#Objetivos" className={activeLink === 'Objetivos' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('Objetivos')}>Objetivos</Nav.Link>
             <Nav.Link href="#projects" className={activeLink === 'Productos' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('Productos')}>Productos</Nav.Link>
 
-
           </Nav>
           <span className="navbar-text">
             <div className="social-icon d-flex">
@@ -53,7 +52,7 @@ export const NavBar = () => {
               <a href="https://github.com/jesusjarr30"><img src={gitHub} alt="" /></a>
             </div>
             <Link to="/Login">
-              <button className="vvd" onClick={() => console.log('Inicio Seccio')}><span>Inicio Seccion</span></button>
+              <button className="vvd" onClick={() => console.log('Iniciar secci')}><span>Inicio Seccion</span></button>
             </Link>
           </span>
         </Navbar.Collapse>

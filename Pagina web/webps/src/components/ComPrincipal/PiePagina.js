@@ -14,10 +14,12 @@ export const PiePagina = () => {
                 </p> 
                 
                 <div className="grid grid-flow-col gap-4" >
-            <Link to="/AboutUs">
-              <a className="link link-hover" style={{ color: '#fff' }} onClick={() => console.log('Iniciar secci')}>Acerca de nosotros</a>
-            </Link>
-                <a className="link link-hover" style={{ color: '#fff' }}>Contactanos</a> 
+                <Link to="/AboutUs">
+                <a className="link link-hover" style={{ color: '#fff' }} onClick={() => console.log('Iniciar secci')}>Acerca de nosotros</a>
+                </Link>
+                <Link to="/Contactanos">
+                <a className="link link-hover" style={{ color: '#fff' }}>Contactanos</a>
+                </Link>
                 <a className="link link-hover" style={{ color: '#fff' }}>Registrate</a> 
                <br></br>
                <br></br>

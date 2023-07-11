@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Registro from "./components/Registro";
 import AboutUs from "./components/ReferenceSection/AboutUs";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Contactanos from "./components/ComPrincipal/Contactanos";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/Login" element={<Login/>} />
       <Route path="/Registro" element={<Registro/>}/>
       <Route path="/AboutUs" element={<AboutUs/>}/>
+      <Route path="/Contactanos" element={<Contactanos/>}/>
     </Routes>
   </Router>
   );

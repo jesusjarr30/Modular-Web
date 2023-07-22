@@ -8,10 +8,10 @@ services:
     expose:
       - 27017
     networks:
-        frontend:
+        RedDistri:
             ipv4_address: 172.80.0.2
             
-  library:
+  backServices:
     container_name: "back-end"
     build: 
         context: JavaSpring/Psychologi2
@@ -22,10 +22,10 @@ services:
     depends_on:
       - my-mongo-db
     networks:
-        frontend:
+        RedDistri:
             ipv4_address: 172.80.0.3
 
-  frontLibrary:
+  frontPsy:
     container_name: "paginaPS"
     build:
         context: PaginaWeb/webps
@@ -35,12 +35,12 @@ services:
     ports:
       - 3000:3000
     networks:
-        frontend:
+        RedDistri:
             ipv4_address: 172.80.0.4
 
 networks:
 
-  frontend:
+  RedDistri:
     ipam:
       config:
         - subnet: 172.80.0.0/24

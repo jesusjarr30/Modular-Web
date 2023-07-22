@@ -20,7 +20,9 @@ export const PiePagina = () => {
                 <Link to="/Contactanos">
                 <a className="link link-hover" style={{ color: '#fff' }}>Contactanos</a>
                 </Link>
+                <Link to="/Registro">
                 <a className="link link-hover" style={{ color: '#fff' }}>Registrate</a> 
+                </Link>
                <br></br>
                <br></br>
                

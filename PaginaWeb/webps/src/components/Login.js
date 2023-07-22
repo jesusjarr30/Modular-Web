@@ -1,7 +1,30 @@
-import React from "react";
+import React,{useState} from "react";
 import cerebro from "./Imagenes/cerebroLogin.png"
+import axios from 'axios';
 
 function Login(){
+
+    const [correo,setCorreo]= useState('');
+    const [pass,setPass] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleCorreoChange =  (event) =>{
+        setCorreo(event.target.value);
+    }
+    const handlePassChange =  (event) =>{
+        setPass(event.target.value);
+    }
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+          const response = await axios.get('http://localhost:8080/find/{correo}/{pass}?correo='+correo+'&password='+pass); // Reemplaza con tu URL de API
+          console.log(response.data);
+          setLoading(false);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+          setLoading(false);
+        }
+      };
     return (
         <div className="flex w-full h-screen">
             <div className="w-full flex items-center justify-center lg:w-1/2">
@@ -12,13 +35,16 @@ function Login(){
                         <div>
                             <label className="text-lg font-medium">Correo</label>
                             <input className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'       
+                             value={correo}
+                             onChange={handleCorreoChange}
                              placeholder="Ingresa tu correo"></input>
                         </div>
-                    
-                    
                         <div>
                             <label className="text-lg font-medium">Contraseña</label>
                             <input className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                            value={pass}
+                            onChange={handlePassChange}
+ 
                              placeholder="Ingresa tu contraseña" type="password"/>
                         </div>
                         </div>
@@ -29,7 +55,10 @@ function Login(){
 
                     <div className="mt-8 flex flex-col gap-y-4">
 
-                       <button className="active:scale-[.95] active:duration-75 hover:scale-[1.01] ease-in-out py-3 rounded-xl bg-blue-500 text-white text-lg font-bol">Ingresar</button>
+                       <button className="active:scale-[.95] active:duration-75 hover:scale-[1.01] ease-in-out py-3 rounded-xl bg-blue-500 text-white text-lg font-bol"
+                       onClick={fetchData} disabled={loading}>
+                       
+                        Ingresar</button>
                        <button 
                         className='flex items-center justify-center gap-2 active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4  rounded-xl text-gray-700 font-semibold text-lg border-2 border-gray-100 '>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

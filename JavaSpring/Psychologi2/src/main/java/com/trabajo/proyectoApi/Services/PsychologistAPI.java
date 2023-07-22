@@ -42,7 +42,6 @@ public class PsychologistAPI {
         return "check";
     }
 
-
     @GetMapping("/findPsy/{user}/{id}")
     public Psychologist findUser(@RequestParam String id,@RequestParam String password){
         Psychologist a = psychologistRepository.findUser(id,password);

@@ -3,16 +3,19 @@ package com.trabajo.proyectoApi.Models;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.UUID;
 
 @Getter
 @Setter
 @ToString
 
-@Document(collection = "Psychologist")
+@Entity
+@Table(name = "Psychologist")
 public class Psychologist {
 
     @Id

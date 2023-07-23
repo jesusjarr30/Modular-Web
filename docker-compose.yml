@@ -1,15 +1,24 @@
 version: "3.8"
+
 services:
-  my-mongo-db:
-    container_name: "my-mongo-db"
-    image: mongo:4.4.3
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: consultorio
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql_data:/var/lib/mysql
     ports:
-      - 27017:27017
+      - "3306:3306"
     expose:
-      - 27017
+      - 3306
     networks:
-        RedDistri:
-            ipv4_address: 172.80.0.2
+      RedDistri:
+        ipv4_address: 172.80.0.2
             
   backServices:
     container_name: "back-end"
@@ -20,10 +29,10 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - my-mongo-db
+      - mysql
     networks:
-        RedDistri:
-            ipv4_address: 172.80.0.3
+      RedDistri:
+        ipv4_address: 172.80.0.3
 
   frontPsy:
     container_name: "paginaPS"
@@ -35,12 +44,14 @@ services:
     ports:
       - 3000:3000
     networks:
-        RedDistri:
-            ipv4_address: 172.80.0.4
+      RedDistri:
+        ipv4_address: 172.80.0.4
 
 networks:
-
   RedDistri:
     ipam:
       config:
         - subnet: 172.80.0.0/24
+
+volumes:
+  mysql_data:

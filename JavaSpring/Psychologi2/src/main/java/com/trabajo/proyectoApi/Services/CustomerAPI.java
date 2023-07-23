@@ -20,7 +20,7 @@ public class CustomerAPI {
     //only add the require
     @PostMapping("/AddCustomer")
     public String addCustsomer(@RequestBody Customer customer){
-        customer.generateId();
+
         customerRepository.save(customer);
         return customer.getName();
     }

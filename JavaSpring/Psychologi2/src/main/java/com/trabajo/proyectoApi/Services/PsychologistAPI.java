@@ -10,11 +10,13 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:3000/")
 @RestController
+@RequestMapping("/consultorio")
 public class PsychologistAPI {
 
     //only 3 methods to test the front-end
     @Autowired
     private PsychologistRepository psychologistRepository;
+    /*
     @PostMapping("/addPsychologist")
     public String addPsychologist(@RequestBody Psychologist p){
         p.generateId();
@@ -25,7 +27,7 @@ public class PsychologistAPI {
             psychologistRepository.save(p);
         }
         return p.getNombre();
-    }
+    }*/
 
     @DeleteMapping("/deletePsychologist")
     public void deletePsychologist(@RequestParam String id){
@@ -36,12 +38,11 @@ public class PsychologistAPI {
         return psychologistRepository.findAll();
     }
 
-
     @PostMapping("/check")
     public String check(){
         return "check";
     }
-
+    /*
     @GetMapping("/findPsy/{user}/{id}")
     public Psychologist findUser(@RequestParam String id,@RequestParam String password){
         Psychologist a = psychologistRepository.findUser(id,password);
@@ -51,5 +52,5 @@ public class PsychologistAPI {
     public Psychologist login(@RequestParam String correo, @RequestParam String password){
         Psychologist a = psychologistRepository.login(correo,password);
         return a;
-    }
+    }*/
 }

@@ -1,18 +1,19 @@
 package com.trabajo.proyectoApi.Models;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+
+import javax.persistence.*;
 import java.util.UUID;
-
 @Getter
 @Setter
 @ToString
 
-@Document(collection = "Customer")
+@Entity
+@Table(name = "Customer")
 public class Customer {
     @Id
     private String id;
@@ -22,10 +23,10 @@ public class Customer {
 
 
     //auto generate a id for the user
-    public void generateId(){
+    /*public void generateId(){
 
         id = String.valueOf(UUID.randomUUID());
-    }
+    }*/
 
 
 }

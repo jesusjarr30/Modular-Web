@@ -2,18 +2,13 @@ package com.trabajo.proyectoApi.Repository;
 
 
 import com.trabajo.proyectoApi.Models.Customer;
-import com.trabajo.proyectoApi.Models.Psychologist;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface CustomerRepository extends MongoRepository<Customer,String> {
-
-
+public interface CustomerRepository extends JpaRepository<Customer,String>{
 
 }
 /*

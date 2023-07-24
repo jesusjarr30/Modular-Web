@@ -22,11 +22,10 @@ public class Psychologist {
     private String id;
     private String nombre;
     private String apellidos;
-    private String cedula;
     private String email;
     private String password;
     private String telephone;
-    //auto generate a id for the user
+    
 
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());

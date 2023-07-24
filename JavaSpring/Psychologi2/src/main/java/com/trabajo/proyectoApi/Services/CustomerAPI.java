@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @CrossOrigin("http://localhost:3000/")
@@ -20,7 +21,6 @@ public class CustomerAPI {
     //only add the require
     @PostMapping("/AddCustomer")
     public String addCustsomer(@RequestBody Customer customer){
-
         customerRepository.save(customer);
         return customer.getName();
     }
@@ -32,6 +32,10 @@ public class CustomerAPI {
     public String deleteCustomer(@RequestBody String id){
         customerRepository.deleteById(id);
         return id;
+    }
+    @PutMapping("Update/{id}")
+    public void editar(@RequestBody HashMap<String,String> updateAttributes){
+
     }
 
 }

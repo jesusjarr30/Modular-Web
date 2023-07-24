@@ -21,6 +21,7 @@ function App() {
       <Route path="/Contactanos" element={<Contactanos/>}/>
       <Route path="/Login2" element={<Login2/>} />
       <Route path="/Ppc" element={<Ppc/>} />
+      
 
       
     </Routes>

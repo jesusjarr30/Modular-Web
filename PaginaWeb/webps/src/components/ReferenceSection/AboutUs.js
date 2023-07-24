@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import JesusRenteria from '../Imagenes/yo.png';
 import Bonilla from '../Imagenes/bonila.png';
+import Nestor from '../Imagenes/Nestor.jpeg';
 
 function AboutUs(){
   const containerStyle = {
@@ -20,8 +21,7 @@ function AboutUs(){
         {
             name: 'Nestor Regalado Vivanco',
             role: 'Unity developer',
-            imageUrl:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            imageUrl:Nestor,
             encargo: '"Ingeniero en Computación',
             correo:'Nestor@Nestor',
             },

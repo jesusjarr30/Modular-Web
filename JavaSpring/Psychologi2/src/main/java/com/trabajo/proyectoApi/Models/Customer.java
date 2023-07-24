@@ -28,6 +28,9 @@ public class Customer {
 
         id = String.valueOf(UUID.randomUUID());
     }
+    public Customer(){
+
+    }
 
 
 }

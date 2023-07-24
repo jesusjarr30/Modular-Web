@@ -3,11 +3,14 @@ package com.trabajo.proyectoApi.Services;
 
 import com.trabajo.proyectoApi.Exception.ExceptionPe;
 import com.trabajo.proyectoApi.Exception.ResourceNotFoundException;
+import com.trabajo.proyectoApi.Models.Customer;
+import com.trabajo.proyectoApi.Models.Game;
 import com.trabajo.proyectoApi.Models.Psychologist;
 import com.trabajo.proyectoApi.Repository.PsychologistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,34 +64,40 @@ public class PsychologistAPI {
         return Optional.ofNullable(psychologistRepository.getByEmail(correo));
     }
     //no funciona
-    @PutMapping("/psychologists/{id}")
-    public void updatePsychologist(@PathVariable String id, @RequestBody HashMap<String,String> updateAttributes) {
-        // Buscar el psicólogo existente por su ID
-        Optional<Psychologist> existingPsychologist = psychologistRepository.findById(id);
+    @PutMapping("/Update/{id}")
+    public Psychologist editPsychologistAPI(@PathVariable String id, @RequestBody Map<String, Object> updates) {
 
-        if (existingPsychologist.isPresent()) {
-            Psychologist a =existingPsychologist.get();
-            for (Map.Entry<String, String> entry : updateAttributes.entrySet()) {
-                String attributeName = entry.getKey();
-                String attributeValue = entry.getValue();
+        Optional<Psychologist> toEdit = psychologistRepository.findById(id);
 
-                // Verificar si el atributo existe en la clase Psychologist
-                // y asignar el valor solo si existe el atributo
-                if ("nombre".equals(attributeName)) {
-                    a.setNombre(attributeValue);
-                } else if ("email".equals(attributeName)) {
-                    a.setEmail(attributeValue);
-                }
-                // Agrega más atributos si es necesario
+        if (!toEdit.isPresent())
+            throw new ResourceNotFoundException("No se econtro el juego que se desea editar");
+
+        Psychologist psychologist = toEdit.get();
+
+
+        for (Map.Entry<String, Object> entry : updates.entrySet()) {
+            String fieldName = entry.getKey();
+            Object fieldValue = entry.getValue();
+
+            if (fieldName.isEmpty())
+                throw new ResourceNotFoundException("Field name can't be empty");
+            if (fieldValue == null)
+                throw new ResourceNotFoundException("Field value can't be null");
+            if (fieldName.equals("id"))
+                throw new ResourceNotFoundException("Id can't be changed");
+
+            try {
+                Field field = Game.class.getDeclaredField(fieldName);
+                field.setAccessible(true);
+
+                field.set(psychologist, fieldValue);
+
+            } catch (NoSuchFieldException | IllegalAccessException error) {
+                throw new ResourceNotFoundException("Error setting field " + fieldName + ": " + error);
             }
-
-            // Guarda el psicólogo actualizado en la base de datos
-            //return psychologistRepository.save(psychologist);
-        } else {
-            // Si no se encuentra el psicólogo con el ID proporcionado, puedes lanzar una excepción o devolver un valor específico, según lo que desees hacer en este caso.
-            // Por ejemplo:
-            throw new ResourceNotFoundException("No se encontró el psicólogo con el ID: " + id);
         }
+
+        return psychologistRepository.save(psychologist);
     }
 
 }

@@ -8,8 +8,10 @@ import com.trabajo.proyectoApi.Repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -19,12 +21,10 @@ public class GameAPI {
     @Autowired
     CustomerRepository customerRepository;
     @PostMapping("/addGame/{idUsuario}")
-    public Game add(@RequestParam String idUsuario) {
+    public Game addGame(@RequestParam String idUsuario) {
         Optional<Customer> a=customerRepository.findById(idUsuario);
         if (a.isPresent()) {
-            // Se encontró el Customer
             Customer customer = a.get();
-            // Hacer algo con el Customer
             Game game =new Game(idUsuario);
             gameRepository.save(game);
             return game;
@@ -45,9 +45,40 @@ public class GameAPI {
             throw new ResourceNotFoundException("No se encontro el id que desea eliminar de la base : " + id);
         }
     }
-    @PutMapping("Update/{id}")
-    public void editar(@RequestBody HashMap<String,String> updateAttributes){
+    @PutMapping("/Update/{id}")
+    public Game editGame(@PathVariable String id, @RequestBody Map<String, Object> updates) {
 
+        Optional<Game> toEdit = gameRepository.findById(id);
+
+        if (!toEdit.isPresent())
+            throw new ResourceNotFoundException("No se econtro el juego que se desea editar");
+
+        Game game = toEdit.get();
+
+
+        for (Map.Entry<String, Object> entry : updates.entrySet()) {
+            String fieldName = entry.getKey();
+            Object fieldValue = entry.getValue();
+
+            if (fieldName.isEmpty())
+                throw new ResourceNotFoundException("Field name can't be empty");
+            if (fieldValue == null)
+                throw new ResourceNotFoundException("Field value can't be null");
+            if (fieldName.equals("id"))
+                throw new ResourceNotFoundException("Id can't be changed");
+
+            try {
+                Field field = Game.class.getDeclaredField(fieldName);
+                field.setAccessible(true);
+
+                field.set(game, fieldValue);
+
+            } catch (NoSuchFieldException | IllegalAccessException error) {
+                throw new ResourceNotFoundException("Error setting field " + fieldName + ": " + error);
+            }
+        }
+
+        return gameRepository.save(game);
     }
 
 

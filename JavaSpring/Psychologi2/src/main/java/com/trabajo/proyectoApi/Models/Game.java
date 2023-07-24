@@ -42,10 +42,13 @@ public class Game {
     public void GenerateCodigo(){
      this.codigo=String.valueOf((UUID.randomUUID()));
     }
+    public Game() {
+
+    }
     public Game(String idCliente) {
         GenerateId();
         GenerateCodigo();
-        this.cubos = 0;
+        cubos = 0;
         semejanzas = 0;
         digitos = 0;
         matriz = 0;

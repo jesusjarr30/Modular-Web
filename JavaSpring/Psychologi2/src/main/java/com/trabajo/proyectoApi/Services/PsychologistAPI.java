@@ -21,7 +21,6 @@ import java.util.Optional;
 
 public class PsychologistAPI {
 
-    //only 3 methods to test the front-end
     @Autowired
     private PsychologistRepository psychologistRepository;
 
@@ -64,7 +63,7 @@ public class PsychologistAPI {
         return Optional.ofNullable(psychologistRepository.getByEmail(correo));
     }
     //no funciona
-    @PutMapping("/Update/{id}")
+    @PutMapping("/UpdatePsy/{id}")
     public Psychologist editPsychologistAPI(@PathVariable String id, @RequestBody Map<String, Object> updates) {
 
         Optional<Psychologist> toEdit = psychologistRepository.findById(id);

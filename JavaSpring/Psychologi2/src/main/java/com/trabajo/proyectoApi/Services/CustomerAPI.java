@@ -39,7 +39,7 @@ public class CustomerAPI {
         customerRepository.deleteById(id);
         return id;
     }
-    @PutMapping("/Update/{id}")
+    @PutMapping("/UpdateCustomer/{id}")
     public Customer editCustomer(@PathVariable String id, @RequestBody Map<String, Object> updates) {
 
         Optional<Customer> toEdit = customerRepository.findById(id);

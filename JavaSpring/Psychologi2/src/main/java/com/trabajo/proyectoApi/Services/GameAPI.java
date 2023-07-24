@@ -45,7 +45,7 @@ public class GameAPI {
             throw new ResourceNotFoundException("No se encontro el id que desea eliminar de la base : " + id);
         }
     }
-    @PutMapping("/Update/{id}")
+    @PutMapping("/UpdateGame/{id}")
     public Game editGame(@PathVariable String id, @RequestBody Map<String, Object> updates) {
 
         Optional<Game> toEdit = gameRepository.findById(id);

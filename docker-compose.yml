@@ -1,15 +1,15 @@
-version: "3.8"
+version: "3"
 
 services:
   mysql:
     image: mysql:8
-    container_name: mysql_db
+    container_name: mysqldb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: consultorio
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: pruebas
+      MYSQL_PASSWORD: pruebas
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
@@ -22,6 +22,7 @@ services:
             
   backServices:
     container_name: "back-end"
+    restart: always
     build: 
         context: JavaSpring/Psychologi2
         dockerfile: Dockerfile
@@ -30,6 +31,11 @@ services:
       - 8080:8080
     depends_on:
       - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/consultorio
+      SPRING_DATASOURCE_USERNAME: pruebas
+      SPRING_DATASOURCE_PASSWORD: pruebas
+
     networks:
       RedDistri:
         ipv4_address: 172.80.0.3
@@ -52,6 +58,5 @@ networks:
     ipam:
       config:
         - subnet: 172.80.0.0/24
-
 volumes:
   mysql_data:

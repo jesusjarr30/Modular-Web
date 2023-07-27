@@ -1,15 +1,47 @@
 import React,{useState} from "react";
 import cerebro from "./Imagenes/cerebroLogin.png"
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+
+
 
 function Login(){
 
+
+  const mostrarAlerta=()=>{
+    Swal.fire({
+      title: 'Error',
+      icon: 'error',
+      text: 'La contraseña o correo incorrectos!',
+      footer: '<a href="">Olvido su contraseña?</a>',
+      timer:3000,
+      customClass: {
+        footer: 'swal-footer',
+      }
+    })
+  }
+  const GoogleAlert=()=>{
+    Swal.fire({
+      title: '',
+      icon: 'warning',
+      text: 'Esta función no está disponible. Por favor, inténtalo de nuevo más tarde. Disculpa las molestias. ',
+      timer:3000,
+      customClass: {
+        footer: 'swal-footer',
+      }
+    })
+  }
+
+
+    const navigate = useNavigate();
     const [correo,setCorreo]= useState('');
     const [pass,setPass] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleCorreoChange =  (event) =>{
         setCorreo(event.target.value);
+      
     }
     const handlePassChange =  (event) =>{
         setPass(event.target.value);
@@ -19,6 +51,17 @@ function Login(){
         try {
           const response = await axios.get('http://localhost:8080/find/{correo}/{pass}?correo='+correo+'&password='+pass); // Reemplaza con tu URL de API
           console.log(response.data);
+          console.log("El correo es "+response.data.email +" y la contrasela es "+response.data.pass);
+          if (response.data.email === correo && response.data.password === pass) {
+            
+            console.log("entrar al inicio");
+            navigate('/Inicio', { state: { data: response.data } });
+          } else {
+            console.log("Todos los datos están mal");
+            mostrarAlerta();
+          }
+          
+
           setLoading(false);
         } catch (error) {
           console.error('Error al obtener los datos:', error);
@@ -59,7 +102,7 @@ function Login(){
                        onClick={fetchData} disabled={loading}>
                        
                         Ingresar</button>
-                       <button 
+                       <button onClick={()=>GoogleAlert()}
                         className='flex items-center justify-center gap-2 active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4  rounded-xl text-gray-700 font-semibold text-lg border-2 border-gray-100 '>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.26644 9.76453C6.19903 6.93863 8.85469 4.90909 12.0002 4.90909C13.6912 4.90909 15.2184 5.50909 16.4184 6.49091L19.9093 3C17.7821 1.14545 15.0548 0 12.0002 0C7.27031 0 3.19799 2.6983 1.24023 6.65002L5.26644 9.76453Z" fill="#EA4335"/>

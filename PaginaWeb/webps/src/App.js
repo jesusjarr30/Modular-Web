@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Contactanos from "./components/ComPrincipal/Contactanos";
 import Login2 from "./components/Login2";
 import Ppc from "./components/Ppc";
+import Inicio from "./components/Dashboard/Inicio";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
       <Route path="/Contactanos" element={<Contactanos/>}/>
       <Route path="/Login2" element={<Login2/>} />
       <Route path="/Ppc" element={<Ppc/>} />
+      <Route path="Inicio" element={<Inicio/>} />
+      
+      
       
 
       

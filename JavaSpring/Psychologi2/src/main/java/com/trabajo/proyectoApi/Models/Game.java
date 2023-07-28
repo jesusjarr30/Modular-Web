@@ -34,7 +34,7 @@ public class Game {
     private int cancelacion;
     private int figCompleta;
     private String codigo;//el codigo de contraseña para ingresar al juego
-    private int active;//Quiere decir que es una oportunidad activa
+    private boolean active;//Quiere decir que es una oportunidad activa
     private String idCliente;//El id del cliente
     public void GenerateId(){
         this.id=id = String.valueOf(UUID.randomUUID());
@@ -63,7 +63,7 @@ public class Game {
         comprension = 0;
         cancelacion=0;
         figCompleta=0;
-        active=0;
+        active=true;
         this.idCliente=idCliente;
     }
 

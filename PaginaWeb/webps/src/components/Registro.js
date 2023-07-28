@@ -2,59 +2,65 @@ import React from "react";
 
 function Registro(){
     return (
-        <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content ">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold">Registro nuevo usuario</h1>
-        </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input type="text" placeholder="email" className="input input-bordered" />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Nombre</span>
-              </label>
-              <input type="text" placeholder="Nombre" className="input input-bordered" />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Apellido</span>
-              </label>
-              <input type="text" placeholder="Apellido" className="input input-bordered" />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Telefono</span>
-              </label>
-              <input type="text" placeholder="Telefono" className="input input-bordered" />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Universidad</span>
-              </label>
-              <input type="text" placeholder="Universidad" className="input input-bordered" />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input type="text" placeholder="password" className="input input-bordered" />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-col items-center w-full h-screen justify-center">
+  <h1 className="text-4xl font-semibold mt-8">Registro de usuarios</h1>
+  
+  <div className="w-full md:w-11/12 bg-white px-8 py-10 rounded-3xl border-2 border-gray-200 mt-8 flex flex-col p-6"> {/* Cambiamos a 'flex-col' */}
+    <div className="flex flex-row mb-4"> {/* Agregamos 'mb-4' para separación */}
+      <div className="mr-5 flex flex-col w-full md:w-11/12"> 
+        <label className="text-lg font-medium">Nombre</label>
+        <input
+          className='w-full  border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
+          placeholder="Ingresa tu nombre"
+        />
+      </div>
+      <div className="mr-5 flex flex-col"> 
+        <label className="text-lg font-medium">Apellidos</label>
+        <input
+          className='w-full md:w-96 border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
+          placeholder="Ingresa tus apellidos"
+          type="text"
+        />
       </div>
     </div>
+    <div className="flex flex-row"> {/* Agregamos otro div para el segundo par de campos */}
+      <div className="mr-5 flex flex-col"> 
+        <label className="text-lg font-medium">Correo</label>
+        <input
+          className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+          placeholder="Ingresa tu correo"
+        />
+      </div>
+      <div className="flex flex-col"> 
+        <label className="text-lg font-medium">Telefono</label>
+        <input
+          className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+          placeholder="Numero de celular"
+          type="password"
+        />
+      </div>
+    </div>
+    <div className="flex flex-row"> 
+    
+    <div className="mr-5 flex flex-col"> 
+        <label className="text-lg font-medium">Contraseña</label>
+        <input
+          className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+          placeholder="Ingresa tu contraseña"
+        />
+      </div>
+      <div className="mr-5 flex flex-col"> 
+        <label className="text-lg font-medium">Confirmar su contraseña</label>
+        <input
+          className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+          placeholder="Ingresa contraseña"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+    
     )
 }
 export default Registro;

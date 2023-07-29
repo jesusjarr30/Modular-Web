@@ -86,7 +86,7 @@ public class PsychologistAPI {
                 throw new ResourceNotFoundException("Id can't be changed");
 
             try {
-                Field field = Game.class.getDeclaredField(fieldName);
+                Field field = Psychologist.class.getDeclaredField(fieldName);
                 field.setAccessible(true);
 
                 field.set(psychologist, fieldValue);

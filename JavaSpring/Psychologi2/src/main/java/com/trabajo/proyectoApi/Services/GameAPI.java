@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -79,6 +78,14 @@ public class GameAPI {
         }
 
         return gameRepository.save(game);
+    }
+    @GetMapping("/GetCustomerid/{id}")
+    public Game getGameById(@RequestParam String id){
+        Optional<Game> a=gameRepository.findById(id);
+        if(a.isPresent()){
+            return a.get();
+        }
+        throw new ResourceNotFoundException("Game not found");
     }
 
 

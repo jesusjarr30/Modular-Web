@@ -20,7 +20,7 @@ public class Customer {
     private String name;
     private String Email;
     private String telephone;
-    private String code;
+    private String PsychologistID;
 
 
     //auto generate a id for the user

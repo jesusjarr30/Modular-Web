@@ -62,7 +62,7 @@ public class CustomerAPI {
                 throw new ResourceNotFoundException("Id can't be changed");
 
             try {
-                Field field = Game.class.getDeclaredField(fieldName);
+                Field field = Customer.class.getDeclaredField(fieldName);
                 field.setAccessible(true);
 
                 field.set(customer, fieldValue);
@@ -73,6 +73,22 @@ public class CustomerAPI {
         }
 
         return customerRepository.save(customer);
+    }
+    @GetMapping("/GetCustomerId/{id}")
+    public Customer GetCustomerId(@RequestParam String id){
+        Optional<Customer> a=customerRepository.findById(id);
+        if(a.isPresent()){
+            return a.get();
+        }
+        throw new ResourceNotFoundException("Customer not found, please check the id");
+    }
+    @GetMapping("/BuscarPorNombres/{id}/{name}")
+    public List<Customer> BuscarPorNombres(@RequestParam String id,@RequestParam String name){
+        List<Customer> list =customerRepository.findByname(id,name);
+        if(!list.isEmpty()){
+            return list;
+        }
+        throw new ResourceNotFoundException("Not a coincidence with the name "+ name );
     }
 
 

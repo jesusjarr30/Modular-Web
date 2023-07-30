@@ -73,7 +73,6 @@ function Login(){
             <div className="w-full flex items-center justify-center lg:w-1/2">
                 <div className="bg-white px-8 py-10 rounded-3xl border-2 border-gray-200">
                     <h1 className="text-4xl font-semibold">Bienvenidos</h1>
-                  
                     <div className="mt-8">
                         <div>
                             <label className="text-lg font-medium">Correo</label>

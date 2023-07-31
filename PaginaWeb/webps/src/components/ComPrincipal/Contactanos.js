@@ -47,7 +47,7 @@ export const Contactanos = () => {
     };
 
     return(
-        <section className="contact" id="connect">
+        <section className="contact w-full flex" id="connect">
             <Container>
 
                 <Row className="align-items-center">

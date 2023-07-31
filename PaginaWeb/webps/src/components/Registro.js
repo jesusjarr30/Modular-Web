@@ -10,20 +10,89 @@ function Registro(){
   const [Telephone,setTelephone] = useState('');
   const [Password,setPassword] = useState('');
   const[Password2,setPassword2] = useState('');
+  const handleCancelarClick = () => {
 
-  const mostrarAlerta=()=>{
+    window.history.back();
+  };
+  
+  const mostrarAlerta=(tipo)=>{
+    if(tipo === "Servidor"){
+
+    
     Swal.fire({
       title: 'Error',
       icon: 'error',
-      text: 'Faltan Campos por llenar!',
+      text: 'El correo ya esta registrado con otra cuenta',
       footer: '<a href="">Olvido su contraseña?</a>',
       timer:3000,
       customClass: {
         footer: 'swal-footer',
       }
     })
+  } else if(tipo === "Exito")
+  {
+    Swal.fire({
+      icon: 'success',
+      title: 'Listo...',
+      text: 'Registrado con éxito!',
+    }).then(() => {
+      // Después de mostrar el SweetAlert de éxito, regresar a la página previa
+      window.history.back();
+    });
+  } 
+  else if(tipo ==="Error"){
+    Swal.fire({
+      title: 'Error',
+      icon: 'info',
+      text: 'El correo ya esta registrado con otra cuenta',
+      timer:5000,
+      customClass: {
+        footer: 'swal-footer',
+      }
+    })
   }
+}
+
   const handleSubmit = async () => {
+
+    if (!Name || !LastName || !Email || !Telephone || !Password || !Password2) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'warning',
+        title: 'Necesita llenar todos los campos'
+      })
+      return;
+    }
+    if(Password !== Password2){
+      const Toast2 = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast2.fire({
+        icon: 'error',
+        title: 'Las contraseñas no coinciden'
+      })
+      return;
+    }
     try {
       const newPsychologist = {
         nombre: Name,
@@ -35,19 +104,22 @@ function Registro(){
       };
 
       const response = await axios.post('http://localhost:8080/addPsychologist', newPsychologist);
-
-      console.log('El psicólogo ha sido registrado con el ID:', response.data);
+      
+      if(response.status === 200){
+        mostrarAlerta("Exito");
+      }
       // Aquí puedes realizar cualquier acción adicional después de registrar al psicólogo.
     } catch (error) {
       console.error('Error al registrar al psicólogo:', error);
       // Aquí puedes manejar el error o mostrar un mensaje al usuario en caso de fallo.
       if (error.code === 'ECONNABORTED') {
-        alert('¡El servidor no responde! Por favor, intenta nuevamente más tarde.');
+        mostrarAlerta('Servidor');
       } else {
-        alert('Ocurrió un error al registrar al psicólogo. Por favor, intenta nuevamente.');
+        mostrarAlerta("Error");
       }
     }
   };
+  
 
 
     return (
@@ -105,6 +177,7 @@ function Registro(){
         <input
           className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
           placeholder="Ingresa tu contraseña"
+          type="password"
           value={Password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -114,28 +187,25 @@ function Registro(){
         <input
           className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
           placeholder="Ingresa contraseña"
+          type="password"
           value={Password2}
           onChange={(e) => setPassword2(e.target.value)}
         />
       </div>
     </div>
       
-      {/*Button configurations*/ }
+      {/*Button configurations p-4 pt-6*/ }
 
       <div className="flex flex-row mb-4"> 
         <div className="mr-5 flex flex-col w-full md:w-2/12 bg-red-700 rounded-xl p-3 text-white active:scale-[.85] active:duration-75 hover:scale-[1.10]"> 
-          <button className=" text-lg font-medium ">Cancelar</button>
+          <button onClick={handleCancelarClick} sclassName=" text-lg font-medium ">Cancelar</button>
         </div>   
         <div className="mr-5 flex flex-col w-full md:w-2/12"> 
           <button onClick={handleSubmit} className="text-lg font-medium bg-green-700 rounded-xl p-3 text-white active:scale-[.85] active:duration-75 hover:scale-[1.10] ease-in-out">Registrar</button>
         </div>
       </div>
-      
-
   </div>
 </div>
-
-    
     )
 }
 export default Registro;

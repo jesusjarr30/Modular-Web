@@ -22,7 +22,6 @@ public class CustomerAPI {
     @Autowired
     private CustomerRepository customerRepository;
 
-
     //only add the require
     @PostMapping("/AddCustomer")
     public String addCustsomer(@RequestBody Customer customer){

@@ -3,6 +3,7 @@ import cerebro from "./Imagenes/cerebroLogin.png"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 
@@ -114,8 +115,10 @@ function Login(){
                     </div>
                     <div className="mt-8 flex justify-between items-center">
                     <p className='font-medium text-base'>¿No tienes una Cuenta?</p>
+                    <Link to="/Registro" style={{ textDecoration: 'none' }}>
                     <button 
                         className="ml-2 font-medium text-base text-blue-500">Registrate</button>
+                    </Link>
                 </div>
                 </div>
             </div>

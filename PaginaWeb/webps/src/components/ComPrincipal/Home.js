@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import { Container,Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import Portada from "../Imagenes/Poratada2.png";
-
+import { Link } from 'react-router-dom';
 
 export const Home = () => {  
 
@@ -38,6 +38,7 @@ export const Home = () => {
             setDelta(500);
         }
     }
+
     return (
        
         <section className="banner" id="home">
@@ -49,8 +50,9 @@ export const Home = () => {
                     <span className="tagling">Bienvenidos a los test Psicologicos</span>
                     <h1>{''}<span className="wrap">{text}</span></h1>
                     <p>La mejor manera de inetractuar con los pacientes </p>
+                    <Link to="/Registro" style={{ textDecoration: 'none' }}>
                     <button onClick={()=> console.log('conect')}>No estás registrado? Ingresa aquí<ArrowRightCircle size={25}/></button>
-                    
+                    </Link>
                 </Col>
                 <Col xs={12} md={6} xl={5}>
                 <img src={Portada} alt="Headder img"/>

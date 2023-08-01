@@ -48,36 +48,36 @@ export const Contactanos = () => {
 
     return(
         <section className="contact w-full flex" id="connect">
-            <Container>
+            <Container className="w-full">
 
                 <Row className="align-items-center">
                 <Col md={6}>
                     <img src={contactImg} alt="Contact Us"/>
                 </Col>
                 <Col md={6}>
-                    <h2>Get in touch</h2>
+                    <h2 className="text-white">Contactanos</h2>
                     <form onSubmit={handleSubmit}>
                         <Row>
-                            <Col md={6}>
-                            <input type="text" value={formDetails.firstname} placeholder="First Name" onChange={(e) => onFormUpdate
+                            <Col md={8}>
+                            <input type="text" value={formDetails.firstname} placeholder="Nombre" onChange={(e) => onFormUpdate
                             ('firstName', e.target.value)}/>
                             </Col>
-                            <Col md={6}>
-                            <input type="text" value={formDetails.LastName} placeholder="last name Name" onChange={(e) => onFormUpdate
+                            <Col md={8}>
+                            <input type="text" value={formDetails.LastName} placeholder="Apellidos" onChange={(e) => onFormUpdate
                             ('lastName', e.target.value)}/>
                             </Col>
                             <Col md={6}>
-                            <input type="email" value={formDetails.email} placeholder="Email adsress" onChange={(e) => onFormUpdate
+                            <input type="email" value={formDetails.email} placeholder="Correo" onChange={(e) => onFormUpdate
                             ('email', e.target.value)}/>
                             </Col>
-                            <Col md={6}>
-                            <input type="tel" value={formDetails.phone} placeholder="phone N°" onChange={(e) => onFormUpdate
+                            <Col md={8}>
+                            <input type="tel" value={formDetails.phone} placeholder="telefono" onChange={(e) => onFormUpdate
                             ('phone', e.target.value)}/>
                             </Col>
-                            <Col md={6}>
-                            <textarea row="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate
+                            <Col md={8}>
+                            <textarea row="6" value={formDetails.message} placeholder="Enviar" onChange={(e) => onFormUpdate
                             ('message', e.target.value)}/>
-                            <button type="submit"><span>{buttonText}</span></button>
+                            <button type="submit" className="font-bol"><span>{buttonText}</span></button>
                             </Col >
                             {
                                 status.message &&

@@ -21,6 +21,8 @@ public class Customer {
     private String Email;
     private String telephone;
     private String PsychologistID;
+    private String direccion;
+    private int year;//año de nacimiento
 
 
     //auto generate a id for the user

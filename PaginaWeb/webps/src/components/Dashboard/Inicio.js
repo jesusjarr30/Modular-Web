@@ -1,60 +1,104 @@
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate  } from 'react-router-dom';
 import control from '../Imagenes/control.png';
 import cerebro from '../Imagenes/cerebro.png';
 import user from '../Imagenes/User.png';
 import settings from '../Imagenes/Setting.png';
 import chat from '../Imagenes/Chat.png';
-import { useState } from 'react';
+import AddUser from './AddUser';
+import Userlist from './Userlist';
 
 const Inicio = () => {
+
+  
   const Menus = [
-    { title: "Inbox", src: chat },
-    { title: "Cuentas", src: user, gap: true },
-    { title: "Settings", src: settings },
+    { title: "Userlist", src: chat,  component: <AddUser />},
+    { title: "AddUser", src: user, gap: true, component: <Userlist /> },
+
   ];
   const location = useLocation();
   const data = location.state?.data || {};
-  const [open, setOpen]= useState(true);
+  const [open, setOpen] = useState(true);
+  const navigate = useNavigate();
+
+
+  const toggleSidebar = () => {
+    setOpen(!open);
+  };
+  const [selectedComponent, setSelectedComponent] = useState(<AddUser />);
+
+  const handleMenuClick = (index) => {
+    setSelectedComponent(Menus[index].component);
+  };
+
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const months = [
+    'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+  ];
+
+  const formattedDate = `${daysOfWeek[currentDate.getDay()]} ${currentDate.getDate()} ${
+    months[currentDate.getMonth()]
+  } ${currentDate.getFullYear()} ${currentDate.toLocaleTimeString()}`;
 
   return (
     <div className='flex'>
-      <div className={` ${open ? "w-72" : "w-20 "} duration-300 h-screen p-4 pt-6 bg-blue-600 relative `}>  
-        
+      <div className={` ${open ? "w-72" : "w-20 "} duration-300 h-screen p-4 pt-6 bg-blue-600 relative `}>
         <img
           src={control}
           className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-1 ${!open && "rotate-180"}`}
-          onClick={()=> setOpen(!open)}
+          onClick={toggleSidebar}
         />
         <div className="flex gap-x-4 justify-start items-center">
           <img
             src={cerebro}
-            className={`cursor-pointer duration-500 w-10 ${
-              open && "rotate-[360deg]"
-            }`}
+            className={`cursor-pointer duration-500 w-10 ${open && "rotate-[360deg]"}`}
           />
-          <h1 className={`text-white origin-left font-medium text-xl duration-300 ${!open && "scale-0"}`}>Menu</h1>
+          <h1 className={`text-white origin-left font-medium text-xl duration-300 ${!open && "scale-0"}`}>
+            Menu
+          </h1>
         </div>
         <ul className="pt-6">
           {Menus.map((Menu, index) => (
             <li
               key={index}
               className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-              ${Menu.gap ? "mt-9" : "mt-2"} ${
-                index === 0 && "bg-light-white"
-              } `}
+              ${Menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-light-white"}`}
+              onClick={() => handleMenuClick(index)}
             >
-              <img src={Menu.src} alt={Menu.title} /> {/* Corregir la ruta de la imagen aquí */}
+              <img src={Menu.src} alt={Menu.title} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
               </span>
             </li>
           ))}
         </ul>
-
       </div>
       <div>
-        <div className ="p-7 text-2x1 font-semibold flex-1 h-screen ">
-          <h1>Bienvenido {data.nombre}</h1>
+        <div className="font-semibold flex-1 h-screen w-full">
+        <div className='bg-gray-800 text-white py-2 w-full flex justify-between'>
+  <div className="flex w-full">
+    <h1 className="ml-4">Bienvenido {data.nombre}</h1>
+  </div>
+  <div className="flex w-full justify-end">
+    <h1 className="mr-4">{formattedDate}</h1>
+  </div>
+  
+</div>
+            
+          {selectedComponent}
+          
         </div>
       </div>
     </div>

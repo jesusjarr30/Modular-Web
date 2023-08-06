@@ -28,3 +28,11 @@ IF everything is ok you can check the container (check it it docker sdestop) joi
 **http://localhost:3000**
 
 the page will display.
+
+
+
+If you have any ideas for implementing enhancements to my project or any feedback on my work, please feel free to send an email to jesus.jarr.30@gmail.com
+
+best regards 
+
+Jesus Renteria.

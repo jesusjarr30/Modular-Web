@@ -2,11 +2,9 @@
 
  **First, we need to download some software.**
  
-  - 1 Install Apache maven and set in environment variables.
-   
-  - 2 Download Java development kit 17.
-  
-  - 3 Download docker desktop.
+   - Install Apache Maven and set it in environment variables.
+   - Download Java Development Kit 17.
+   - Download Docker Desktop.
   
 Copy the repository a go to the next path: JavaSpring\Psychologi2 when you are in run  the next command
 

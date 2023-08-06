@@ -5,15 +5,25 @@ import cerebro from '../Imagenes/cerebro.png';
 import user from '../Imagenes/User.png';
 import settings from '../Imagenes/Setting.png';
 import chat from '../Imagenes/Chat.png';
+import userI from '../Imagenes/User.png';
+import chart from '../Imagenes/Chart.png';
+import search from '../Imagenes/Search.png';
 import AddUser from './AddUser';
 import Userlist from './Userlist';
+import cerrar from '../Imagenes/cerrar-sesion.png';
+import Ppc from '../Ppc';
+
 
 const Inicio = () => {
 
   
   const Menus = [
-    { title: "Userlist", src: chat,  component: <AddUser />},
-    { title: "AddUser", src: user, gap: true, component: <Userlist /> },
+    { title: "Registrar Usuarios", src: userI,  component:<Ppc  />},
+    { title: "lista pacientes", src: search,  component: <Userlist /> },
+    { title: "estadisticas", src: chart, component: <Userlist /> },
+    { title: "Soporte", src: chat, gap: true, component: <Userlist /> },
+    { title: "Configuracion", src: settings, component: <Userlist /> },
+    { title: "Cerrar secion", src: cerrar, gap: true, component: <Userlist /> },
 
   ];
   const location = useLocation();
@@ -54,16 +64,16 @@ const Inicio = () => {
 
   return (
     <div className='flex'>
-      <div className={` ${open ? "w-72" : "w-20 "} duration-300 h-screen p-4 pt-6 bg-blue-600 relative `}>
+      <div className={` ${open ? "w-72" : "w-20 ml-0"} duration-300 h-screen p-0 pt-8 bg-blue-600 relative`}>
         <img
           src={control}
-          className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-1 ${!open && "rotate-180"}`}
+          className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 ${!open && "rotate-180"}`}
           onClick={toggleSidebar}
         />
-        <div className="flex gap-x-4 justify-start items-center">
+        <div className="flex p-4 gap-x-4 items-center">
           <img
             src={cerebro}
-            className={`cursor-pointer duration-500 w-10 ${open && "rotate-[360deg]"}`}
+            className={`cursor-pointer w-10 duration-500 ${open && "rotate-[360deg]"}`}
           />
           <h1 className={`text-white origin-left font-medium text-xl duration-300 ${!open && "scale-0"}`}>
             Menu
@@ -73,11 +83,13 @@ const Inicio = () => {
           {Menus.map((Menu, index) => (
             <li
               key={index}
-              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-              ${Menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-light-white"}`}
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              ${Menu.gap ? "mt-10" : "mt-2"} ${
+                index === -1 && "bg-light-white"
+              } `}
               onClick={() => handleMenuClick(index)}
             >
-              <img src={Menu.src} alt={Menu.title} />
+              <img src={Menu.src} alt={Menu.title} className="ml-0 mr-2"/>
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
               </span>
@@ -85,24 +97,28 @@ const Inicio = () => {
           ))}
         </ul>
       </div>
-      <div>
-        <div className="font-semibold flex-1 h-screen w-full">
+      {/*Termina el div de la barra*/}
+      <div className="flex-1"> {/* Usamos "flex-1" para que tome el espacio restante */}
+      <div className='font-semibold h-screen w-full'>
         <div className='bg-gray-800 text-white py-2 w-full flex justify-between'>
-  <div className="flex w-full">
-    <h1 className="ml-4">Bienvenido {data.nombre}</h1>
-  </div>
-  <div className="flex w-full justify-end">
-    <h1 className="mr-4">{formattedDate}</h1>
-  </div>
-  
-</div>
-            
-          {selectedComponent}
-          
+          <div className='flex w-full'>
+            <h3 className='ml-4'>Bienvenido {data.nombre}</h3>
+          </div>
+          <div className='flex w-full justify-end '>
+            <h3 className='mr-4'>{formattedDate}</h3>
+          </div>
         </div>
+        {selectedComponent}
       </div>
+      {/**Div del componente a llamar */}
+      
     </div>
-  );
+  </div>
+);
+
+
+
+
 };
 
 export default Inicio;

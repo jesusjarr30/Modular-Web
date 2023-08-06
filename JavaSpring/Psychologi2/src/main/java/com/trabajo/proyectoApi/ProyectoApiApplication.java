@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 	@SpringBootApplication
 	@EnableWebMvc
 	public class ProyectoApiApplication {
- //http://localhost:8080/swagger-ui/index.html
+ //
 		public static void main(String[] args) {
 			SpringApplication.run(ProyectoApiApplication.class, args);
 		}
@@ -29,3 +29,4 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 			};
 		}
 	}
+    //http://localhost:8080/swagger-ui/index.html

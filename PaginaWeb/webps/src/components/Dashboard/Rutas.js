@@ -6,6 +6,7 @@ import Personalizar from "./Personalizar";
 import AddUser from "./AddUser";
 import Support from "./Support";
 import Userlist from "./Userlist";
+import Ppc from '../Ppc';
 
 
 function Rutas() {
@@ -16,6 +17,7 @@ function Rutas() {
       <Route path="Inicio/AddUser" element={<AddUser/>} />
       <Route path="Inicio/Support" element={<Support/>} />
       <Route path="Inicio/Userlist" element={<Userlist/>} />
+      <Route path="Inicio/Ppc" element={<Ppc/>} />
       
     </Routes>
   </Router>

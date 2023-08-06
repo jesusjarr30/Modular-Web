@@ -1,10 +1,12 @@
+# Project Compilation Instructions
 
-Steps to compile the project.
-
-First, we need to download some software. 
+1. **First, we need to download some software. 
   1 Install Apache maven and set in environment variables.
+   
   2 Download Java development kit 17.
+  
   3 Download docker desktop.
+  
 Copy the repository a go to the next path: JavaSpring\Psychologi2 when you are in run  the next command
 “mvn clean install”
 This will refresh the necessary JAR file to run the backend. Check if everything is okay, and at the end, you will see a “BUILD SUCCESSFUL” message.

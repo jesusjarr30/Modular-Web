@@ -1,4 +1,8 @@
-# Project Compilation Instructions
+# Psychology Project
+
+Hello, I'm studying computer engineering, and this is my modular project. My project is related to the automation of psychological tests. I have used Unity to automate the testing process based on the Wais book. Additionally, I have developed a web page using React to manage patients within the Unity environment. For the database, I have utilized MySQL, and for the backend, I've employed Java Spring Boot.
+
+## Project Compilation Instructions
 
  **First, we need to download some software.**
  

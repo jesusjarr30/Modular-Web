@@ -11,8 +11,7 @@ import Ppc from "./components/Ppc";
 import Inicio from "./components/Dashboard/Inicio";
 import Personalizar from "./components/Dashboard/Personalizar";
 import AddUser from "./components/Dashboard/AddUser";
-import Support from "./components/Dashboard/Support";
-import Userlist from "./components/Dashboard/Userlist";
+
 
 
 function App() {
@@ -27,6 +26,7 @@ function App() {
       <Route path="/Login2" element={<Login2/>} />
       <Route path="/Ppc" element={<Ppc/>} />
       <Route path="Inicio/*" element={<Inicio/>} />
+      <Route path="/Usuario" element={<AddUser/>}/>
 
       
     </Routes>

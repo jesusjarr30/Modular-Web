@@ -116,9 +116,6 @@ const Inicio = () => {
   </div>
 );
 
-
-
-
 };
 
 export default Inicio;

@@ -33,8 +33,6 @@ function Login(){
       }
     })
   }
-
-
     const navigate = useNavigate();
     const [correo,setCorreo]= useState('');
     const [pass,setPass] = useState('');

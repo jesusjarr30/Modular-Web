@@ -1,14 +1,11 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import cerebro from "./Imagenes/cerebroLogin.png"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
-
-
 function Login(){
-
 
   const mostrarAlerta=()=>{
     Swal.fire({
@@ -33,6 +30,8 @@ function Login(){
       }
     })
   }
+
+
     const navigate = useNavigate();
     const [correo,setCorreo]= useState('');
     const [pass,setPass] = useState('');
@@ -46,14 +45,18 @@ function Login(){
         setPass(event.target.value);
     }
     const fetchData = async () => {
+        console.log("Entra a la funcion");
         setLoading(true);
         try {
           const response = await axios.get('http://localhost:8080/find/{correo}/{pass}?correo='+correo+'&password='+pass); // Reemplaza con tu URL de API
           console.log(response.data);
           console.log("El correo es "+response.data.email +" y la contrasela es "+response.data.pass);
+
+          console.log()
           if (response.data.email === correo && response.data.password === pass) {
             
             console.log("entrar al inicio");
+            console.log("Se ingreso a la siguiebtre direccion");
             navigate('/Inicio', { state: { data: response.data } });
           } else {
             console.log("Todos los datos están mal");

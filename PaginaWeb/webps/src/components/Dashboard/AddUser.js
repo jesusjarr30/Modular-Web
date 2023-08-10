@@ -5,12 +5,12 @@ import Swal from 'sweetalert2';
 
 function AddUser(){
     
-    const [Id,setId] = useState('');
+    const [Identificador,setIdentificador] = useState('');
     const [Name,setName] = useState('');
     const [LastName,SetLastName]= useState('');
     const [Email,setEmail] =useState('');
-    const [Telephone,setTelephone] = useState=('');
-    const [PsychologistID, setPsychologistID] = useState('');
+    const [Telephone,setTelephone] = useState('');
+    const [PsychologistID,setPsychologistID] = useState('');
     const [Direccion,setDireccion] = useState('');
     const [Year,setYear] = useState('');
 
@@ -76,7 +76,7 @@ function AddUser(){
 
         try {
           const Customer = {
-            id: Id,
+            id: Identificador,
             name: Name,
             Email: LastName,
             telephone: Telephone,

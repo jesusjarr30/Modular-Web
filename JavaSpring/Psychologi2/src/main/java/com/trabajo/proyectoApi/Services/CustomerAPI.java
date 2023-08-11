@@ -21,17 +21,35 @@ public class CustomerAPI {
 
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private PsychologistAPI psychologistAPI;
 
-    //only add the require
     @PostMapping("/AddCustomer")
     public String addCustsomer(@RequestBody Customer customer){
         customer.generateId();
+
+
+        if(!customerRepository.searchDuplicateName(customer.getName()).isEmpty()){//check if the name is equal to other people
+            throw new ResourceNotFoundException("Nombre de usuarios ya registrado");
+        }
+        if(!customerRepository.searchDuplicateEmail(customer.getEmail()).isEmpty()){//check if the email is validad (not repeted)
+            throw new ResourceNotFoundException("Email registrado con otro usuario");
+        }
+        //check for a valid psicologo
+        if(customerRepository.findById(customer.getPsychologistID()).isPresent()){
+            throw new ResourceNotFoundException("Psicologo no valido");
+        }
         customerRepository.save(customer);
         return customer.getId();
     }
     @GetMapping("/getCustomer")
     public List<Customer> getCustomer(){
         return customerRepository.findAll();
+    }
+
+    @GetMapping("/GetCustomerPsicologo/{id}")
+    public List<Customer> getCustomerPsicologo(@RequestParam String idPsicologo){
+    return customerRepository.SearchIDPSichologist(idPsicologo);
     }
     @DeleteMapping("/deletCustomer")
     public String deleteCustomer(@RequestBody String id){

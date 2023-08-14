@@ -10,32 +10,35 @@ import chart from '../Imagenes/Chart.png';
 import search from '../Imagenes/Search.png';
 import AddUser from './AddUser';
 import Userlist from './Userlist';
+import Support from './Support';
+import Personalizar from './Personalizar';
+import Estadisticas from './Estadisticas';
+
+
 import cerrar from '../Imagenes/cerrar-sesion.png';
 import Ppc from '../Ppc';
 
-
 const Inicio = () => {
-
-  
-  const Menus = [
-    { title: "Registrar Usuarios", src: userI,  component:<Ppc  />},
-    { title: "lista pacientes", src: search,  component: <Userlist /> },
-    { title: "estadisticas", src: chart, component: <Userlist /> },
-    { title: "Soporte", src: chat, gap: true, component: <Userlist /> },
-    { title: "Configuracion", src: settings, component: <Userlist /> },
-    { title: "Cerrar secion", src: cerrar, gap: true, component: <Userlist /> },
-
-  ];
   const location = useLocation();
   const data = location.state?.data || {};
   const [open, setOpen] = useState(true);
-  const navigate = useNavigate();
 
+
+  const Menus = [
+    { title: "Registrar Usuarios", src: userI,  component:<AddUser nombre={data.nombre} id={data.id}/>},
+    { title: "lista pacientes", src: search,  component: <Userlist nombre={data.nombre} id={data.id}/> },
+    { title: "estadisticas", src: chart, component: <Estadisticas nombre={data.nombre} id={data.id}/> },
+    { title: "Soporte", src: chat, gap: true, component: <Support nombre={data.nombre} id={data.id}/> },
+    { title: "Configuracion", src: settings, component: <Personalizar nombre={data.nombre} id={data.id} apellidos={data.apellidos} email={data.email} password={data.password} telephone={data.telephone}/> },
+    { title: "Cerrar secion", src: cerrar, gap: true, component: <Userlist /> },
+
+  ];
+  
 
   const toggleSidebar = () => {
     setOpen(!open);
   };
-  const [selectedComponent, setSelectedComponent] = useState(<AddUser />);
+  const [selectedComponent, setSelectedComponent] = useState('');
 
   const handleMenuClick = (index) => {
     setSelectedComponent(Menus[index].component);

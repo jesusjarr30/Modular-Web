@@ -16,9 +16,7 @@ function Registro(){
   };
   
   const mostrarAlerta=(tipo)=>{
-    if(tipo === "Servidor"){
-
-    
+    if(tipo === "Servidor"){    
     Swal.fire({
       title: 'Error',
       icon: 'error',

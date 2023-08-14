@@ -3,19 +3,36 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 
-function AddUser(){
+
+const AddUser = ({ nombre, id }) => {
     
-    const [Identificador,setIdentificador] = useState('');
+    const [Identificador,setIdentificador] = useState('0');
     const [Name,setName] = useState('');
     const [LastName,SetLastName]= useState('');
     const [Email,setEmail] =useState('');
     const [Telephone,setTelephone] = useState('');
-    const [PsychologistID,setPsychologistID] = useState('');
+    const [PsychologistID,setPsychologistID] = useState(id);
     const [Direccion,setDireccion] = useState('');
     const [Year,setYear] = useState('');
 
 
     const mostrarAlerta=(tipo)=>{
+      if(tipo ==="cancelar"){
+        Swal.fire({
+          title: 'Los datos no guadrados se perderan',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Seguir en el ',
+          denyButtonText: `No gua`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            Swal.fire('Saved!', '', 'success')
+          } else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+          }
+        })
+      }
         if(tipo === "Servidor"){    
         Swal.fire({
           title: 'Error',
@@ -34,7 +51,13 @@ function AddUser(){
           text: 'Registrado con éxito!',
         }).then(() => {
           // Después de mostrar el SweetAlert de éxito, regresar a la página previa
-          window.history.back();
+          setDireccion('');
+          setName('');
+          setEmail('');
+          setTelephone('');
+          setYear('');
+          SetLastName('');
+
         });
       } 
       else if(tipo ==="Error"){
@@ -50,12 +73,21 @@ function AddUser(){
       }
     }
     const handleCancelarClick = () =>{
-        console.log("Regresar a la portada de inicio")
+        console.log("Regresar a la portada de inicio");
+        console.log("Nombre:" +nombre);
+        console.log("el id es "+id);
+        setDireccion('');
+        setName('');
+        setEmail('');
+        setTelephone('');
+        setYear('');
+        SetLastName('');
+
     }
 
     const handleSubmit = async () => {
 
-        if (!Name || !LastName || !Email || !Telephone || !Direccion || Year) {
+        if (!Name || !LastName || !Email || !Telephone || !Direccion || !Year) {
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -68,22 +100,27 @@ function AddUser(){
             }
           }) 
           Toast.fire({
-            icon: 'Alerta',
+            icon: 'warning',
             title: 'Necesita llenar todos los campos'
           })
+          console.log(Name);
+          console.log(LastName);
+          console.log(Direccion);
+          console.log(Year);
+          console.log(Telephone);
+          console.log(Email);
           return;
         }
 
         try {
           const Customer = {
             id: Identificador,
-            name: Name,
+            name: Name+LastName,
             Email: LastName,
             telephone: Telephone,
             psychologistID: PsychologistID,
             direccion: Direccion,
-            year: Year, 
-   
+            year: Year,
           };
     
           const response = await axios.post('http://localhost:8080/AddCustomer', Customer);
@@ -104,7 +141,9 @@ function AddUser(){
       };
 
     return (
+      
         <div className="flex flex-col items-center w-full h-screen justify-center">
+        
         <h1 className="text-4xl font-semibold mt-1">Registar clientes</h1>
 
         <div className="w-full md:w-11/12 bg-white px-8 py-10 rounded-3xl border-2 border-gray-200 mt-8 flex flex-col p-6"> {/* Cambiamos a 'flex-col' */}
@@ -157,7 +196,7 @@ function AddUser(){
             <label className="text-lg font-medium">Direccion del paciente</label>
             <input
                 className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
-                placeholder="Ingresa tu contraseña"
+                placeholder="Domicilio Paciente"
                 value={Direccion}
                 onChange={(e) => setDireccion(e.target.value)}
             />
@@ -166,8 +205,9 @@ function AddUser(){
             <label className="text-lg font-medium ">Año de nacimiento</label>
             <input
                 className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
-                placeholder="Ingresa contraseña"
+                placeholder="Año de nacimiento Numero"
                 value={Year}
+                type="number"
                 onChange={(e) => setYear(e.target.value)}
             />
             </div>

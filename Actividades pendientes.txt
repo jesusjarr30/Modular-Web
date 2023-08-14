@@ -1,0 +1,16 @@
+Pendientes con el front
+
+Se tiene que conocer como pasar parametros a las ventanas emergentes para poder pasar el userId
+
+Pendientes con el back
+Realizar la validacion del usuario que no se pueda registarr el mismo
+-nombre
+-email
+-agregar la validacion de solo poder agregar con un id de psicolog valido
+Metodo de buscar por nombre
+
+
+
+bd73ec21-e0b4-429d-9484-430adb1b3e75
+
+

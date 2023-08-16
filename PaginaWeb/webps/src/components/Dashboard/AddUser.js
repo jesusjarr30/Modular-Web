@@ -116,13 +116,13 @@ const AddUser = ({ nombre, id }) => {
         console.log("Direccion" +Direccion);
         console.log("year" +Year);
         console.log("telephone"+ Telephone);
-        console.log("Elamil " +Email);
+        console.log("Email  " +Email);
 
         try {
           const Customer = {
             id: Identificador,
             name: Name,
-            Email: Email,
+            email: Email,
             telephone: Telephone,
             psychologistID: PsychologistID,
             direccion: Direccion,
@@ -180,10 +180,10 @@ const AddUser = ({ nombre, id }) => {
             <div className="mr-5 flex flex-col w-full md:w-10/12"> 
             <label className="text-lg font-medium">Correo</label>
             <input
-                className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
-                placeholder="Ingresa tu correo"
-                value={Email}
-                onChange={(e) => setEmail(e.target.value)}
+              className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
+              placeholder="Ingresa tu correo"
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             </div>
             <div className="mr-5 flex flex-col w-full md:w-10/12"> 

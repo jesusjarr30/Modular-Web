@@ -17,7 +17,7 @@ public class Customer {
     @Id
     private String id;
     private String name;
-    private String Email;
+    private String email;
     private String telephone;
     private String PsychologistID;
     private String direccion;

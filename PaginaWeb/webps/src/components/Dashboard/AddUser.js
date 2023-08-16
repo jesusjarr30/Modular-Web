@@ -9,7 +9,7 @@ const AddUser = ({ nombre, id }) => {
     const [Identificador,setIdentificador] = useState('0');
     const [Name,setName] = useState('');
     const [LastName,SetLastName]= useState('');
-    const [Email,setEmail] =useState('');
+    const [Email,setEmail] = useState('');
     const [Telephone,setTelephone] = useState('');
     const [PsychologistID,setPsychologistID] = useState(id);
     const [Direccion,setDireccion] = useState('');
@@ -111,17 +111,24 @@ const AddUser = ({ nombre, id }) => {
           console.log(Email);
           return;
         }
+        console.log("Nombre "+Name);
+        console.log("lastname "+LastName);
+        console.log("Direccion" +Direccion);
+        console.log("year" +Year);
+        console.log("telephone"+ Telephone);
+        console.log("Elamil " +Email);
 
         try {
           const Customer = {
             id: Identificador,
-            name: Name+LastName,
-            Email: LastName,
+            name: Name,
+            Email: Email,
             telephone: Telephone,
             psychologistID: PsychologistID,
             direccion: Direccion,
             year: Year,
           };
+          console.log("the customer Email after the "+Customer.Email)
     
           const response = await axios.post('http://localhost:8080/AddCustomer', Customer);
           

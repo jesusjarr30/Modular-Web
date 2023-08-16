@@ -28,7 +28,6 @@ public class CustomerAPI {
     public String addCustsomer(@RequestBody Customer customer){
         customer.generateId();
 
-
         if(!customerRepository.searchDuplicateName(customer.getName()).isEmpty()){//check if the name is equal to other people
             throw new ResourceNotFoundException("Nombre de usuarios ya registrado");
         }
@@ -39,6 +38,7 @@ public class CustomerAPI {
         if(customerRepository.findById(customer.getPsychologistID()).isPresent()){
             throw new ResourceNotFoundException("Psicologo no valido");
         }
+
         customerRepository.save(customer);
         return customer.getId();
     }

@@ -9,8 +9,13 @@ Realizar la validacion del usuario que no se pueda registarr el mismo
 -agregar la validacion de solo poder agregar con un id de psicolog valido
 Metodo de buscar por nombre
 
+Revisar el problema del correo en el agregar usuarios
 
+En la parte de las estadisticas se pone:
+Se va a poner para 6 cuadros
 
-bd73ec21-e0b4-429d-9484-430adb1b3e75
+Numero de usaurios registrados
+Numeros de juegos minutos de juego registrados
+Numero de Codigos consumidos con los valores de (verdadero o falso)
 
 

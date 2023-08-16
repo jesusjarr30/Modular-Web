@@ -45,7 +45,7 @@ const [customerList, setCustomerList] = useState([]);
 
 
   return (
-    <div className="flex w-full h-screen justify-center bg-yellow-400">
+    <div className="flex w-full h-screen justify-center ">
       <div>
         <h1>Aqui va la lista de usuarios:</h1>
         <DataTable 

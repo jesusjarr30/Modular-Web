@@ -107,6 +107,11 @@ public class CustomerAPI {
         }
         throw new ResourceNotFoundException("Not a coincidence with the name "+ name );
     }
+    @GetMapping("/GetEstadisticas/{id}")
+    public String estadisticas(){
+            //Aqui tenemos que regresar todas las estadisticas requeridas a modo de lista se necesita generar las query requeridas para ello
+        return null;
+    }
 
 
 

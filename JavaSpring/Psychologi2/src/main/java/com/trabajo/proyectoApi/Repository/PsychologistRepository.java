@@ -28,6 +28,5 @@ public interface PsychologistRepository extends JpaRepository<Psychologist,Strin
 
     @Query("SELECT p FROM Psychologist p WHERE p.email = :correo")
     Psychologist getByEmail(@Param("correo") String correo);
-
 }
 

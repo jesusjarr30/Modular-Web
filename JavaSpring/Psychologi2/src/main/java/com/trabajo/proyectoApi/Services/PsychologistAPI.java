@@ -55,8 +55,16 @@ public class PsychologistAPI {
         return a;
     }
     @GetMapping("/getUser/{id}")
-    public Optional<Psychologist> getPsy(@RequestParam String id){
-            return psychologistRepository.findById(id);
+    public Psychologist getPsy(@RequestParam String id){
+
+        Optional<Psychologist> a=psychologistRepository.findById(id);
+
+        if(a.isPresent()){
+            return a.get();
+        }else{
+            throw new ResourceNotFoundException("No se encotro el id del psicologo");
+        }
+
     }
     @GetMapping("getUser/{correo}")
     public Optional<Psychologist> getPsyC(@RequestParam String correo){
@@ -72,7 +80,6 @@ public class PsychologistAPI {
             throw new ResourceNotFoundException("No se econtro el juego que se desea editar");
 
         Psychologist psychologist = toEdit.get();
-
 
         for (Map.Entry<String, Object> entry : updates.entrySet()) {
             String fieldName = entry.getKey();

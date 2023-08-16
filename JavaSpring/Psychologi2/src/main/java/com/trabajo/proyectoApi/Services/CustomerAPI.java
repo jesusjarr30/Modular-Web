@@ -109,6 +109,7 @@ public class CustomerAPI {
     }
     @GetMapping("/GetEstadisticas/{id}")
     public String estadisticas(){
+
             //Aqui tenemos que regresar todas las estadisticas requeridas a modo de lista se necesita generar las query requeridas para ello
         return null;
     }

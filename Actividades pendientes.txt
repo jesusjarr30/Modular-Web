@@ -18,4 +18,9 @@ Numero de usaurios registrados
 Numeros de juegos minutos de juego registrados
 Numero de Codigos consumidos con los valores de (verdadero o falso)
 
+Pendientes Hoy 17 de agosto 
+
+-Hacer el diagrama de base de datos.
+-Realizar pruebas de integracion con mysql.
+-Dejar todo el back listo para la siguiente el fin de semana. 
 

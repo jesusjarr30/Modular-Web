@@ -16,7 +16,6 @@ import Estadisticas from './Estadisticas';
 
 
 import cerrar from '../Imagenes/cerrar-sesion.png';
-import Ppc from '../Ppc';
 
 const Inicio = () => {
   const location = useLocation();

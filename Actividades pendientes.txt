@@ -24,3 +24,5 @@ Pendientes Hoy 17 de agosto
 -Realizar pruebas de integracion con mysql.
 -Dejar todo el back listo para la siguiente el fin de semana. 
 
+
+

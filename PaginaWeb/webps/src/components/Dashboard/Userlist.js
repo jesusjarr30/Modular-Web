@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import listaBorrar from '../Imagenes/Button_list/listaBorrar.png';
+import listaEditar from '../Imagenes/Button_list/listaEditar.png';
+import listaVer from '../Imagenes/Button_list/listaVer.png';
 
 import DataTable from 'react-data-table-component';
 
@@ -23,29 +26,94 @@ const [busqueda,setBusqueda] = useState([])
     fetchData();
   }, []);
 
+const handleEdit = (row) => {
+  // Lógica para manejar la edición aquí
+  console.log('handleGenerate llamada', row);
+  // Lógica para generar resultados aquí
+ 
+};
+
+const handleGenerate = (row) => {
+  // Lógica para generar resultados aquí
+  console.log('handleGenerate llamada', row);
+  // Lógica para generar resultados aquí
+  
+};
+
+const customStyles = {
+  rows: {
+      style: {
+          minHeight: '60px', // override the row height
+          
+      },
+  },
+  headCells: {
+      style: {
+          paddingLeft: '1px', // override the cell padding for head cells
+          paddingRight: '1px',
+      },
+  },
+  cells: {
+      style: {
+          paddingLeft: '1px', // override the cell padding for data cells
+          paddingRight: '1px',
+      },
+  },
+};
+
+
   const columns = [
     {
         name: 'Nombre',
         selector: row => row.name,
-        sortable: true
+        sortable: true,
+        width: '250px', // Anchura personalizada de la columna
     },
     {
       name:'Correo',
       selector: row => row.email,
-      sortable: true
+      sortable: true,
+      width: '250px', // Anchura personalizada de la columna
     },
-    {
-        name: 'Year',
-        selector: row => row.year,
-        sortable: true
-    },
+
     {
       name: 'Telefono',
       selector: row => row.telephone,
-      sortable: true
-    }
+      sortable: true,
+      width: '250px', // Anchura personalizada de la columna
+      
+    },
+    {
+      name: 'Acciones',
+      cell: (row) => (
+        <div className="flex">
+      <img className="mr-4"
+        src={listaEditar}
+        alt="Editar"
+        onClick={() => handleEdit(row)}
+       
+      />
+      <img className="mr-4"
+        src={listaBorrar}
+        alt="Generar Resultados"
+        onClick={() => handleGenerate(row)}
+        
+      />
+      <img className="mr-4"
+        src={listaVer}
+        alt="Generar Resultados"
+        onClick={() => handleGenerate(row)}
+      />
+    </div>
+      ),
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
+  ];
+  
     
-];
+
     // Add more columns as needed
   
 
@@ -72,9 +140,11 @@ const [busqueda,setBusqueda] = useState([])
         <DataTable 
           columns={columns}
           data={busqueda}
-          selectableRows
           fixedHeader
           pagination
+          customStyles={customStyles}
+
+ 
         
         />
         </div>

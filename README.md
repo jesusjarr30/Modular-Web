@@ -2,7 +2,7 @@
 
 Hello, I'm studying computer engineering, and this is my modular project. My project is related to the automation of psychological tests. I have used Unity to automate the testing process based on the Wais book. Additionally, I have developed a web page using React to manage patients within the Unity environment. For the database, I have utilized MySQL, and for the backend, I've employed Java Spring Boot.
 
-## Project Compilation Instructions
+## Project Compilation Instructions (Windows)
 
  **First, we need to download some software.**
  
@@ -23,11 +23,18 @@ This will create the container with the necessary images. Please note that this 
 
 Please ensure that the required ports for this project, which are 80, 3000, and 3306, are available at the time you run the Docker Compose file. Otherwise, you might encounter errors, and the necessary services might not work properly.
 
-IF everything is ok you can check the container (check it it docker sdestop) join in thr next link
+If everything is ok you can check the container (check it docker sdestop) join in thr next link
 
 **http://localhost:3000**
 
 the page will display.
+
+## Project Compilation Instructions (Linux)
+Requari software to run in linux.
+Need to download Maven 
+Java JDK 17.
+Install docker follow you can check the next URL https://docs.docker.com/engine/install/ubuntu/
+...
 
 
 

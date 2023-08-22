@@ -3,12 +3,16 @@ import axios from "axios";
 import listaBorrar from '../Imagenes/Button_list/listaBorrar.png';
 import listaEditar from '../Imagenes/Button_list/listaEditar.png';
 import listaVer from '../Imagenes/Button_list/listaVer.png';
-
+import { useNavigate } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
+
+
 
 const Userlist = ({ nombre, id }) => {
 const [customerList, setCustomerList] = useState([]);
 const [busqueda,setBusqueda] = useState([])
+
+const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,17 +32,18 @@ const [busqueda,setBusqueda] = useState([])
 
 const handleEdit = (row) => {
   // Lógica para manejar la edición aquí
-  console.log('handleGenerate llamada', row);
-  // Lógica para generar resultados aquí
+  console.log('handleEdit llamada', row);
+  navigate('/ViewUser');
  
 };
 
 const handleGenerate = (row) => {
   // Lógica para generar resultados aquí
   console.log('handleGenerate llamada', row);
-  // Lógica para generar resultados aquí
-  
+  navigate('/ViewUser');
+  // Lógica para generar resultados aquí  
 };
+
 
 const customStyles = {
   rows: {
@@ -111,12 +116,7 @@ const customStyles = {
       button: true,
     },
   ];
-  
-    
-
     // Add more columns as needed
-  
-
 
   function handlerFilter(event) {
     const newData = customerList.filter(row => {
@@ -143,9 +143,6 @@ const customStyles = {
           fixedHeader
           pagination
           customStyles={customStyles}
-
- 
-        
         />
         </div>
       </div>

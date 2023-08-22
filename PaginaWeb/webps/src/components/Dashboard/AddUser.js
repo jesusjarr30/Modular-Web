@@ -121,7 +121,7 @@ const AddUser = ({ nombre, id }) => {
         try {
           const Customer = {
             id: Identificador,
-            name: Name,
+            name: Name+' '+LastName,
             email: Email,
             telephone: Telephone,
             psychologistID: PsychologistID,

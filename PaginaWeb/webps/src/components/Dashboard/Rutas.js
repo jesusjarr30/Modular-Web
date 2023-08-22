@@ -8,10 +8,11 @@ import Support from "./Support";
 import Userlist from "./Userlist";
 import Ppc from '../Ppc';
 import Estadisticas from './Estadisticas';
-
+import ViewUser from './ViewUser';
 
 function Rutas() {
-  return (
+  /*return (
+
     <Router>
     <Routes>
       <Route path="Inicio/Personalizar" element={<Personalizar/>} />
@@ -19,11 +20,12 @@ function Rutas() {
       <Route path="Inicio/Support" element={<Support/>} />
       <Route path="Inicio/Userlist" element={<Userlist/>} />
       <Route path="Inicio/Ppc" element={<Ppc/>} />
-      <Route path= "Inicio/Estadisticas" element={<Estadisticas/>}/>
+      <Route path="Inicio/Estadisticas" element={<Estadisticas/>}/>
+      <Route path="Inicio/ViewUser" element={<ViewUser/>}/>
       
     </Routes>
   </Router>
-  );
+  );*/
 }
 
 export default Rutas;

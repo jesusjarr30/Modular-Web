@@ -33,7 +33,6 @@ const Inicio = () => {
 
   ];
   
-
   const toggleSidebar = () => {
     setOpen(!open);
   };

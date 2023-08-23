@@ -5,6 +5,7 @@ import listaEditar from '../Imagenes/Button_list/listaEditar.png';
 import listaVer from '../Imagenes/Button_list/listaVer.png';
 import { useNavigate } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
+import ViewUser from "./ViewUser";
 
 
 
@@ -33,14 +34,14 @@ const navigate = useNavigate();
 const handleEdit = (row) => {
   // Lógica para manejar la edición aquí
   console.log('handleEdit llamada', row);
-  navigate('/ViewUser');
- 
+  navigate('/ViewUser', { state: { rowData: row } });
 };
 
 const handleGenerate = (row) => {
   // Lógica para generar resultados aquí
   console.log('handleGenerate llamada', row);
-  navigate('/ViewUser');
+  navigate('/ViewUser', { state: { rowData: row } });
+  //navigate('/ViewUser');
   // Lógica para generar resultados aquí  
 };
 
@@ -129,7 +130,7 @@ const customStyles = {
     <div className="flex w-full h-screen justify-center ">
       
       <div className="w-32 md:w-11/12 bg-white px-8 py-10 rounded-3xl border-2 border-gray-200 mt-8 p-6">
-      <h1>Aqui va la lista de usuarios:</h1>
+      <h1>Lista pacientes:</h1>
       <div className="text-end">
         <input type="text" onChange={handlerFilter}>
 

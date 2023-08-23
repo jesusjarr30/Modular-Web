@@ -51,7 +51,7 @@ public class CustomerAPI {
     public List<Customer> getCustomerPsicologo(@RequestParam String idPsicologo){
     return customerRepository.SearchIDPSichologist(idPsicologo);
     }
-    @DeleteMapping("/deletCustomer")
+    @DeleteMapping("/deletCustomer/{id}")
     public String deleteCustomer(@RequestBody String id){
         customerRepository.deleteById(id);
         return id;
@@ -113,8 +113,4 @@ public class CustomerAPI {
             //Aqui tenemos que regresar todas las estadisticas requeridas a modo de lista se necesita generar las query requeridas para ello
         return null;
     }
-
-
-
-
 }

@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
+@CrossOrigin("http://localhost:3000/")
 @RestController
 public class GameAPI {
     @Autowired
@@ -30,6 +30,7 @@ public class GameAPI {
         } else {
             throw new ResourceNotFoundException("No se ecntro un customer con el id ID: " + idUsuario);
         }
+
     }
     @GetMapping("/GetGame")
     public List<Game> getGame(){
@@ -80,11 +81,7 @@ public class GameAPI {
         return gameRepository.save(game);
     }
     @GetMapping("/GetCustomerid/{id}")
-    public Game getGameById(@RequestParam String id){
-        Optional<Game> a=gameRepository.findById(id);
-        if(a.isPresent()){
-            return a.get();
-        }
-        throw new ResourceNotFoundException("Game not found");
+    public List<Game> getGameById(@RequestParam String id){
+       return gameRepository.searchByGame(id);
     }
 }

@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { Button } from "bootstrap";
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -22,6 +22,39 @@ const ViewUser = () => {
     const [editable, setEditable] = useState(false);
     const navigate = useNavigate();
 
+
+  const [modifiedFields, setModifiedFields] = useState({
+    name: false,
+    email: false,
+    telephone: false,
+    direccion: false,
+    year: false,
+  });
+  
+  const handleFieldChange = (field, value) => {
+    if (rowData && rowData[field] !== value) {
+      setModifiedFields((prevModifiedFields) => ({
+        ...prevModifiedFields,
+        [field]: true,
+      }));
+    }
+  };
+
+  const mostrarCamposModificados = () => {
+    const modifiedFieldNames = Object.keys(modifiedFields).filter(
+      (field) => modifiedFields[field]
+    );
+
+    if (modifiedFieldNames.length > 0) {
+      console.log("Campos modificados:");
+      modifiedFieldNames.forEach((field) => {
+        console.log(`${field}: ${eval(field)}`);
+      });
+    } else {
+      console.log("Ningún campo ha sido modificado.");
+    }
+  };
+
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -40,6 +73,58 @@ const ViewUser = () => {
     const toggleEditable = () => {
       setEditable(!editable);
     };
+    const mostrarAlerta=(tipo)=>{
+      if(tipo === "Servidor"){ 
+      Swal.fire({
+      title: 'Error',
+      icon: 'error',
+      text: 'El correo ya esta registrado con otra cuenta',
+      footer: '<a href="">Olvido su contraseña?</a>',
+      timer:3000,
+      customClass: {
+      footer: 'swal-footer',
+      }
+      })
+      } else if(tipo === "Exito")
+      {
+      Swal.fire({
+      icon: 'success',
+      title: 'Listo...',
+      text: 'Codigo generado con exito!',
+      })
+      } 
+      else if(tipo ==="Error"){
+      Swal.fire({
+      title: 'Error',
+      icon: 'info',
+      text: 'El correo ya esta registrado con otra cuenta',
+      timer:5000,
+      customClass: {
+      footer: 'swal-footer',
+      }
+      })
+      }
+      }
+      
+      const GenerarCodigo = async () => {
+      
+      
+      try {
+      const response = await axios.post('http://localhost:8080/addGame/{idUsuario}?idUsuario='+id);
+      if(response.status === 200){
+      mostrarAlerta("Exito");
+      }
+      // Aquí puedes realizar cualquier acción adicional después de registrar al psicólogo.
+      } catch (error) {
+      console.error('Error al hacer la consulta', error);
+      // Aquí puedes manejar el error o mostrar un mensaje al usuario en caso de fallo.
+      if (error.code === 'ECONNABORTED') {
+      mostrarAlerta('Servidor');
+      } else {
+      mostrarAlerta("Error");
+      }
+      }
+      };
 
     return (
     <div className="w-full">
@@ -77,10 +162,6 @@ const ViewUser = () => {
     <input className="w-2/3 h-12 text-lg px-2 border border-gray-300 rounded bg-white" type="text" value={telephone} readOnly={!editable} onChange={(e) => setTelephone(e.target.value)} />
   </div>
 
-  <div className="flex flex-row mb-4">
-    <p className="w-1/3 text-lg font-medium">ID del Psicólogo:</p>
-    <input className="w-2/3 h-12 text-lg px-2 border border-gray-300 rounded bg-white" type="text" value={psychologistID} readOnly={!editable} onChange={(e) => setPsychologistID(e.target.value)} />
-  </div>
 
   <div className="flex flex-row mb-4">
     <p className="w-1/3 text-lg font-medium">Dirección:</p>
@@ -100,7 +181,7 @@ const ViewUser = () => {
   >
     {editable ? 'Guardar' : 'Editar'}
   </button>
-  <button> Genera codigo juego</button>
+  <button className="py-2 px-4 rounded  bg-red-500" onClick={GenerarCodigo}> Genera codigo juego</button>
   </div>
 </div>
 
@@ -115,81 +196,82 @@ const ViewUser = () => {
         </div>
         <div>
         {gameList.map((game, index) => (
-        <div key={index}>
-          <h3>Game ID: {game.id}</h3>
-          <div class="grid grid-cols-5 gap-3 items-center">
-        <div class="bg-red-500 rounded-lg">
+        <div key={index} className="mb-12">
+          <h3>Codigo Numero {index +1}</h3>
+          <h3>Resultados del siguiente codigo: {game.id}</h3>
+          <div className="grid grid-cols-5 gap-3 items-center">
+        <div className="bg-red-500 rounded-lg">
           <h3>Cubos </h3>
           <h3>Puntos: {game.cubos}</h3>
           <h3>Tiempo: {game.tcubos}</h3>
         </div>
-        <div class=" bg-yellow-500 rounded-lg">
+        <div className=" bg-yellow-500 rounded-lg">
         <h3>Semejanzas</h3>
         <h3>Puntos: {game.semejanzas}</h3>
         <h3>Tiempo: {game.tsemejanzas}</h3>
         </div>
-        <div class=" bg-blue-500 rounded-lg">
+        <div className=" bg-blue-500 rounded-lg">
         <h3>Digitos</h3>
         <h3>Puntos: {game.digitos}</h3>
         <h3>Tiempo: {game.tdigitos}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>Matriz</h3>
         <h3>Puntos: {game.matriz}</h3>
           <h3>Tiempo: {game.tmatriz}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>Vocabulario</h3>
         <h3>Puntos: {game.vocabulario}</h3>
           <h3>Tiempo: {game.tvocabulario}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>Aritmeticas</h3>
         <h3>Puntos: {game.aritmetica}</h3>
           <h3>Tiempo: {game.taritmetica}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>Busquedas</h3>
         <h3>Puntos: {game.busquedaS}</h3>
           <h3>Tiempo: {game.tbusquedaS}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>PluzzeV</h3>
         <h3>Puntos: {game.pluzzeV}</h3>
           <h3>Tiempo: {game.tpluzzeV}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>ptnInformacion</h3>
         <h3>Puntos: {game.ptnInformacion}</h3>
           <h3>Tiempo: {game.tptnInformacion}</h3>
         </div>
 
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
           <h3>claveNum</h3>
           <h3>Puntos: {game.claveNum}</h3>
           <h3>Tiempo: {game.tclaveNum}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>letrasNum</h3>
         <h3>Puntos: {game.letrasNum}</h3>
         <h3>Tiempo: {game.tletrasNum}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>balanzas</h3>
         <h3>Puntos: {game.balanzas}</h3>
           <h3>Tiempo: {game.tbalanzas}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>comprension</h3>
         <h3>Puntos: {game.comprension}</h3>
           <h3>Tiempo: {game.tcomprension}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>cancelacion</h3>
         <h3>Puntos: {game.cancelacion}</h3>
           <h3>Tiempo: {game.tcancelacion}</h3>
         </div>
-        <div class=" bg-white rounded-lg">
+        <div className=" bg-white rounded-lg">
         <h3>figCompleta</h3>
         <h3>Puntos: {game.figCompleta}</h3>
           <h3>Tiempo: {game.tfigCompleta}</h3>
@@ -209,4 +291,3 @@ const ViewUser = () => {
 
 }
 export default ViewUser;
-

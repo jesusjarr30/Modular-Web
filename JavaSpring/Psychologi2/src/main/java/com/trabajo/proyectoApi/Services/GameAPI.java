@@ -84,4 +84,11 @@ public class GameAPI {
     public List<Game> getGameById(@RequestParam String id){
        return gameRepository.searchByGame(id);
     }
+    @GetMapping("/verificatedGame/{codigo}")
+    public Game verificateGame(@RequestParam String codigo){
+        return gameRepository.searchByCodigo(codigo);
+
+
+
+    }
 }

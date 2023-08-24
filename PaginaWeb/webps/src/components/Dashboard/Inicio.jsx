@@ -15,6 +15,7 @@ import Personalizar from './Personalizar';
 import Estadisticas from './Estadisticas';
 
 
+
 import cerrar from '../Imagenes/cerrar-sesion.png';
 
 const Inicio = () => {
@@ -53,6 +54,14 @@ const Inicio = () => {
       clearInterval(interval);
     };
   }, []);
+  const navigate = useNavigate();
+ 
+  const handleLogout = () => {
+    // Realiza las acciones necesarias para cerrar la sesión, como eliminar tokens de autenticación, etc.
+
+    // Luego, redirige a la página de inicio de sesión
+    navigate('/login');
+  };
 
   const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   const months = [
@@ -88,7 +97,8 @@ const Inicio = () => {
               ${Menu.gap ? "mt-10" : "mt-2"} ${
                 index === -1 && "bg-light-white"
               } `}
-              onClick={() => handleMenuClick(index)}
+              //onClick={() => handleMenuClick(index)}
+              onClick={index === Menus.length - 1 ? handleLogout : () => handleMenuClick(index)}
             >
               <img src={Menu.src} alt={Menu.title} className="ml-0 mr-2"/>
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -111,7 +121,6 @@ const Inicio = () => {
         </div>
         {selectedComponent}
       </div>
-      {/**Div del componente a llamar */}
       
     </div>
   </div>

@@ -38,7 +38,7 @@ const Perzonalizar = ({ nombre, id}) => {
 
 
     return (
-        <div className="flex w-full h-screen">
+        <div className="w-full h-screen">
             <h1>perzonalizar</h1>
         <label className="text-lg font-medium">corregir tu nombre</label>
         <input

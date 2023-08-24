@@ -36,7 +36,7 @@
 body {
 
   background-color: #d8d0d0 !important;
-  color: #000000 !important;
+ 
   font-family: 'Centra', sans-serif !important;
 }
 
@@ -59,10 +59,7 @@ nav.navbar {
   z-index: 9999;
   transition:  0.32s ease-in-out;
 }
-nav.navbar.scrolled {
-  padding: 0px 0;
-  background-color: #121212;
-}
+
 nav.navbar a.navbar-brand {
     width: 9%;
 }
@@ -142,9 +139,7 @@ span.navbar-text {
   z-index: -1;
   transition: 0.3s ease-in-out;
 }
-.navbar-text button:hover {
-  color: #121212;
-}
+
 .navbar-text button:hover::before {
 	content: "";
 	width: 100%;

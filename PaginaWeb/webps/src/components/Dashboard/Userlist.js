@@ -27,23 +27,19 @@ const navigate = useNavigate();
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, []);
 
-const handleEdit = (row) => {
+const handleVer = (row) => {
   // Lógica para manejar la edición aquí
   console.log('handleEdit llamada', row);
   navigate('/ViewUser', { state: { rowData: row } });
 };
+const handleDelete = (row) =>{
+  console.log("Entro en el apartado de eliminar")
+}
 
-const handleGenerate = (row) => {
-  // Lógica para generar resultados aquí
-  console.log('handleGenerate llamada', row);
-  navigate('/ViewUser', { state: { rowData: row } });
-  //navigate('/ViewUser');
-  // Lógica para generar resultados aquí  
-};
+
 
 
 const customStyles = {
@@ -92,24 +88,17 @@ const customStyles = {
     {
       name: 'Acciones',
       cell: (row) => (
-        <div className="flex">
-      <img className="mr-4"
-        src={listaEditar}
-        alt="Editar"
-        onClick={() => handleEdit(row)}
-       
-      />
+      <div className="flex">
+      
       <img className="mr-4"
         src={listaBorrar}
         alt="Generar Resultados"
-        onClick={() => handleGenerate(row)}
-        
-      />
-      <img className="mr-4"
-        src={listaVer}
-        alt="Generar Resultados"
-        onClick={() => handleGenerate(row)}
-      />
+        onClick={() => handleVer(row)}/>
+
+
+        <button className="bg-green-500 rounded-full p-2 mr-2 w-24" onClick={() => handleVer(row)}>Ver</button>
+
+      
     </div>
       ),
       ignoreRowClick: true,
@@ -135,7 +124,7 @@ const customStyles = {
         <input type="text" onChange={handlerFilter}>
 
         </input>
-
+        
       </div>
       <div className="container">
         <DataTable 

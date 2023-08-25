@@ -88,7 +88,17 @@ public class GameAPI {
     public Game verificateGame(@RequestParam String codigo){
         return gameRepository.searchByCodigo(codigo);
 
-
+    }
+    @GetMapping("/verificateGame2/{codigo}")
+    public boolean verificateGame2(@RequestParam String codigo){
+        Game a= gameRepository.searchByCodigo(codigo);
+        if(a==null){
+            return false;
+        }
+        if(a.getCodigo().equals(codigo)){
+            return true;
+        }
+        return false;
 
     }
 }

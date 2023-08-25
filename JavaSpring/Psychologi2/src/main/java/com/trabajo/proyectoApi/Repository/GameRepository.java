@@ -16,4 +16,5 @@ public interface  GameRepository extends JpaRepository<Game, String> {
     @Query("SELECT g FROM Game g WHERE g.codigo = :codigo")
     Game searchByCodigo(@Param("codigo") String codigo);
 
+
 }

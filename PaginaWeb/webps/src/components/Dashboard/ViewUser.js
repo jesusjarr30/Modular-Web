@@ -198,80 +198,80 @@ const ViewUser = () => {
         {gameList.map((game, index) => (
         <div key={index} className="mb-12">
           <h3>Codigo Numero {index +1}</h3>
-          <h3>Resultados del siguiente codigo: {game.id}</h3>
+          <h3>Resultados del siguiente codigo: {game.codigo}</h3>
           <div className="grid grid-cols-5 gap-3 items-center">
-        <div className="bg-red-500 rounded-lg">
+        <div className="bg-red-600 rounded-lg">
           <h3>Cubos </h3>
           <h3>Puntos: {game.cubos}</h3>
           <h3>Tiempo: {game.tcubos}</h3>
         </div>
-        <div className=" bg-yellow-500 rounded-lg">
+        <div className=" bg-yellow-600 rounded-lg">
         <h3>Semejanzas</h3>
         <h3>Puntos: {game.semejanzas}</h3>
         <h3>Tiempo: {game.tsemejanzas}</h3>
         </div>
-        <div className=" bg-blue-500 rounded-lg">
+        <div className=" bg-blue-600 rounded-lg">
         <h3>Digitos</h3>
         <h3>Puntos: {game.digitos}</h3>
         <h3>Tiempo: {game.tdigitos}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-purple-600 rounded-lg">
         <h3>Matriz</h3>
         <h3>Puntos: {game.matriz}</h3>
           <h3>Tiempo: {game.tmatriz}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-green-600 rounded-lg">
         <h3>Vocabulario</h3>
         <h3>Puntos: {game.vocabulario}</h3>
           <h3>Tiempo: {game.tvocabulario}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-red-400 rounded-lg">
         <h3>Aritmeticas</h3>
         <h3>Puntos: {game.aritmetica}</h3>
           <h3>Tiempo: {game.taritmetica}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-yellow-400 rounded-lg">
         <h3>Busquedas</h3>
         <h3>Puntos: {game.busquedaS}</h3>
           <h3>Tiempo: {game.tbusquedaS}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-blue-400 rounded-lg">
         <h3>PluzzeV</h3>
         <h3>Puntos: {game.pluzzeV}</h3>
           <h3>Tiempo: {game.tpluzzeV}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-purple-400 rounded-lg">
         <h3>ptnInformacion</h3>
         <h3>Puntos: {game.ptnInformacion}</h3>
           <h3>Tiempo: {game.tptnInformacion}</h3>
         </div>
 
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-green-200 rounded-lg">
           <h3>claveNum</h3>
           <h3>Puntos: {game.claveNum}</h3>
           <h3>Tiempo: {game.tclaveNum}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-red-200 rounded-lg">
         <h3>letrasNum</h3>
         <h3>Puntos: {game.letrasNum}</h3>
         <h3>Tiempo: {game.tletrasNum}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-yellow-200 rounded-lg">
         <h3>balanzas</h3>
         <h3>Puntos: {game.balanzas}</h3>
           <h3>Tiempo: {game.tbalanzas}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-blue-200 rounded-lg">
         <h3>comprension</h3>
         <h3>Puntos: {game.comprension}</h3>
           <h3>Tiempo: {game.tcomprension}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-purple-200 rounded-lg">
         <h3>cancelacion</h3>
         <h3>Puntos: {game.cancelacion}</h3>
           <h3>Tiempo: {game.tcancelacion}</h3>
         </div>
-        <div className=" bg-white rounded-lg">
+        <div className=" bg-green-200 rounded-lg">
         <h3>figCompleta</h3>
         <h3>Puntos: {game.figCompleta}</h3>
           <h3>Tiempo: {game.tfigCompleta}</h3>

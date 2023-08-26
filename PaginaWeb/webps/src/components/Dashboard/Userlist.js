@@ -121,7 +121,7 @@ const customStyles = {
       <div className="w-32 md:w-11/12 bg-white px-8 py-10 rounded-3xl border-2 border-gray-200 mt-8 p-6">
       <h1>Lista pacientes:</h1>
       <div className="text-end">
-        <input type="text" onChange={handlerFilter}>
+        <input className="bg-white bg-opacity-75 border border-black p-2 rounded-md" type="text" onChange={handlerFilter}>
 
         </input>
         

@@ -5,6 +5,7 @@ import {PiePagina} from "./ComPrincipal/PiePagina";
 import {Mision} from "./ComPrincipal/Mision";
 import {Productos}from "./ComPrincipal/Productos";
 import {Objetivos} from "./ComPrincipal/Objetivos";
+import { Instrucciones } from './ComPrincipal/Instrucciones';
 
 function Principal() {
     return (
@@ -15,6 +16,7 @@ function Principal() {
       <Mision/>
       <Productos/>
       <Objetivos/>
+      <Instrucciones />
       <PiePagina />
        
       

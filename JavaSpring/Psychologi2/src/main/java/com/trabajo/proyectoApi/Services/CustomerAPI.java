@@ -5,6 +5,7 @@ import com.trabajo.proyectoApi.Exception.ResourceNotFoundException;
 import com.trabajo.proyectoApi.Models.Customer;
 import com.trabajo.proyectoApi.Models.Game;
 import com.trabajo.proyectoApi.Repository.CustomerRepository;
+import com.trabajo.proyectoApi.Repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,8 @@ public class CustomerAPI {
     private CustomerRepository customerRepository;
     @Autowired
     private PsychologistAPI psychologistAPI;
+    @Autowired
+    GameRepository gameRepository;
 
     @PostMapping("/AddCustomer")
     public String addCustsomer(@RequestBody Customer customer){
@@ -49,10 +52,13 @@ public class CustomerAPI {
 
     @GetMapping("/GetCustomerPsicologo/{id}")
     public List<Customer> getCustomerPsicologo(@RequestParam String idPsicologo){
-    return customerRepository.SearchIDPSichologist(idPsicologo);
+        return customerRepository.SearchIDPSichologist(idPsicologo);
     }
     @DeleteMapping("/deletCustomer/{id}")
-    public String deleteCustomer(@RequestBody String id){
+    public String deleteCustomer(@RequestParam String id){
+        //Se eliminaran tambine los datos de juego registrados
+        gameRepository.deleteByClientId(id);
+        //borra todos los datos de juego y al final borra
         customerRepository.deleteById(id);
         return id;
     }
@@ -110,7 +116,8 @@ public class CustomerAPI {
     @GetMapping("/GetEstadisticas/{id}")
     public String estadisticas(){
 
-            //Aqui tenemos que regresar todas las estadisticas requeridas a modo de lista se necesita generar las query requeridas para ello
+        //Aqui tenemos que regresar todas las estadisticas requeridas a modo de lista se necesita generar las query requeridas para ello
         return null;
     }
 }
+

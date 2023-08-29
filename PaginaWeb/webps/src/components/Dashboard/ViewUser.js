@@ -226,38 +226,38 @@ const ViewUser = () => {
           <h3>Tiempo: {game.tvocabulario}</h3>
         </div>
         <div className=" bg-red-400 rounded-lg">
-        <h3>Aritmeticas</h3>
+        <h3>Aritmetica</h3>
         <h3>Puntos: {game.aritmetica}</h3>
           <h3>Tiempo: {game.taritmetica}</h3>
         </div>
         <div className=" bg-yellow-400 rounded-lg">
-        <h3>Busquedas</h3>
+        <h3>Busqeudas de simbolos</h3>
         <h3>Puntos: {game.busquedaS}</h3>
           <h3>Tiempo: {game.tbusquedaS}</h3>
         </div>
         <div className=" bg-blue-400 rounded-lg">
-        <h3>PluzzeV</h3>
+        <h3>Plluzze visual</h3>
         <h3>Puntos: {game.pluzzeV}</h3>
           <h3>Tiempo: {game.tpluzzeV}</h3>
         </div>
         <div className=" bg-purple-400 rounded-lg">
-        <h3>ptnInformacion</h3>
+        <h3>puntuacion informacion</h3>
         <h3>Puntos: {game.ptnInformacion}</h3>
           <h3>Tiempo: {game.tptnInformacion}</h3>
         </div>
 
         <div className=" bg-green-200 rounded-lg">
-          <h3>claveNum</h3>
+          <h3>Claves de numeros</h3>
           <h3>Puntos: {game.claveNum}</h3>
           <h3>Tiempo: {game.tclaveNum}</h3>
         </div>
         <div className=" bg-red-200 rounded-lg">
-        <h3>letrasNum</h3>
+        <h3>lLetras numeros</h3>
         <h3>Puntos: {game.letrasNum}</h3>
         <h3>Tiempo: {game.tletrasNum}</h3>
         </div>
         <div className=" bg-yellow-200 rounded-lg">
-        <h3>balanzas</h3>
+        <h3>Balanzas</h3>
         <h3>Puntos: {game.balanzas}</h3>
           <h3>Tiempo: {game.tbalanzas}</h3>
         </div>

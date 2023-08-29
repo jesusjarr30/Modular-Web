@@ -200,23 +200,31 @@ const ViewUser = () => {
           <h3>Codigo Numero {index +1}</h3>
           <h3>Resultados del siguiente codigo: {game.codigo}</h3>
           <div className="grid grid-cols-5 gap-3 items-center">
-        <div className="bg-red-600 rounded-lg">
-          <h3>Cubos </h3>
-          <h3>Puntos: {game.cubos}</h3>
-          <h3>Tiempo: {game.tcubos}</h3>
+        
+
+
+        <div className="bg-red-800 rounded-lg flex flex-col items-center justify-center h-full">
+          <h3 className="text-white text-center font-bold">Cubos</h3>
+          <hr className="w-full border border-white " />
+          <h3 className="text-white">Puntos: {game.cubos}</h3>
+          <h3 className="text-white">Tiempo: {game.tcubos}</h3>
         </div>
-        <div className=" bg-yellow-600 rounded-lg">
+
+        <div className=" bg-yellow-600 rounded-lg flex flex-col items-center justify-center h-full">
         <h3>Semejanzas</h3>
+        <hr className="w-full border border-white " />
         <h3>Puntos: {game.semejanzas}</h3>
         <h3>Tiempo: {game.tsemejanzas}</h3>
         </div>
         <div className=" bg-blue-600 rounded-lg">
         <h3>Digitos</h3>
+        <hr className="w-full border border-white " />
         <h3>Puntos: {game.digitos}</h3>
         <h3>Tiempo: {game.tdigitos}</h3>
         </div>
         <div className=" bg-purple-600 rounded-lg">
         <h3>Matriz</h3>
+        <hr className="w-full border border-white " />
         <h3>Puntos: {game.matriz}</h3>
           <h3>Tiempo: {game.tmatriz}</h3>
         </div>
@@ -262,7 +270,7 @@ const ViewUser = () => {
           <h3>Tiempo: {game.tbalanzas}</h3>
         </div>
         <div className=" bg-blue-200 rounded-lg">
-        <h3>comprension</h3>
+        <h3>Comprensión</h3>
         <h3>Puntos: {game.comprension}</h3>
           <h3>Tiempo: {game.tcomprension}</h3>
         </div>

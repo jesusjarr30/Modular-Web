@@ -210,79 +210,90 @@ const ViewUser = () => {
           <h3 className="text-white">Tiempo: {game.tcubos}</h3>
         </div>
 
-        <div className=" bg-yellow-600 rounded-lg flex flex-col items-center justify-center h-full">
-        <h3>Semejanzas</h3>
+        <div className=" bg-yellow-800 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">Semejanzas</h3>
         <hr className="w-full border border-white " />
-        <h3>Puntos: {game.semejanzas}</h3>
-        <h3>Tiempo: {game.tsemejanzas}</h3>
+        <h3 className="text-white">Puntos: {game.semejanzas}</h3>
+        <h3 className="text-white">Tiempo: {game.tsemejanzas}</h3>
         </div>
-        <div className=" bg-blue-600 rounded-lg">
-        <h3>Digitos</h3>
+        <div className=" bg-blue-800 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">Digitos</h3>
         <hr className="w-full border border-white " />
-        <h3>Puntos: {game.digitos}</h3>
-        <h3>Tiempo: {game.tdigitos}</h3>
+        <h3 className="text-white">Puntos: {game.digitos}</h3>
+        <h3 className="text-white">Tiempo: {game.tdigitos}</h3>
         </div>
-        <div className=" bg-purple-600 rounded-lg">
-        <h3>Matriz</h3>
+        <div className=" bg-purple-800 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">Matriz</h3>
         <hr className="w-full border border-white " />
-        <h3>Puntos: {game.matriz}</h3>
-          <h3>Tiempo: {game.tmatriz}</h3>
+        <h3 className="text-white">Puntos: {game.matriz}</h3>
+          <h3 className="text-white">Tiempo: {game.tmatriz}</h3>
         </div>
-        <div className=" bg-green-600 rounded-lg">
-        <h3>Vocabulario</h3>
-        <h3>Puntos: {game.vocabulario}</h3>
-          <h3>Tiempo: {game.tvocabulario}</h3>
+        <div className=" bg-green-800 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">Vocabulario</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.vocabulario}</h3>
+          <h3 className="text-white" >Tiempo: {game.tvocabulario}</h3>
         </div>
-        <div className=" bg-red-400 rounded-lg">
-        <h3>Aritmetica</h3>
-        <h3>Puntos: {game.aritmetica}</h3>
-          <h3>Tiempo: {game.taritmetica}</h3>
+        <div className=" bg-red-700 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">Aritmetica</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.aritmetica}</h3>
+          <h3 className="text-white">Tiempo: {game.taritmetica}</h3>
         </div>
-        <div className=" bg-yellow-400 rounded-lg">
-        <h3>Busqeudas de simbolos</h3>
-        <h3>Puntos: {game.busquedaS}</h3>
-          <h3>Tiempo: {game.tbusquedaS}</h3>
+        <div className=" bg-yellow-700 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">busqueda simbolos</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.busquedaS}</h3>
+          <h3 className="text-white">Tiempo: {game.tbusquedaS}</h3>
         </div>
-        <div className=" bg-blue-400 rounded-lg">
-        <h3>Plluzze visual</h3>
-        <h3>Puntos: {game.pluzzeV}</h3>
-          <h3>Tiempo: {game.tpluzzeV}</h3>
+        <div className=" bg-blue-700 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">Pluzze visual</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.pluzzeV}</h3>
+          <h3 className="text-white">Tiempo: {game.tpluzzeV}</h3>
         </div>
-        <div className=" bg-purple-400 rounded-lg">
-        <h3>puntuacion informacion</h3>
-        <h3>Puntos: {game.ptnInformacion}</h3>
-          <h3>Tiempo: {game.tptnInformacion}</h3>
+        <div className=" bg-purple-700 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">test informacion</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.ptnInformacion}</h3>
+          <h3 className="text-white">Tiempo: {game.tptnInformacion}</h3>
         </div>
 
-        <div className=" bg-green-200 rounded-lg">
-          <h3>Claves de numeros</h3>
-          <h3>Puntos: {game.claveNum}</h3>
-          <h3>Tiempo: {game.tclaveNum}</h3>
+        <div className=" bg-green-600 rounded-lg flex flex-col items-center justify-center h-full">
+          <h3 className="text-white text-center font-bold">Claves de numeros</h3>
+          <hr className="w-full border border-white " />
+          <h3 className="text-white">Puntos: {game.claveNum}</h3>
+          <h3 className="text-white">Tiempo: {game.tclaveNum}</h3>
         </div>
-        <div className=" bg-red-200 rounded-lg">
-        <h3>lLetras numeros</h3>
-        <h3>Puntos: {game.letrasNum}</h3>
-        <h3>Tiempo: {game.tletrasNum}</h3>
+        <div className=" bg-red-600 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">lLetras numeros</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.letrasNum}</h3>
+        <h3 className="text-white">Tiempo: {game.tletrasNum}</h3>
         </div>
-        <div className=" bg-yellow-200 rounded-lg">
-        <h3>Balanzas</h3>
-        <h3>Puntos: {game.balanzas}</h3>
-          <h3>Tiempo: {game.tbalanzas}</h3>
+        <div className=" bg-yellow-600 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">Balanzas</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.balanzas}</h3>
+          <h3 className="text-white">Tiempo: {game.tbalanzas}</h3>
         </div>
-        <div className=" bg-blue-200 rounded-lg">
-        <h3>Comprensión</h3>
-        <h3>Puntos: {game.comprension}</h3>
-          <h3>Tiempo: {game.tcomprension}</h3>
+        <div className=" bg-blue-600 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">Comprensión</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.comprension}</h3>
+          <h3 className="text-white">Tiempo: {game.tcomprension}</h3>
         </div>
-        <div className=" bg-purple-200 rounded-lg">
-        <h3>cancelacion</h3>
-        <h3>Puntos: {game.cancelacion}</h3>
-          <h3>Tiempo: {game.tcancelacion}</h3>
+        <div className=" bg-purple-600 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">cancelacion</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.cancelacion}</h3>
+          <h3 className="text-white">Tiempo: {game.tcancelacion}</h3>
         </div>
-        <div className=" bg-green-200 rounded-lg">
-        <h3>figCompleta</h3>
-        <h3>Puntos: {game.figCompleta}</h3>
-          <h3>Tiempo: {game.tfigCompleta}</h3>
+        <div className=" bg-green-600 rounded-lg flex flex-col items-center justify-center h-full">
+        <h3 className="text-white text-center font-bold">figCompleta</h3>
+        <hr className="w-full border border-white " />
+        <h3 className="text-white">Puntos: {game.figCompleta}</h3>
+          <h3 className="text-white">Tiempo: {game.tfigCompleta}</h3>
         </div>
       </div>
 

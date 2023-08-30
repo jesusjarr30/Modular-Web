@@ -36,13 +36,38 @@ const Perzonalizar = ({ nombre, id}) => {
           console.log(response.data);
       };
 
+    
+{/**Metodo para poder hacer la modificaciones necesarias la objeto */}
+const updateData = () => {
+  const url = "http://localhost:8080/UpdatePsy/a6855fbe-12d2-43d6-9b20-bdba035e20f6";
+  const data = {
+    nombre: "jose"
+  };
+
+  axios.put(url, data, {
+    headers: {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => {
+    // Manejar la respuesta aquí
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Manejar errores aquí
+    console.error("Error:", error);
+  });
+};
+
+
 
     return (
 <div className="w-full h-screen bg-gray-100 flex flex-col justify-center items-center">
   <h1 className="text-3xl font-bold mb-4">Personalización</h1>
 
   <div className="mb-4">
-    <label className="text-lg font-medium">Corregir tu nombre</label>
+    <label className="text-lg font-medium">Nombre actual: {Name} </label>
     <input
       className="w-full border border-gray-300 rounded-xl p-3 mt-1 bg-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
       placeholder="Ingresa tu nombre"

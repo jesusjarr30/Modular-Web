@@ -25,7 +25,19 @@ public class Psychologist {
     private String email;
     private String password;
     private String telephone;
-    
+
+    //cubrir el generar un psicologo completo
+    public Psychologist(String nombre, String apellidos,String email,String password, String telephone){
+        this.nombre=nombre;
+        this.apellidos=apellidos;
+        this.email=email;
+        this.password=password;
+        this.telephone=telephone;
+        generateId();
+    }
+    public Psychologist(){
+
+    }
 
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());

@@ -16,13 +16,9 @@ function Principal() {
       <Mision/>
       <Productos/>
       <Objetivos/>
-      <Instrucciones />
+      <Instrucciones/>
       <PiePagina />
-       
-      
       </>
-
-      
     )
   }
   

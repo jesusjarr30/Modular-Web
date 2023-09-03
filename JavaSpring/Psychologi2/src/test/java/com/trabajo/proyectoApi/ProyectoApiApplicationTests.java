@@ -2,6 +2,7 @@ package com.trabajo.proyectoApi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trabajo.proyectoApi.Models.Psychologist;
+import com.trabajo.proyectoApi.Repository.PsychologistRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +30,9 @@ class ProyectoApiApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+	@Autowired
+	private PsychologistRepository psychologistRepository;
+
 	@Test
 	void contextLoads() {
 	}
@@ -50,5 +54,44 @@ class ProyectoApiApplicationTests {
 		assertThat(status).isEqualTo(200);
 	}
 
+	@Test
+	void EliminarPsicologo(){
+
+
+	}
+	@Test
+	void GetPsycologist() throws Exception {
+
+		Psychologist psychologist = new Psychologist("Jose roberto", "Perez Perez", "jose12@email.com", "123", "33652369855");
+		psychologistRepository.save(psychologist);
+
+		MvcResult mvcResult = mockMvc.perform(
+				MockMvcRequestBuilders.get("/getPsychologist").contentType(MediaType.APPLICATION_JSON)).andReturn();
+
+		int status = mvcResult.getResponse().getStatus();
+		String response = mvcResult.getResponse().getContentAsString();
+
+		assertThat(status).isEqualTo(200);
+	}
+	@Test
+	public void validLogin() throws Exception{
+		//Psychologist psychologist = new Psychologist("Jose roberto", "Perez Perez", "mjesususus@email.com", "123", "33652369855");
+		String password="123";
+		String correo="jose12@email.com";
+		String url= "/find/{correo}/{pass}=?correo="+correo+"&password="+password;
+
+		//MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url).contentType(MediaType.APPLICATION_JSON))
+		//		.andReturn();
+//http://localhost:8080/find/{correo}/{pass}?correo=jesus&password=jesus
+
+		//int status = mvcResult.getResponse().getStatus();
+		//String response = mvcResult.getResponse().getContentAsString();
+		//assertThat(status).isEqualTo(200);
+	}
+	@Test
+	public void findbyemail() throws Exception{
+		MvcResult mvcResult = mockMvc.perform(
+				MockMvcRequestBuilders.get("/getPsychologist").contentType(MediaType.APPLICATION_JSON)).andReturn();
+	}
 
 }

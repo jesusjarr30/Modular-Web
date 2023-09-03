@@ -1,6 +1,7 @@
 package com.trabajo.proyectoApi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.trabajo.proyectoApi.Repository.PsychologistRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,6 +20,11 @@ public class GameTest {
     ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    private PsychologistRepository psychologistRepository;
+
+    @Autowired
+    private
 
     @Test
     void contextLoads() {

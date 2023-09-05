@@ -51,7 +51,7 @@ export const MostrarAlerta = (tipo, opciones = {}) => {
     Swal.fire({
       title: 'Error',
       icon: 'error',//los iconos despinibles para este tipo de tareas son las siguientes: error, succesful, warning, info
-      //utilizar los warning para la generacionde expectios.
+      //utilizar los warning para la
 
       text: 'El correo ya esta registrado con otra cuenta',
       footer: '<a href="">Olvido su contraseña?</a>',
@@ -61,4 +61,5 @@ export const MostrarAlerta = (tipo, opciones = {}) => {
       }
     })
 
-};
+  };
+}

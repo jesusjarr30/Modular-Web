@@ -1,6 +1,5 @@
 package com.trabajo.proyectoApi.Repository;
 
-
 import com.trabajo.proyectoApi.Models.Psychologist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -28,5 +27,8 @@ public interface PsychologistRepository extends JpaRepository<Psychologist,Strin
 
     @Query("SELECT p FROM Psychologist p WHERE p.email = :correo")
     Psychologist getByEmail(@Param("correo") String correo);
+
+    @Query("select count(p) from Customer p where p.PsychologistID= :id")
+    int countCUstomer(@Param("id") String id);
 }
 

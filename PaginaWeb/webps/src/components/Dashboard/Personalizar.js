@@ -21,6 +21,10 @@ const Perzonalizar = ({ nombre, id}) => {
 
   const toggleEditable = () => {
     setEditable(!editable);
+    if(editable=== false){
+      ModificarClick();
+    }
+    
   };
  //Estos estados se usan para la confirmacion
   const [data,setData] = useState([]);
@@ -43,8 +47,15 @@ const Perzonalizar = ({ nombre, id}) => {
       console.log("Las contraseñas ingresadas son iguales");
       newData.password = Password; // Agregar la contraseña al objeto newData
     }
-    // Enviar solo un objeto JSON con todas las modificaciones al servidor
-    enviarSolicitudAlServidor(newData);
+    if (Object.keys(newData).length > 0) {
+      // newData tiene datos, por lo tanto, se han realizado modificaciones
+      // Enviar solo un objeto JSON con todas las modificaciones al servidor
+      // validar si el servidor tiene algo o no
+      enviarSolicitudAlServidor(newData);
+    } else {
+      // No se han realizado modificaciones, no es necesario enviar la solicitud
+      console.log("No se realizaron modificaciones.");
+    }
   };
 
     {/* Funcion para obtener todos los datos de psicologo*/ }
@@ -91,8 +102,10 @@ const enviarSolicitudAlServidor = (newData) => {
   })
   .then(response => {
     // Manejar la respuesta aquí
-    console.log(response.newData);
+    //console.log(response.newData);
     console.log("Se realizaron las modificaciones")
+    //limpiar variables
+    
   })
   .catch(error => {
     if (error.code === 'ECONNABORTED') {

@@ -73,38 +73,7 @@ const ViewUser = () => {
     const toggleEditable = () => {
       setEditable(!editable);
     };
-    const mostrarAlerta=(tipo)=>{
-      if(tipo === "Servidor"){ 
-      Swal.fire({
-      title: 'Error',
-      icon: 'error',
-      text: 'El correo ya esta registrado con otra cuenta',
-      footer: '<a href="">Olvido su contraseña?</a>',
-      timer:3000,
-      customClass: {
-      footer: 'swal-footer',
-      }
-      })
-      } else if(tipo === "Exito")
-      {
-      Swal.fire({
-      icon: 'success',
-      title: 'Listo...',
-      text: 'Codigo generado con exito!',
-      })
-      } 
-      else if(tipo ==="Error"){
-      Swal.fire({
-      title: 'Error',
-      icon: 'info',
-      text: 'El correo ya esta registrado con otra cuenta',
-      timer:5000,
-      customClass: {
-      footer: 'swal-footer',
-      }
-      })
-      }
-      }
+    
       
       const GenerarCodigo = async () => {
       

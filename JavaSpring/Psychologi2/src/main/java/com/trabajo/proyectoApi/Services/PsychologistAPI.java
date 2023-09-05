@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @CrossOrigin("http://localhost:3000/")
 @RestController
@@ -105,5 +102,16 @@ public class PsychologistAPI {
 
         return psychologistRepository.save(psychologist);
     }
+    @GetMapping("/Estadisticas/{id}")
+    public List<String> obtenerEstadisticas(@PathVariable String id) {
+        // Aquí deberías obtener y calcular tus estadísticas
+
+        List<String> estadisticas = new ArrayList<String>();
+        estadisticas.add(String.valueOf(psychologistRepository.countCUstomer(id)));
+        // Agregar más estadísticas aquí según tus necesidades
+
+        return estadisticas;
+    }
+
 
 }

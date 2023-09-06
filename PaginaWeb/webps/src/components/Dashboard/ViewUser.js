@@ -81,16 +81,19 @@ const ViewUser = () => {
       try {
       const response = await axios.post('http://localhost:8080/addGame/{idUsuario}?idUsuario='+id);
       if(response.status === 200){
-      mostrarAlerta("Exito");
+      //mostrarAlerta("Exito");
+      console.log("Operacion realizada con exito");
       }
       // Aquí puedes realizar cualquier acción adicional después de registrar al psicólogo.
       } catch (error) {
       console.error('Error al hacer la consulta', error);
       // Aquí puedes manejar el error o mostrar un mensaje al usuario en caso de fallo.
       if (error.code === 'ECONNABORTED') {
-      mostrarAlerta('Servidor');
+      //mostrarAlerta('Servidor');
+      console.log("error de sevidor")
       } else {
-      mostrarAlerta("Error");
+      //mostrarAlerta("Error desconocido");
+      console.log("error desconocido")
       }
       }
       };

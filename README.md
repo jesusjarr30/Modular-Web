@@ -30,10 +30,10 @@ If everything is ok you can check the container (check it docker desktop) and jo
 the page will display.
 
 ## Project Compilation Instructions (Linux)
-Requari software to run in linux.
+Requires software to run in Linux.
 Need to download Maven 
 Java JDK 17.
-Install docker follow you can check the next URL https://docs.docker.com/engine/install/ubuntu/
+Install docker you can check the next URL https://docs.docker.com/engine/install/ubuntu/
 ...
 
 
@@ -41,29 +41,45 @@ Install docker follow you can check the next URL https://docs.docker.com/engine/
 If you have any ideas for implementing enhancements to my project or any feedback on my work, please feel free to send an email to jesus.jarr.30@gmail.com
 
 # Español
-Compilacion del proyecto 
 
- **First, we need to download some software.**
+Hola, estoy estudiando ingeniería informática, y este es mi proyecto modular. Mi proyecto está relacionado con la automatización de pruebas psicológicas. He utilizado Unity para automatizar el proceso de prueba basado en el libro Wais. Además, he desarrollado una página web utilizando React para gestionar a los pacientes dentro del entorno de Unity. Para la base de datos, he utilizado MySQL, y para el backend, he empleado Java Spring Boot.
+
+## Instrucciones de compilación del proyecto (Windows)
+
+**Primero, necesitamos descargar algunos programas.**
  
-   - Instalar maven y poner la variable en el path.
-   - Descargar el Java development kit 17.
-   - Intalar docker.
+   - Instala Apache Maven y configúralo en las variables de entorno.
+   - Descarga Java Development Kit 17.
+   - Descarga Docker Desktop.
+  
+Copia el repositorio y ve a la siguiente ruta: JavaSpring\Psychologi2. Cuando estés ahí, ejecuta el siguiente comando:
 
-Una vez descargado y con las varoables en el path 
-ir al siguiente path "/JavaSpring/Psychologi2/"
+**mvn clean install**
 
-correr el siguiete comando 
-
-**mvn cean install**
-
-Regresar el path principal del repositorio y correr el siguiente comando 
+Esto actualizará los archivos JAR necesarios para ejecutar el backend. Comprueba que todo esté bien y al final verás un mensaje "BUILD SUCCESSFUL" (CONSTRUCCIÓN EXITOSA).
+A continuación, regresa al directorio raíz y ejecuta el siguiente comando:
 
 **docker-compose up -d --build**
 
-Nota: en caso de estar en Windows asegurese que el motor de docker este corriendo al moemento de correr el comando  para evitar errors.
+Esto creará el contenedor con las imágenes necesarias. Solo para que sepas, este proceso puede llevar algún tiempo, alrededor de 5-10 minutos dependiendo de tu conexión a Internet.
 
-Este proceso se debe repetir en caso de que existan nuevas versiones 
+Asegúrate de que los puertos necesarios para este proyecto, que son 80, 3000 y 3306, estén disponibles en el momento en que ejecutes el archivo Docker Compose. De lo contrario, podrías encontrar errores y es posible que los servicios necesarios no funcionen correctamente.
 
+Si todo está bien, puedes verificar el contenedor (compruébalo en Docker Desktop) y acceder al siguiente enlace:
+
+**http://localhost:3000**
+
+La página se mostrará.
+
+## Instrucciones de compilación del proyecto (Linux)
+
+Requiere software para ejecutarse en Linux.
+Necesitas descargar Maven.
+Java JDK 17.
+Instalar Docker, puedes consultar la siguiente URL: https://docs.docker.com/engine/install/ubuntu/
+...
+
+Si tienes ideas para implementar mejoras en mi proyecto o cualquier comentario sobre mi trabajo, no dudes en enviarme un correo electrónico a jesus.jarr.30@gmail.com.
 ## Docuemntacion API
 
 Para consultar la documentacion de la API y poder hacer pruebas hacia la base de datos se puede usar postan o en caso de consultar las documetacion de Swagger asegurese de que el contenedor bac-end este activo asi como la el contendor de la base de datos.

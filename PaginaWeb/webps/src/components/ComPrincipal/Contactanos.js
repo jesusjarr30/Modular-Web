@@ -47,7 +47,15 @@ export const Contactanos = () => {
     };
 
     return(
-        <section className="contact w-full flex" id="connect">
+        <section
+        className="contact w-full flex"
+        id="connect"
+        style={{
+          minHeight: "100vh", // Establece la altura mínima para ocupar toda la ventana
+          background: "linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%)", // Fondo degradado
+          overflow: "auto",
+        }}
+      >
             <Container className="w-full">
 
                 <Row className="align-items-center">

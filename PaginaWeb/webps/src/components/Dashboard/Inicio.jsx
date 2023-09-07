@@ -108,10 +108,10 @@ const Inicio = () => {
           ))}
         </ul>
       </div>
-      {/*Termina el div de la barra*/}
+      {/*Termina el div de la panel derecho*/}
       <div className="flex-1"> {/* Usamos "flex-1" para que tome el espacio restante */}
-      <div className='font-semibold h-screen w-full'>
-        <div className='bg-gray-800 text-white py-2 w-full flex justify-between'>
+      <div className='font-semibold flex w-full'>
+        <div className=' text-white py-2 w-full flex justify-between'>
           <div className='flex w-full'>
             <h3 className='ml-4'>Bienvenido {data.nombre}</h3>
           </div>
@@ -119,6 +119,7 @@ const Inicio = () => {
             <h3 className='mr-4'>{formattedDate}</h3>
           </div>
         </div>
+
         {selectedComponent}
       </div>
       

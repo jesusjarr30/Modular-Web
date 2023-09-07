@@ -13,8 +13,8 @@ import java.util.UUID;
 @Setter
 @ToString
 
-@Entity
-@Table(name = "Citas")
+//@Entity
+//@Table(name = "Citas")
 public class Citas {
     private String id;
     private String fecha;//feha en la que se

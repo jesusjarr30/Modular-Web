@@ -47,27 +47,27 @@ const ViewUser = () => {
       if(name !== name2){
         console.log("El nombre se cambio");
         newData.name = name;
-        name2=name;
+        setName2(name)
       }
       if(email !== email2){
         console.log("El correro fue cambiado");
         newData.email = email;
-        email2=email;
+        setEmail2(email);
       }
       if(telephone !== telephone2){
         console.log("El telefono se cambio");
         newData.telephone = telephone;
-        telephone2=telephone;
+        setTelephone2(telephone);
       }
       if(direccion !== direccion2){
         console.log("la direccion se cambio");
         newData.direccion=direccion;
-        direccion2=direccion;
+        setDireccion2(direccion);
       }
       if(year !== year2){
         console.log("Se modifico el año de nacimiento");
-        newData.year = year;
-        year2=year;
+        newData.year = parseInt(year);
+        setYear2(year);
       }
 
       //revisar si se tiene que enviar la iinformacion con la http request 

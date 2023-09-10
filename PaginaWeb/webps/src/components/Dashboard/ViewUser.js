@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Button } from "bootstrap";
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import {AlertaDefinida} from '../Alertas/AlertaDefinidas';
 
 
 const ViewUser = () => {
@@ -17,43 +18,110 @@ const ViewUser = () => {
     const [psychologistID, setPsychologistID] = useState(rowData && rowData.psychologistID);
     const [direccion,setDireccion] = useState(rowData && rowData.direccion);
     const [year,setYear] = useState(rowData && rowData.year);
+
+    //variables ppara guardar los datos editados
+    const [name2, setName2] = useState(rowData && rowData.name);
+    const [email2, setEmail2] = useState(rowData && rowData.email);
+    const [telephone2,setTelephone2] = useState(rowData && rowData.telephone);
+    const [direccion2,setDireccion2] = useState(rowData && rowData.direccion);
+    const [year2,setYear2] = useState(rowData && rowData.year);
+
     const [gameList, setGameList] = useState([]);
+    
+    
 
     const [editable, setEditable] = useState(false);
     const navigate = useNavigate();
+    //funcion para rditar o no los atributos 
+    const toggleEditable = () => {
+      if(editable){//quiere decir que es en 
+        ModificarClick();
+      }
+      setEditable(!editable);
+    };
+    
+    //revisa si todos los argumentos en busqueda de datos modificados
+    const ModificarClick = () => {
+      const newData = {}; // Crear un objeto vacío para almacenar las modificaciones
 
+      if(name !== name2){
+        console.log("El nombre se cambio");
+        newData.name = name;
+        setName2(name)
+      }
+      if(email !== email2){
+        console.log("El correro fue cambiado");
+        newData.email = email;
+        setEmail2(email);
+      }
+      if(telephone !== telephone2){
+        console.log("El telefono se cambio");
+        newData.telephone = telephone;
+        setTelephone2(telephone);
+      }
+      if(direccion !== direccion2){
+        console.log("la direccion se cambio");
+        newData.direccion=direccion;
+        setDireccion2(direccion);
+      }
+      if(year !== year2){
+        console.log("Se modifico el año de nacimiento");
+        newData.year = parseInt(year);
+        setYear2(year);
+      }
 
-  const [modifiedFields, setModifiedFields] = useState({
-    name: false,
-    email: false,
-    telephone: false,
-    direccion: false,
-    year: false,
-  });
-  
-  const handleFieldChange = (field, value) => {
-    if (rowData && rowData[field] !== value) {
-      setModifiedFields((prevModifiedFields) => ({
-        ...prevModifiedFields,
-        [field]: true,
-      }));
+      //revisar si se tiene que enviar la iinformacion con la http request 
+
+      if (Object.keys(newData).length > 0) {
+        // newData tiene datos, por lo tanto, se han realizado modificaciones
+        // Enviar solo un objeto JSON con todas las modificaciones al servidor
+        // validar si el servidor tiene algo o no
+        enviarSolicitudAlServidor(newData);
+      } else {
+        // No se han realizado modificaciones, no es necesario enviar la solicitud
+        console.log("No se realizaron modificaciones.");
+      }
     }
-  };
+    {/**Metodo para edirar el usuario mediante el http request  */}
+      const enviarSolicitudAlServidor = (newData) => {
+      
 
-  const mostrarCamposModificados = () => {
-    const modifiedFieldNames = Object.keys(modifiedFields).filter(
-      (field) => modifiedFields[field]
-    );
+        const url = "http://localhost:8080/UpdateCustomer/"+id;
 
-    if (modifiedFieldNames.length > 0) {
-      console.log("Campos modificados:");
-      modifiedFieldNames.forEach((field) => {
-        console.log(`${field}: ${eval(field)}`);
-      });
-    } else {
-      console.log("Ningún campo ha sido modificado.");
-    }
-  };
+        // Establecer un tiempo de espera de 10 segundos (10000 milisegundos)
+        const timeoutMillis = 5000;
+
+        axios.put(url, newData, {
+          headers: {
+            "Accept": "*/*",
+            "Content-Type": "application/json"
+          },
+          timeout: timeoutMillis // Establecer el tiempo de espera
+        })
+        .then(response => {
+          // Manejar la respuesta aquí
+          //console.log(response.newData);
+          console.log("Se realizaron las modificaciones")
+          //limpiar variables
+          
+        })
+        .catch(error => {
+          if (error.code === 'ECONNABORTED') {
+            
+            //mostrarAlerta('Servidor', {
+              //title: 'Error Personalizado',
+              //text: 'Este es un mensaje personalizado para el error de servidor.',
+            //});
+            
+            // La solicitud se canceló debido a que excedió el tiempo de espera
+            console.error("La solicitud se canceló debido a que excedió el tiempo de espera.");
+          } else {
+            // Manejar otros errores aquí
+            console.error("Error:", error);
+          }
+        });
+      };
+
 
     useEffect(() => {
       const fetchData = async () => {
@@ -70,14 +138,10 @@ const ViewUser = () => {
       fetchData();
     }, []);
 
-    const toggleEditable = () => {
-      setEditable(!editable);
-    };
-    
+
       
       const GenerarCodigo = async () => {
-      
-      
+        
       try {
       const response = await axios.post('http://localhost:8080/addGame/{idUsuario}?idUsuario='+id);
       if(response.status === 200){

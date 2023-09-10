@@ -5,7 +5,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 import java.util.UUID;
 
 
@@ -15,15 +17,22 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "Citas")
-public class Citas {
+public class Appointment {
+    @Id
     private String id;
-    private String fecha;//feha en la que se
-    private String Usuario;
-    private String tiempo;
+    private Date start;
+    private Date end;
+    private String idPsycologist;
+    private String idCustomer;
 
-    public Citas(){
+    public Appointment(){
         //contructor de la clase
         id = String.valueOf(UUID.randomUUID());
+    }
+    public void generateId(){
+
+        id = String.valueOf(UUID.randomUUID());
+
     }
     
 

@@ -12,6 +12,7 @@ import Inicio from "./components/Dashboard/Inicio";
 import Personalizar from "./components/Dashboard/Personalizar";
 import AddUser from "./components/Dashboard/AddUser";
 import ViewUser from "./components/Dashboard/ViewUser";
+import Calendario from './components/Dashboard/Calendario';
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
       <Route path="Inicio/*" element={<Inicio/>} />
       <Route path="/Usuario" element={<AddUser/>}/>
       <Route path="/ViewUser" element={<ViewUser/>} />
+      <Route path="/Calendario" element={<Calendario/>}/>
+
 
       
     </Routes>

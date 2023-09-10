@@ -92,7 +92,7 @@ Para consultar la documentacion de la servicos del bak-end y poder hacer pruebas
 
 Esto le dara una vista de los setvicos que tiene y poder realizar prubas para comprobar comportamientos de la aplicacion.
 
-## Problewmas comunes
+## Problemas comunes
 
 Si tienes problemas al levantar los contenedores de Docker, asegúrate de tener libres los puertos que necesita para ejecutarse localmente. En este caso, son los puertos 3306, 80 y 3000. Si alguno de estos puertos está ocupado, la aplicación no se podrá desplegar correctamente.
 Revise las opciones para liberar los puertos de su computadora.

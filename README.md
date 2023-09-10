@@ -30,19 +30,19 @@ If everything is ok you can check the container (check it docker desktop) and jo
 the page will display.
 
 ## Project Compilation Instructions (Linux)
-Requires software to run in Linux.
-Need to download Maven 
-Java JDK 17.
-Install docker You can check the next URL https://docs.docker.com/engine/install/ubuntu/
+- Requires software to run in Linux.
+- Need to download Maven 
+- Java JDK 17.
+- Install docker You can check the next URL https://docs.docker.com/engine/install/ubuntu/
 ...
 
-##Common Issues
+## Common Issues
 
 If you encounter problems when starting Docker containers, make sure you have the necessary ports available for local execution. In this case, it's ports 3306, 80, and 3000. If any of these ports are occupied, the application won't deploy correctly.
 Check the options to free up ports on your computer.
 
 
-##Keep in touch
+## Keep in touch
 
 If you have any ideas for implementing enhancements to my project or any feedback on my work, please feel free to send an email to jesus.jarr.30@gmail.com
 
@@ -79,10 +79,10 @@ La página se mostrará.
 
 ## Instrucciones de compilación del proyecto (Linux)
 
--Requiere software para ejecutarse en Linux.
--Necesitas descargar Maven.
--Java JDK 17.
--Instalar Docker, puedes consultar la siguiente URL: https://docs.docker.com/engine/install/ubuntu/
+- Requiere software para ejecutarse en Linux.
+- Necesitas descargar Maven.
+- Java JDK 17.
+- Instalar Docker, puedes consultar la siguiente URL: https://docs.docker.com/engine/install/ubuntu/
 ...
 
 

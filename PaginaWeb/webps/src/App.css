@@ -40,6 +40,12 @@ body {
   font-family: 'Centra', sans-serif !important;
 }
 
+.calendario-container {
+  background-color: #d8d0d0 !important;
+ 
+  font-family: 'Centra', sans-serif !important;
+}
+
 p, a, li, button, ul {
   line-height: normal;
   text-decoration: none;

@@ -33,10 +33,16 @@ the page will display.
 Requires software to run in Linux.
 Need to download Maven 
 Java JDK 17.
-Install docker you can check the next URL https://docs.docker.com/engine/install/ubuntu/
+Install docker You can check the next URL https://docs.docker.com/engine/install/ubuntu/
 ...
 
+##Common Issues
 
+If you encounter problems when starting Docker containers, make sure you have the necessary ports available for local execution. In this case, it's ports 3306, 80, and 3000. If any of these ports are occupied, the application won't deploy correctly.
+Check the options to free up ports on your computer.
+
+
+##Keep in touch
 
 If you have any ideas for implementing enhancements to my project or any feedback on my work, please feel free to send an email to jesus.jarr.30@gmail.com
 
@@ -79,12 +85,20 @@ Java JDK 17.
 Instalar Docker, puedes consultar la siguiente URL: https://docs.docker.com/engine/install/ubuntu/
 ...
 
+
+## Documentacion Servicos del back-end
+
+Para consultar la documentacion de la servicos del bak-end y poder hacer pruebas hacia la base de datos se puede usar el software postman o consulatr la documetacion de Swagger, Asegurese de que el contenedor de el back-end y el contenerdo de la base de datos ensta activos, depues necesita  oopiar y pegar en su navegador la siguiente ruta: http://localhost:8080/swagger-ui/index.html.
+
+Esto le dara una vista de los setvicos que tiene y poder realizar prubas para comprobar comportamientos de la aplicacion.
+
+## Problewmas comunes
+
+Si tienes problemas al levantar los contenedores de Docker, asegúrate de tener libres los puertos que necesita para ejecutarse localmente. En este caso, son los puertos 3306, 80 y 3000. Si alguno de estos puertos está ocupado, la aplicación no se podrá desplegar correctamente.
+Revise las opciones para liberar los puertos de su computadora.
+
+
+## Contactame
 Si tienes ideas para implementar mejoras en mi proyecto o cualquier comentario sobre mi trabajo, no dudes en enviarme un correo electrónico a jesus.jarr.30@gmail.com.
-## Docuemntacion API
-
-Para consultar la documentacion de la API y poder hacer pruebas hacia la base de datos se puede usar postan o en caso de consultar las documetacion de Swagger asegurese de que el contenedor bac-end este activo asi como la el contendor de la base de datos.
-
-Copiar y pegar en su navegador la siguiente ruta: http://localhost:8080/swagger-ui/index.html
-
 
 Jesus Renteria.

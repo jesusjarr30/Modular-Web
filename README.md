@@ -79,10 +79,10 @@ La página se mostrará.
 
 ## Instrucciones de compilación del proyecto (Linux)
 
-Requiere software para ejecutarse en Linux.
-Necesitas descargar Maven.
-Java JDK 17.
-Instalar Docker, puedes consultar la siguiente URL: https://docs.docker.com/engine/install/ubuntu/
+-Requiere software para ejecutarse en Linux.
+-Necesitas descargar Maven.
+-Java JDK 17.
+-Instalar Docker, puedes consultar la siguiente URL: https://docs.docker.com/engine/install/ubuntu/
 ...
 
 

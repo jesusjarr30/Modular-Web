@@ -58,7 +58,7 @@ Hola, estoy estudiando ingeniería informática, y este es mi proyecto modular. 
    - Descarga Java Development Kit 17.
    - Descarga Docker Desktop.
   
-Copia el repositorio y ve a la siguiente ruta: JavaSpring\Psychologi2. Cuando estés ahí, ejecuta el siguiente comando:
+Clonar el repositorio y ve a la siguiente ruta: JavaSpring\Psychologi2. Cuando estés ahí, ejecuta el siguiente comando:
 
 **mvn clean install**
 
@@ -88,9 +88,9 @@ La página se mostrará.
 
 ## Documentacion Servicos del back-end
 
-Para consultar la documentacion de la servicos del bak-end y poder hacer pruebas hacia la base de datos se puede usar el software postman o consulatr la documetacion de Swagger, Asegurese de que el contenedor de el back-end y el contenerdo de la base de datos ensta activos, depues necesita  oopiar y pegar en su navegador la siguiente ruta: http://localhost:8080/swagger-ui/index.html.
+Para consultar la documentacion de los servicos del bak-end y poder hacer pruebas hacia la base de datos, se puede usar el software postman o consulatr la documetacion de Swagger, Asegurese de que el contenedor de el back-end y el contenedor de la base de datos estan activos, depues necesita  oopiar y pegar en su navegador la siguiente ruta: http://localhost:8080/swagger-ui/index.html.
 
-Esto le dara una vista de los setvicos que tiene y poder realizar prubas para comprobar comportamientos de la aplicacion.
+Esto le dara una vista de los setvicos que tiene y poder realizar pruebas para comprobar comportamientos de la aplicacion.
 
 ## Problemas comunes
 
@@ -101,4 +101,5 @@ Revise las opciones para liberar los puertos de su computadora.
 ## Contactame
 Si tienes ideas para implementar mejoras en mi proyecto o cualquier comentario sobre mi trabajo, no dudes en enviarme un correo electrónico a jesus.jarr.30@gmail.com.
 
+Saludos
 Jesus Renteria.

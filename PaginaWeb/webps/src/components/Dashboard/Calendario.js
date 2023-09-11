@@ -15,8 +15,6 @@ import interactionPlugin from "@fullcalendar/interaction";
       
     ]
       return (
-          
-
         <div  style={{ height: "100vh", width: "100%" }}>
           <Fullcalendar
           plugins={[dayGridPlugin,timeGridPlugin,interactionPlugin]}

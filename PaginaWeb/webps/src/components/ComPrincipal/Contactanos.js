@@ -1,11 +1,13 @@
 import {useState } from "react";
 import { Row,Container,Col } from "react-bootstrap";
-import contactImg from "../Imagenes/contact-img.svg"; 
+import contactImg from "../Imagenes/contact-img.svg";
+import AlertaDefinidas from "../Alertas/AlertaDefinidas"; 
+import axios from 'axios';
 
 export const Contactanos = () => { 
     const formInitialDetails = {
-        firstname:'',
-        LastName:'',
+        firstName:'',
+        lastName:'',
         email:'',
         phone:'',
         message:'',
@@ -14,36 +16,66 @@ export const Contactanos = () => {
     const[formDetails,setFormDetails] = useState(formInitialDetails)
     const [buttonText, setButtonText] = useState('send');
     const [status,setStatus] = useState({});
+
     const onFormUpdate =(category,value) => {
         setFormDetails({
             ...formDetails,
             [category]: value
         })
-
     }
-        
 
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-        setButtonText('Sending ...')
-        let response = await fetch("htttp://localhost:3000/contact",{
-            method: "POST",
-            headers: {
-                "content-Type":"Application/json;charset=uft-8",
-            },
-            body: JSON.stringify(formDetails),
-        })
-        setButtonText("Send");
-        let result = response.JSON();
-        setFormDetails(formInitialDetails);
-        if(result.code === 200){
-            setStatus({
-                success: true, message: 'Message sent succeddfuly'
-            });
-        }else{
-            setStatus({success: true, message: 'Somthing went wrong, please  try again later'})
-        }
+        //setButtonText('Sending ...')
+        console.log("Los datos son "+formDetails.firstName+","+formDetails.lastName+","+formDetails.email +","+formDetails.phone+","+formDetails.message);
+        if(!formDetails.firstName && !formDetails.lastName && !formDetails.email && !formDetails.phone && !formDetails.message){
+            //validar que los resultados no esten vacios
+        //if(!/^\d+$/.test(formInitialDetails.phone)){
+              //  Alertas.ContactoErrorTelefono();
+               // return;
+                //error de numeros
+                AlertaDefinidas.ContactoFaltaDatos();
+
+            }else{
+                //aqui ya poner el httpRequest
+               
+                try {
+                    const Notes = {
+                      id: '',
+                      nameUser: formDetails.firstName,
+                      lastNameUser: formDetails.lastName,
+                      email: formDetails.email,
+                      telephone: formDetails.telephone,
+                      message: formDetails.message,
+                        
+                    }
+              
+                    const response = await axios.post('http://localhost:8080/AddNote', Notes);
+                    
+                    if(response.status === 200){
+                        AlertaDefinidas.ContactoExito();
+                        setFormDetails({
+                            firstName: '',
+                            lastName: '',
+                            email: '',
+                            phone: '',
+                            message: '',
+                        });
+                        
+                    }
+                    // Aquí puedes realizar cualquier acción adicional después de registrar al psicólogo.
+                  } catch (error) {
+                    console.error('Error al registrar al psicólogo:', error);
+                    // Aquí puedes manejar el error o mostrar un mensaje al usuario en caso de fallo.
+                    if (error.code === 'ECONNABORTED') {
+                        AlertaDefinidas.ContactoErrorDesarollo();
+                    } else {
+                        AlertaDefinidas.ContactoServidor();
+                        
+                    }
+                  }
+            }
     };
 
     return(
@@ -67,24 +99,24 @@ export const Contactanos = () => {
                     <form onSubmit={handleSubmit}>
                         <Row>
                             <Col md={8}>
-                            <input type="text" value={formDetails.firstname} placeholder="Nombre" onChange={(e) => onFormUpdate
-                            ('firstName', e.target.value)}/>
+                            <input type="text" value={formDetails.firstName.substring(0,40)} placeholder="Nombre" onChange={(e) => onFormUpdate
+                            ('firstName', e.target.value.substring(0,40))}/>
                             </Col>
                             <Col md={8}>
-                            <input type="text" value={formDetails.LastName} placeholder="Apellidos" onChange={(e) => onFormUpdate
-                            ('lastName', e.target.value)}/>
+                            <input type="text" value={formDetails.lastName.substring(0,40)} placeholder="Apellidos" onChange={(e) => onFormUpdate
+                            ('lastName', e.target.value.substring(0,40))}/>
                             </Col>
                             <Col md={6}>
-                            <input type="email" value={formDetails.email} placeholder="Correo" onChange={(e) => onFormUpdate
-                            ('email', e.target.value)}/>
+                            <input type="email" value={formDetails.email.substring(0,40)} placeholder="Correo" onChange={(e) => onFormUpdate
+                            ('email', e.target.value.substring(0,40))}/>
                             </Col>
                             <Col md={8}>
-                            <input type="tel" value={formDetails.phone} placeholder="telefono" onChange={(e) => onFormUpdate
-                            ('phone', e.target.value)}/>
+                            <input value={formDetails.phone.substring(0, 12)} placeholder="telefono"  onChange={(e) => onFormUpdate
+                            ('phone', e.target.value.substring(0, 12))}/>
                             </Col>
                             <Col md={8}>
-                            <textarea row="6" value={formDetails.message} placeholder="Enviar" onChange={(e) => onFormUpdate
-                            ('message', e.target.value)}/>
+                            <textarea row="6" value={formDetails.message.substring(0, 150)} placeholder="Comentarios" onChange={(e) => onFormUpdate
+                            ('message', e.target.value.substring(0, 150))}/>
                             <button type="submit" className="font-bol"><span>{buttonText}</span></button>
                             </Col >
                             {

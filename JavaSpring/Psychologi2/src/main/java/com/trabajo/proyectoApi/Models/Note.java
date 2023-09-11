@@ -23,7 +23,7 @@ public class Note {
     private String lastNameUser;
     private String email;
     private String telephone;
-    private String Message;
+    private String message;
 
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());

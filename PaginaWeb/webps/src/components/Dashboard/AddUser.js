@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
-
+import AlertasDefinidas from "../Alertas/AlertaDefinidas";
 
 
 const AddUser = ({ nombre, id }) => {
@@ -103,20 +103,40 @@ const AddUser = ({ nombre, id }) => {
             icon: 'warning',
             title: 'Necesita llenar todos los campos'
           })
-          console.log(Name);
-          console.log(LastName);
-          console.log(Direccion);
-          console.log(Year);
-          console.log(Telephone);
-          console.log(Email);
+          
           return;
         }
-        console.log("Nombre "+Name);
-        console.log("lastname "+LastName);
-        console.log("Direccion" +Direccion);
-        console.log("year" +Year);
-        console.log("telephone"+ Telephone);
-        console.log("Email  " +Email);
+        //console.log("Nombre "+Name);
+        //console.log("lastname "+LastName);
+        //console.log("Direccion" +Direccion);
+        //console.log("year" +Year);
+        //console.log("telephone"+ Telephone);
+        //console.log("Email  " +Email);
+
+        //validar un año de nacimiento valido
+        const yearNumber = parseInt(Year, 10);
+          if (isNaN(yearNumber) || yearNumber < 1900 || yearNumber > 2023) {
+            //poner aqui la validacion del numero
+            AlertasDefinidas.RegistroErroryear();
+            return;
+          }
+          
+        //validar un numero de telefono valido
+        const phoneNumber = Telephone.replace(/\D/g, ''); // Elimina todos los caracteres que no son números
+    if (phoneNumber.length < 10) {
+      // Verifica si hay al menos 10 dígitos
+      console.log("no es amyor a 10");
+      AlertasDefinidas.RegistroErrorTelephone();
+      return;
+    }
+    if (/^\d+$/.test(phoneNumber)) {
+      // Verifica si todos los caracteres son números
+      
+      AlertasDefinidas.RegistroErrorTelephone();
+      return;
+    }
+        
+      
 
         try {
           const Customer = {
@@ -128,7 +148,7 @@ const AddUser = ({ nombre, id }) => {
             direccion: Direccion,
             year: Year,
           };
-          console.log("the customer Email after the "+Customer.Email)
+          console.log("the customer Email after the "+Customer.email)
     
           const response = await axios.post('http://localhost:8080/AddCustomer', Customer);
           
@@ -160,8 +180,8 @@ const AddUser = ({ nombre, id }) => {
             <input
                 className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
                 placeholder="Ingresa nombre del cliente"
-                value={Name}
-                onChange={(e) => setName(e.target.value)}
+                value={Name.substring(0,50)}
+                onChange={(e) => setName(e.target.value.substring(0,50))}
             />
             </div>
             <div className="mr-5 flex flex-col w-full md:w-10/12"> 
@@ -170,8 +190,8 @@ const AddUser = ({ nombre, id }) => {
                 className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
                 placeholder="Ingresa tus apellidos"
                 type="text"
-                value={LastName}
-                onChange={(e) => SetLastName(e.target.value)}
+                value={LastName.substring(0,50)}
+                onChange={(e) => SetLastName(e.target.value.substring(0,50))}
                 
             />
             </div>
@@ -182,8 +202,8 @@ const AddUser = ({ nombre, id }) => {
             <input
               className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
               placeholder="Ingresa tu correo"
-              value={Email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={Email.substring(0,50)}
+              onChange={(e) => setEmail(e.target.value.substring(0,50))}
             />
             </div>
             <div className="mr-5 flex flex-col w-full md:w-10/12"> 
@@ -191,9 +211,9 @@ const AddUser = ({ nombre, id }) => {
             <input
                 className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
                 placeholder="Numero de celular o Casa"
-                type="number"
-                value={Telephone}
-                onChange={(e) => setTelephone(e.target.value)}
+                //type="number"
+                value={Telephone.substring(0,12)}
+                onChange={(e) => setTelephone(e.target.value.substring(0,12))}
             />
             </div>
         </div>
@@ -204,8 +224,8 @@ const AddUser = ({ nombre, id }) => {
             <input
                 className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
                 placeholder="Domicilio Paciente"
-                value={Direccion}
-                onChange={(e) => setDireccion(e.target.value)}
+                value={Direccion.substring(0,50)}
+                onChange={(e) => setDireccion(e.target.value.substring(0,50))}
             />
             </div>
             <div className="mr-5 flex flex-col w-full md:w-10/12"> 
@@ -213,9 +233,9 @@ const AddUser = ({ nombre, id }) => {
             <input
                 className='w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent'
                 placeholder="Año de nacimiento Numero"
-                value={Year}
-                type="number"
-                onChange={(e) => setYear(e.target.value)}
+                value={Year.substring(0,4)}
+                //type="number"
+                onChange={(e) => setYear(e.target.value.substring(0,4))}
             />
             </div>
         </div>

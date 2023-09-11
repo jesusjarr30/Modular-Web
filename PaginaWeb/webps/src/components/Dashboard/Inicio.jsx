@@ -28,7 +28,7 @@ const Inicio = () => {
     { title: "Registrar Usuarios", src: userI,  component:<AddUser nombre={data.nombre} id={data.id}/>},
     { title: "lista pacientes", src: search,  component: <Userlist nombre={data.nombre} id={data.id}/> },
     { title: "estadisticas", src: chart, component: <Estadisticas nombre={data.nombre} id={data.id}/> },
-    { title: "Soporte", src: chat, gap: true, component: <Support nombre={data.nombre} id={data.id}/> },
+    { title: "Calendario", src: chat, gap: true, component: <Support nombre={data.nombre} id={data.id}/> },
     { title: "Configuracion", src: settings, component: <Personalizar nombre={data.nombre} id={data.id} apellidos={data.apellidos} email={data.email} password={data.password} telephone={data.telephone}/> },
     { title: "Cerrar secion", src: cerrar, gap: true, component: <Userlist /> },
 

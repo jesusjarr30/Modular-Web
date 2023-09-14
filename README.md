@@ -29,6 +29,12 @@ If everything is ok you can check the container (check it docker desktop) and jo
 
 the page will display.
 
+## Download Unity Files
+
+To download the Unity files, it is necessary to access the following repository: https://github.com/jesusjarr30/Modular-Web
+Once the code has been downloaded, it is necessary to open Unity and download version Unity 2021.2.4f1.
+
+
 ## Project Compilation Instructions (Linux)
 - Requires software to run in Linux.
 - Need to download Maven 
@@ -76,6 +82,13 @@ Si todo está bien, puedes verificar el contenedor (compruébalo en Docker Deskt
 **http://localhost:3000**
 
 La página se mostrará.
+
+
+## Descargar los Archivos de Unity
+
+Para descargar los archivos de Unity, es necesario acceder al siguiente repositorio: https://github.com/NestorRegaladoVivanco/Psicologica_WAIS
+Una vez descargado el código, es necesario abrir Unity y descargar la versión Unity 2021.2.4f1.
+
 
 ## Instrucciones de compilación del proyecto (Linux)
 

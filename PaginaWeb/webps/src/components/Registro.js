@@ -118,8 +118,6 @@ function Registro(){
     }
   };
   
-
-
     return (
       <div className="flex flex-col items-center w-full h-screen justify-center">
   <h1 className="text-4xl font-semibold mt-1">Registro de usuarios</h1>

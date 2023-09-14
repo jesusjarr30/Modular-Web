@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import motivacion from '../Imagenes/motivacion.png';
+import motivacion from '../Imagenes/iconos portada/automatizacion.jpg';
 export const Objetivos = () => {
     return (
 

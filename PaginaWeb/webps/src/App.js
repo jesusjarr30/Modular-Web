@@ -13,7 +13,7 @@ import Personalizar from "./components/Dashboard/Personalizar";
 import AddUser from "./components/Dashboard/AddUser";
 import ViewUser from "./components/Dashboard/ViewUser";
 import Calendario from './components/Dashboard/Calendario';
-
+import Recuperacion from './components/Missing/PasswordMissing';
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
       <Route path="/Usuario" element={<AddUser/>}/>
       <Route path="/ViewUser" element={<ViewUser/>} />
       <Route path="/Calendario" element={<Calendario/>}/>
+      <Route path="/Recuperacion" element={<Recuperacion/>}/>
 
 
       

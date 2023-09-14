@@ -82,6 +82,30 @@ class AlertasDefinidas{
           
         });
       }
+      static CodigoRegitroExito(){
+        Swal.fire({
+          icon: 'success',
+          title: 'El codigo se registro con exito',
+          text: "Revise la parte inferior para consulyar su nuevo codigo de juego",
+        });
+      }
+      static ViewExito(){
+        Swal.fire({
+          icon: 'success',
+          title: 'Guardado',
+          text: "Los cambios se relizaron de manera correcta",
+        });
+
+      }
+      static MissingPassword(){
+        Swal.fire({
+          icon: 'success',
+          title: 'Revise su correo',
+          text: "Se envio un correo a los administradorer, ellos se pondndran en contacto con usted para recuperar la cuenta",
+        });
+
+      }
+      
 
 
 

@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { Button } from "bootstrap";
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import {AlertaDefinida} from '../Alertas/AlertaDefinidas';
+import AlertaDefinida from '../Alertas/AlertaDefinidas';
+
 
 
 const ViewUser = () => {
@@ -103,21 +104,17 @@ const ViewUser = () => {
           //console.log(response.newData);
           console.log("Se realizaron las modificaciones")
           //limpiar variables
-          
+          AlertaDefinida.ViewExito();//aqui si se pudo realizar el registro con exito se pone 
         })
         .catch(error => {
           if (error.code === 'ECONNABORTED') {
-            
-            //mostrarAlerta('Servidor', {
-              //title: 'Error Personalizado',
-              //text: 'Este es un mensaje personalizado para el error de servidor.',
-            //});
-            
-            // La solicitud se canceló debido a que excedió el tiempo de espera
+            //mensaje del servidor fuera de linea
+            AlertaDefinida.ContactoServidor();
             console.error("La solicitud se canceló debido a que excedió el tiempo de espera.");
           } else {
             // Manejar otros errores aquí
             console.error("Error:", error);
+            //ContactoServidor
           }
         });
       };
@@ -147,6 +144,7 @@ const ViewUser = () => {
       if(response.status === 200){
       //mostrarAlerta("Exito");
       console.log("Operacion realizada con exito");
+      AlertaDefinida.CodigoRegitroExito();
       }
       // Aquí puedes realizar cualquier acción adicional después de registrar al psicólogo.
       } catch (error) {
@@ -154,10 +152,11 @@ const ViewUser = () => {
       // Aquí puedes manejar el error o mostrar un mensaje al usuario en caso de fallo.
       if (error.code === 'ECONNABORTED') {
       //mostrarAlerta('Servidor');
-      console.log("error de sevidor")
+          console.log("Aqui van los errores perzonalizados");
       } else {
       //mostrarAlerta("Error desconocido");
       console.log("error desconocido")
+      AlertaDefinida.ContactoServidor();
       }
       }
       };

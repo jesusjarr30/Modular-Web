@@ -16,7 +16,7 @@ import java.util.UUID;
 @ToString
 
 @Entity
-@Table(name = "Citas")
+@Table(name = "Appointment")
 public class Appointment {
     @Id
     private String id;

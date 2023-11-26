@@ -19,10 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 			return new WebMvcConfigurer() {
 				@Override
 				public void addCorsMappings(CorsRegistry registry) {
-					registry.addMapping("/greeting-javaconfig")
-							.allowedOrigins("http:\\localhost:3000", "https://editor.swagger.io")
-							.allowedMethods("GET", "POST", "PUT", "DELETE")
-							.allowedHeaders("*");
+
 				}
 			};
 		}

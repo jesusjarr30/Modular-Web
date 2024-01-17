@@ -39,6 +39,9 @@ If all the containers are running, you can access the following URL that will sh
 
 **http://localhost:8080/swagger-ui/index.html**
 
+## Diagram
+
+![Alt Text](Documentation/diagram.png)
 
 
 ## Common Issues

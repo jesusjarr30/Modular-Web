@@ -8,6 +8,7 @@ import com.trabajo.proyectoApi.Models.Game;
 import com.trabajo.proyectoApi.Models.Psychologist;
 import com.trabajo.proyectoApi.Repository.PsychologistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
@@ -21,13 +22,16 @@ public class PsychologistAPI {
     private PsychologistRepository psychologistRepository;
 
     @PostMapping("/addPsychologist")
-    public String addPsychologist(@RequestBody Psychologist p){
+    public ResponseEntity<String> addPsychologist(@RequestBody Psychologist p){
         p.generateId();
         if(psychologistRepository.VerificarCorreo(p.getEmail())!=0){
             throw new ExceptionPe("El Correo no es valido, ya esta registrado con otra cuenta");
         }
+        //encrypt password
+        p.setPassword(p.getPassword());
+
        psychologistRepository.save(p);
-        return p.getId();
+        return ResponseEntity.ok("Operación exitosa");
     }
 
     @DeleteMapping("/deletePsychologist")

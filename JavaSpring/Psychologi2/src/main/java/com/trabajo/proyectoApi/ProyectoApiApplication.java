@@ -14,16 +14,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 			SpringApplication.run(ProyectoApiApplication.class, args);
 		}
 
-		@Bean
+		/*@Bean
 		public WebMvcConfigurer corsConfigurer() {
 			return new WebMvcConfigurer() {
 				public void addCorsMappings(CorsRegistry registry) {
 					registry.addMapping("/**")
-							.allowedOrigins("http://localhost:3000")
+							.allowedOrigins("http://localhost:3000","http://localhost:8080/swagger-ui/index.html")
 							.allowedMethods("GET", "POST", "PUT", "DELETE")
 							.allowCredentials(true);
 				}
 			};
-		}
+		}*/
 	}
     //http://localhost:8080/swagger-ui/index.html

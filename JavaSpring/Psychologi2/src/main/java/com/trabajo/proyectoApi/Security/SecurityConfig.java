@@ -2,6 +2,7 @@ package com.trabajo.proyectoApi.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,7 +20,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeRequests()
-                .antMatchers("/hola","/UpdateGame","/GetCustomerid","/verificatedGame","/verificateGame2\n").permitAll() // Permitir acceso sin autorización a /v1/index
+                .antMatchers("/hola","/UpdateGame","/GetCustomerid","/verificatedGame","/verificateGame2","/AddNote").permitAll() // Permitir acceso sin autorización a /v1/index
                 .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 .and()
                 .formLogin()
@@ -37,6 +38,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .build();
     }
+
     /*@Bean
     public UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();

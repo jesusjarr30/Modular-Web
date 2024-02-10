@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.reflect.Field;
 import java.util.*;
 
-//@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 
 public class PsychologistAPI {

@@ -1,0 +1,6 @@
+#URL from the services
+REACT_APP_API_URL= http://localhost:8080
+
+#Password define in the back end 
+REACT_APP_BACK_END_USER=jesus
+REACT_APP_BACK_END_PASSWORD= jesus

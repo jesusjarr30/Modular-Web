@@ -66,7 +66,7 @@ export const Contactanos = () => {
                         body: JSON.stringify(Notes)
                       };
                       const response = await addNotes(Notes);
-                      console.log("Se envia la segunda request");
+                     
                     // Configura el objeto de encabezados con la autenticación básica
                     
                     // Realiza la solicitud al backend con las credenciales de autenticación

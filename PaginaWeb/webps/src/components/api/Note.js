@@ -1,18 +1,17 @@
 
-const BASE_URL = "http://localhost:8080";
-
+const BASE_URL =  process.env.REACT_APP_API_URL;
 
 //methos for the class Notes
 
 export const addNotes = async (datos) =>{
-
-    const url = '${BASE_URL}/AddNote'
-    console.log("Entro al metodo nuevo que se esta creando");
+    console.log("usuarios: "+process.env.REACT_APP_BACK_END_USER +" contraseña "+process.env.REACT_APP_BACK_END_PASSWORD)
+    const url = `${BASE_URL}/AddNote`
     const opciones = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Basic ' + btoa(`jesus:jesus`)
+          'Authorization': 'Basic ' + btoa(`${process.env.REACT_APP_BACK_END_USER}:${process.env.REACT_APP_BACK_END_PASSWORD}`)
+
         },
         body: JSON.stringify(datos)
       };
@@ -25,5 +24,4 @@ export const addNotes = async (datos) =>{
         console.error('Error al enviar datos:', error);
         return { error }
       }
-      
     };

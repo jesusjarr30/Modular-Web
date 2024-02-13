@@ -2,14 +2,14 @@
 
 Hello, I'm studying computer engineering, and this is my modular project. My project is related to the automation of psychological tests. I have used Unity to automate the testing process based on the Wais book. Additionally, I have developed a web page using React to manage patients within the Unity environment. For the database, I have utilized MySQL, and for the backend, I've employed Java Spring Boot.
 
-## Project Compilation Instructions (Windows or linux)
+## Project Compilation Instructions (Windows)
 
  **First, we need to download some software.**
  
    - Install Apache Maven and set it in environment variables.
    - Download Java Development Kit 17.
-   - Download Docker
-   
+   - Download Docker Desktop.
+  
 Copy the repository a go to the next path: JavaSpring\Psychologi2 When you are in run  the next command
 
 **mvn clean install**
@@ -29,17 +29,21 @@ If everything is ok you can check the container (check it docker desktop) and jo
 
 the page will display.
 
-##run the WAIS TEST
+## Download Unity Files
 
-Download Unity version 2021.4f1. Select the "Psicologia Wais" folder as the project path. Once Unity has finished loading, click the play button to run the project.
+To download the Unity files, it is necessary to access the following repository: https://github.com/jesusjarr30/Modular-Web
+Once the code has been downloaded, it is necessary to open Unity and download version Unity 2021.2.4f1.
 
-## Check API documentation
+## Diagram
 
-If all the containers are running, you can access the following URL that will show you the services of the API:
+![Alt Text](Documentation/diagram.png)
 
-**http://localhost:8080/swagger-ui/index.html**
-
-
+## Project Compilation Instructions (Linux)
+- Requires software to run in Linux.
+- Need to download Maven 
+- Java JDK 17.
+- Install docker You can check the next URL https://docs.docker.com/engine/install/ubuntu/
+...
 
 ## Common Issues
 
@@ -50,5 +54,71 @@ Check the options to free up ports on your computer.
 ## Keep in touch
 
 If you have any ideas for implementing enhancements to my project or any feedback on my work, please feel free to send an email to jesus.jarr.30@gmail.com
+
+# Español
+
+Hola, estoy estudiando ingeniería informática, y este es mi proyecto modular. Mi proyecto está relacionado con la automatización de pruebas psicológicas. He utilizado Unity para automatizar el proceso de prueba basado en el libro Wais. Además, he desarrollado una página web utilizando React para gestionar a los pacientes dentro del entorno de Unity. Para la base de datos, he utilizado MySQL, y para el backend, he empleado Java Spring Boot.
+
+## Instrucciones de compilación del proyecto (Windows)
+
+**Primero, necesitamos descargar algunos programas.**
+ 
+   - Instala Apache Maven y configúralo en las variables de entorno.
+   - Descarga Java Development Kit 17.
+   - Descarga Docker Desktop.
+  
+Clonar el repositorio y ve a la siguiente ruta: JavaSpring\Psychologi2. Cuando estés ahí, ejecuta el siguiente comando:
+
+**mvn clean install**
+
+Esto actualizará los archivos JAR necesarios para ejecutar el backend. Comprueba que todo esté bien y al final verás un mensaje "BUILD SUCCESSFUL" (CONSTRUCCIÓN EXITOSA).
+A continuación, regresa al directorio raíz y ejecuta el siguiente comando:
+
+**docker-compose up -d --build**
+
+Esto creará el contenedor con las imágenes necesarias. Solo para que sepas, este proceso puede llevar algún tiempo, alrededor de 5-10 minutos dependiendo de tu conexión a Internet.
+
+Asegúrate de que los puertos necesarios para este proyecto, que son 80, 3000 y 3306, estén disponibles en el momento en que ejecutes el archivo Docker Compose. De lo contrario, podrías encontrar errores y es posible que los servicios necesarios no funcionen correctamente.
+
+Si todo está bien, puedes verificar el contenedor (compruébalo en Docker Desktop) y acceder al siguiente enlace:
+
+**http://localhost:3000**
+
+La página se mostrará.
+
+
+## Descargar los Archivos de Unity
+
+Para descargar los archivos de Unity, es necesario acceder al siguiente repositorio: https://github.com/NestorRegaladoVivanco/Psicologica_WAIS
+Una vez descargado el código, es necesario abrir Unity y descargar la versión Unity 2021.2.4f1.
+
+
+## Instrucciones de compilación del proyecto (Linux)
+
+- Requiere software para ejecutarse en Linux.
+- Necesitas descargar Maven.
+- Java JDK 17.
+- Instalar Docker, puedes consultar la siguiente URL: https://docs.docker.com/engine/install/ubuntu/
+...
+
+
+## Documentacion Servicos del back-end
+
+Para consultar la documentacion de los servicos del bak-end y poder hacer pruebas hacia la base de datos, se puede usar el software postman o consulatr la documetacion de Swagger, Asegurese de que el contenedor de el back-end y el contenedor de la base de datos estan activos, depues necesita  oopiar y pegar en su navegador la siguiente ruta: http://localhost:8080/swagger-ui/index.html.
+
+Esto le dara una vista de los setvicos que tiene y poder realizar pruebas para comprobar comportamientos de la aplicacion.
+
+## Problemas comunes
+
+Si tienes problemas al levantar los contenedores de Docker, asegúrate de tener libres los puertos que necesita para ejecutarse localmente. En este caso, son los puertos 3306, 80 y 3000. Si alguno de estos puertos está ocupado, la aplicación no se podrá desplegar correctamente.
+Revise las opciones para liberar los puertos de su computadora.
+
+
+## Contactame
+Si tienes ideas para implementar mejoras en mi proyecto o cualquier comentario sobre mi trabajo, no dudes en enviarme un correo electrónico a jesus.jarr.30@gmail.com.
+
+Saludos
+Jesus Renteria.
+
 
 

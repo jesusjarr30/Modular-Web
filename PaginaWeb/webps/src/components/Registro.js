@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { addPsychologist } from "./api/Psychologist";
+
 
 function Registro(){
 
@@ -65,6 +67,7 @@ function Registro(){
           toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
       })
+      console.log()
       
       Toast.fire({
         icon: 'warning',
@@ -93,15 +96,16 @@ function Registro(){
     }
     try {
       const newPsychologist = {
+        id: '',
         nombre: Name,
         apellidos: LastName,
         email: Email,
         telephone: Telephone,
         password: Password,
-        password2: Password2
       };
-
-      const response = await axios.post('http://localhost:8080/addPsychologist', newPsychologist);
+      //const response = await axios.post('http://localhost:8080/addPsychologist', newPsychologist);
+      const response = await addPsychologist(newPsychologist);
+      //const response = axios.post('http://localhost:8080/addPsychologist', newPsychologist, { headers })
       
       if(response.status === 200){
         mostrarAlerta("Exito");
@@ -194,7 +198,7 @@ function Registro(){
 
       <div className="flex flex-row mb-4"> 
         <div className="mr-5 flex flex-col w-full md:w-2/12 bg-red-700 rounded-xl p-3 text-white active:scale-[.85] active:duration-75 hover:scale-[1.10]"> 
-          <button onClick={handleCancelarClick} sclassName=" text-lg font-medium ">Cancelar</button>
+          <button onClick={handleCancelarClick} className=" text-lg font-medium ">Cancelar</button>
         </div>   
         <div className="mr-5 flex flex-col w-full md:w-2/12"> 
           <button onClick={handleSubmit} className="text-lg font-medium bg-green-700 rounded-xl p-3 text-white active:scale-[.85] active:duration-75 hover:scale-[1.10] ease-in-out">Registrar</button>

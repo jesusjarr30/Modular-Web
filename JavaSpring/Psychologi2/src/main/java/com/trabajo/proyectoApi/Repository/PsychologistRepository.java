@@ -19,8 +19,8 @@ public interface PsychologistRepository extends JpaRepository<Psychologist,Strin
     @Query("SELECT COUNT(*) AS count FROM Psychologist p WHERE p.email = :correoA")
     Integer VerificarCorreo(@Param("correoA") String correoA);
     //para el login
-    @Query("SELECT p FROM Psychologist p WHERE p.email = :correo AND p.password = :password")
-    Psychologist login(@Param("correo") String correo, @Param("password") String password);
+    @Query("SELECT p FROM Psychologist p WHERE p.email = :correo")
+    Psychologist login(@Param("correo") String correo);
     //validar que el correo no esta con una cuenta ya
     @Query("SELECT COUNT(p) FROM Psychologist p WHERE p.email = :correo")
     Long valCorreo(@Param("correo") String correo);

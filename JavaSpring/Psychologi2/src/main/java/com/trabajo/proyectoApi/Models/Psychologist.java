@@ -44,9 +44,14 @@ public class Psychologist {
         id = String.valueOf(UUID.randomUUID());
     }
 
-    public void setPassword(String password) {
+    public void encrypt() {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.password = passwordEncoder.encode(password);
+        this.password = passwordEncoder.encode(this.password);
+        System.out.println("El resultado deontro de la misma clase es la sigueinte "+this.password);
+    }
+    public boolean checkPassword(String password){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(password, this.password);
     }
 }
 

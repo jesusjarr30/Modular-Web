@@ -1,6 +1,5 @@
 package com.trabajo.proyectoApi.Services;
 
-
 import com.trabajo.proyectoApi.Exception.ExceptionPe;
 import com.trabajo.proyectoApi.Exception.ResourceNotFoundException;
 import com.trabajo.proyectoApi.Models.Customer;
@@ -14,9 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.lang.reflect.Field;
 import java.util.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RestController
-
 public class PsychologistAPI {
     @Autowired
     private PsychologistRepository psychologistRepository;
@@ -28,10 +26,10 @@ public class PsychologistAPI {
             throw new ExceptionPe("El Correo no es valido, ya esta registrado con otra cuenta");
         }
         //encrypt password
-        p.setPassword(p.getPassword());
+        p.encrypt();
 
        psychologistRepository.save(p);
-        return ResponseEntity.ok("Operación exitosa");
+        return ResponseEntity.ok("Operacion exitosa");
     }
 
     @DeleteMapping("/deletePsychologist")
@@ -51,8 +49,12 @@ public class PsychologistAPI {
 
     @GetMapping("/find/{correo}/{pass}")
     public Psychologist login(@RequestParam String correo, @RequestParam String password){
-        Psychologist a = psychologistRepository.login(correo,password);
-        return a;
+        Psychologist a = psychologistRepository.login(correo);
+        if(a.checkPassword(password)){
+            return a;
+        }else{
+            return new Psychologist();
+        }
     }
     @GetMapping("/getUser/{id}")
     public Psychologist getPsy(@RequestParam String id){

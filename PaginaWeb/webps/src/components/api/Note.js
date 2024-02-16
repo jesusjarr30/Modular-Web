@@ -1,8 +1,5 @@
-
 const BASE_URL =  process.env.REACT_APP_API_URL;
-
 //methos for the class Notes
-
 export const addNotes = async (datos) =>{
     console.log("usuarios: "+process.env.REACT_APP_BACK_END_USER +" contraseña "+process.env.REACT_APP_BACK_END_PASSWORD)
     const url = `${BASE_URL}/AddNote`
@@ -15,6 +12,8 @@ export const addNotes = async (datos) =>{
         },
         body: JSON.stringify(datos)
       };
+      console.log(opciones);
+      console.log(url);
       try {
         const respuesta = await fetch(url, opciones);
         const status = respuesta.status;

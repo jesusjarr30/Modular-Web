@@ -20,7 +20,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeRequests()
-                .antMatchers("/hola","/UpdateGame","/GetCustomerid","/verificatedGame","/verificateGame2","/AddNote").permitAll() // Permitir acceso sin autorización a /v1/index
+                .antMatchers("/hola","/UpdateGame","/GetCustomerid","/verificatedGame","/verificateGame2", "/find/{correo}/{pass}", "/AddCustomer","/BuscarPorNombres/{id}/{name}", "/deletCustomer/{id}", "GetCustomerId/{id}"
+                ).permitAll() // Permitir acceso sin autorización a /v1/index
                 .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 .and()
                 .formLogin()

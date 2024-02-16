@@ -38,8 +38,3 @@ docker stop "$(docker ps -q)"
 echo "Running the docker compose"
 docker-compose up --build
 
-
-/UpdateGame
-/GetCustomerid
-"/verificatedGame"
-/verificateGame2

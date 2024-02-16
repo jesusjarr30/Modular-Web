@@ -28,7 +28,6 @@ public class Customer {
     public void generateId(){
 
         id = String.valueOf(UUID.randomUUID());
-
     }
     public Customer(){
 

@@ -42,9 +42,6 @@ export const loginBack = async(usuario,pass) =>{
       const data = await respuesta.json();
       return { data, status }; // Devolver los datos y el estado HTTP
     }
-    
-    
-   
   } catch (error) {
     console.error('Error al enviar datos:', error);
     return { error }

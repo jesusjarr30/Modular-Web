@@ -6,7 +6,7 @@ import { addCustomer } from "../api/Customer";
 
 const AddUser = ({ nombre, id }) => {
     
-    const [Identificador,setIdentificador] = useState('0');
+    const [Identificador,setIdentificador] = useState('def');
     const [Name,setName] = useState('');
     const [LastName,SetLastName]= useState('');
     const [Email,setEmail] = useState('');
@@ -86,7 +86,7 @@ const AddUser = ({ nombre, id }) => {
     }
 
     const handleSubmit = async () => {
-
+      setIdentificador("hola");
         if (!Name || !LastName || !Email || !Telephone || !Direccion || !Year) {
           const Toast = Swal.mixin({
             toast: true,
@@ -129,8 +129,6 @@ const AddUser = ({ nombre, id }) => {
       AlertasDefinidas.RegistroErrorTelephone();
       return;
     }
-    
-        
         try {
           const Customer = {
             id: Identificador,
@@ -142,11 +140,9 @@ const AddUser = ({ nombre, id }) => {
             year: Year,
           };
           console.log("the customer Email after the "+JSON.stringify(Customer));
-    
-          //const response = await axios.post('http://localhost:8080/AddCustomer', Customer);
           const response = await addCustomer(Customer);
-
-          if(response === 200){
+          console.log(response);
+          if(response.status === 200){
             mostrarAlerta("Exito");
           }
           // Aquí puedes realizar cualquier acción adicional después de registrar al psicólogo.

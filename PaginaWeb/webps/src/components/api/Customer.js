@@ -2,6 +2,8 @@
 export const BASE_URL=process.env.REACT_APP_API_URL;
 
 export const addCustomer = async (datos) =>{
+
+    
     
     const url = `${BASE_URL}/AddCustomer`
     const opciones = {

@@ -46,7 +46,7 @@ export const Contactanos = () => {
                       nameUser: formDetails.firstName,
                       lastNameUser: formDetails.lastName,
                       email: formDetails.email,
-                      telephone: formDetails.telephone,
+                      telephone: formDetails.phone,
                       message: formDetails.message,
                         
                     }

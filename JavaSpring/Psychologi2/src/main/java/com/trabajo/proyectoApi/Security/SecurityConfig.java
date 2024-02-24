@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -17,24 +19,27 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     //configuration one
     @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance(); // No aplicar codificación de contraseñas (¡SOLO PARA PRUEBAS!)
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeRequests()
-                .antMatchers("/hola","/GetCustomerid","/verificatedGame","/verificateGame2", "/find/{correo}/{pass}","/BuscarPorNombres/{id}/{name}", "/deletCustomer/{id}", "GetCustomerId/{id}"
-                ).permitAll() // Permitir acceso sin autorización a /v1/index
+                .antMatchers("/addPsychologist","/hola","/GetCustomerid","/verificatedGame",
+                        "/verificateGame2", "/find/{correo}/{pass}","/BuscarPorNombres/{id}/{name}", "/deletCustomer/{id}", "GetCustomerId/{id}"
+                        //, "/AddNote"
+                ).permitAll() // Permitir acceso sin autorización a estas rutas
                 .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 .and()
-                .formLogin()
-                //.successHandler()
-                .permitAll() // Permitir acceso a la página de inicio de sesión sin autenticación
+                .httpBasic() // Utilizar autenticación básica
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .sessionFixation()
                 .migrateSession()
                 .invalidSessionUrl("/login")
-                .and()
-                .httpBasic()
                 .and()
                 .csrf().disable()
                 .build();

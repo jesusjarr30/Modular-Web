@@ -3,6 +3,7 @@ import { Row,Container,Col } from "react-bootstrap";
 import contactImg from "../Imagenes/contact-img.svg";
 import AlertaDefinidas from "../Alertas/AlertaDefinidas"; 
 import axios from 'axios';
+import {addNotes} from '../api/Note';
 
 export const Contactanos = () => { 
     const formInitialDetails = {
@@ -36,7 +37,6 @@ export const Contactanos = () => {
                // return;
                 //error de numeros
                 AlertaDefinidas.ContactoFaltaDatos();
-
             }else{
                 //aqui ya poner el httpRequest
                
@@ -46,12 +46,31 @@ export const Contactanos = () => {
                       nameUser: formDetails.firstName,
                       lastNameUser: formDetails.lastName,
                       email: formDetails.email,
-                      telephone: formDetails.telephone,
+                      telephone: formDetails.phone,
                       message: formDetails.message,
                         
                     }
-              
-                    const response = await axios.post('http://localhost:8080/AddNote', Notes);
+
+                    const username = 'jesus';
+                    const password = 'jesus';
+                    const url = 'http://localhost:8080/AddNote';
+
+                    const credenciales = window.btoa(`${username}:${password}`);
+                    const headers = new Headers();
+                    headers.append('Authorization', 'Basic ' + credenciales);
+                    headers.append('Content-Type', 'application/json');
+
+                    const opciones = {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify(Notes)
+                      };
+                      const response = await addNotes(Notes);
+                     
+                    // Configura el objeto de encabezados con la autenticación básica
+                    
+                    // Realiza la solicitud al backend con las credenciales de autenticación
+                    //const response = axios.post('http://localhost:8080/AddNote', Notes, { headers })
                     
                     if(response.status === 200){
                         AlertaDefinidas.ContactoExito();
@@ -126,7 +145,6 @@ export const Contactanos = () => {
                                 </Col>
                             }
                         </Row>
-
                     </form>
                 </Col>
                 </Row>

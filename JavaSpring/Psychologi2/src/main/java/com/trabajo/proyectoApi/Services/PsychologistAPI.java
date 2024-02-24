@@ -1,6 +1,5 @@
 package com.trabajo.proyectoApi.Services;
 
-
 import com.trabajo.proyectoApi.Exception.ExceptionPe;
 import com.trabajo.proyectoApi.Exception.ResourceNotFoundException;
 import com.trabajo.proyectoApi.Models.Customer;
@@ -8,26 +7,29 @@ import com.trabajo.proyectoApi.Models.Game;
 import com.trabajo.proyectoApi.Models.Psychologist;
 import com.trabajo.proyectoApi.Repository.PsychologistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
 import java.util.*;
 
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 @RestController
-
 public class PsychologistAPI {
     @Autowired
     private PsychologistRepository psychologistRepository;
 
     @PostMapping("/addPsychologist")
-    public String addPsychologist(@RequestBody Psychologist p){
+    public ResponseEntity<String> addPsychologist(@RequestBody Psychologist p){
         p.generateId();
         if(psychologistRepository.VerificarCorreo(p.getEmail())!=0){
             throw new ExceptionPe("El Correo no es valido, ya esta registrado con otra cuenta");
         }
+        //encrypt password
+        p.encrypt();
+
        psychologistRepository.save(p);
-        return p.getId();
+        return ResponseEntity.ok("Operacion exitosa");
     }
 
     @DeleteMapping("/deletePsychologist")
@@ -47,8 +49,12 @@ public class PsychologistAPI {
 
     @GetMapping("/find/{correo}/{pass}")
     public Psychologist login(@RequestParam String correo, @RequestParam String password){
-        Psychologist a = psychologistRepository.login(correo,password);
-        return a;
+        Psychologist a = psychologistRepository.login(correo);
+        if(a.checkPassword(password)){
+            return a;
+        }else{
+            return new Psychologist();
+        }
     }
     @GetMapping("/getUser/{id}")
     public Psychologist getPsy(@RequestParam String id){

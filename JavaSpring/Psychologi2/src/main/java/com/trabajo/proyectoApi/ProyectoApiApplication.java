@@ -14,14 +14,5 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 			SpringApplication.run(ProyectoApiApplication.class, args);
 		}
 
-		@Bean
-		public WebMvcConfigurer corsConfigurer() {
-			return new WebMvcConfigurer() {
-				@Override
-				public void addCorsMappings(CorsRegistry registry) {
-
-				}
-			};
-		}
 	}
     //http://localhost:8080/swagger-ui/index.html

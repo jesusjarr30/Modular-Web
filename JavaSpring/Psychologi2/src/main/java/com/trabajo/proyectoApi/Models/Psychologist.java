@@ -3,6 +3,7 @@ package com.trabajo.proyectoApi.Models;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
@@ -41,6 +42,16 @@ public class Psychologist {
 
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
+    }
+
+    public void encrypt() {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(this.password);
+        System.out.println("El resultado deontro de la misma clase es la sigueinte "+this.password);
+    }
+    public boolean checkPassword(String password){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(password, this.password);
     }
 }
 

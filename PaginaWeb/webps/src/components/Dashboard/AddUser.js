@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import AlertasDefinidas from "../Alertas/AlertaDefinidas";
-
+import { addCustomer } from "../api/Customer";
 
 const AddUser = ({ nombre, id }) => {
     
-    const [Identificador,setIdentificador] = useState('0');
+    const [Identificador,setIdentificador] = useState('def');
     const [Name,setName] = useState('');
     const [LastName,SetLastName]= useState('');
     const [Email,setEmail] = useState('');
@@ -86,7 +86,7 @@ const AddUser = ({ nombre, id }) => {
     }
 
     const handleSubmit = async () => {
-
+      setIdentificador("hola");
         if (!Name || !LastName || !Email || !Telephone || !Direccion || !Year) {
           const Toast = Swal.mixin({
             toast: true,
@@ -122,22 +122,13 @@ const AddUser = ({ nombre, id }) => {
           }
           
         //validar un numero de telefono valido
-        const phoneNumber = Telephone.replace(/\D/g, ''); // Elimina todos los caracteres que no son números
-    if (phoneNumber.length < 10) {
+      // Elimina todos los caracteres que no son números
+    if (Telephone.length < 10) {
       // Verifica si hay al menos 10 dígitos
       console.log("no es amyor a 10");
       AlertasDefinidas.RegistroErrorTelephone();
       return;
     }
-    if (/^\d+$/.test(phoneNumber)) {
-      // Verifica si todos los caracteres son números
-      
-      AlertasDefinidas.RegistroErrorTelephone();
-      return;
-    }
-        
-      
-
         try {
           const Customer = {
             id: Identificador,
@@ -148,10 +139,9 @@ const AddUser = ({ nombre, id }) => {
             direccion: Direccion,
             year: Year,
           };
-          console.log("the customer Email after the "+Customer.email)
-    
-          const response = await axios.post('http://localhost:8080/AddCustomer', Customer);
-          
+          console.log("the customer Email after the "+JSON.stringify(Customer));
+          const response = await addCustomer(Customer);
+          console.log(response);
           if(response.status === 200){
             mostrarAlerta("Exito");
           }

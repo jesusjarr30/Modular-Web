@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 @RestController
 public class CustomerAPI {
 
@@ -38,6 +38,8 @@ public class CustomerAPI {
             throw new ResourceNotFoundException("Email registrado con otro usuario");
         }
         //check for a valid psicologo
+        System.out.println(customerRepository.findById(customer.getPsychologistID()).isPresent());
+
         if(customerRepository.findById(customer.getPsychologistID()).isPresent()){
             throw new ResourceNotFoundException("Psicologo no valido");
         }

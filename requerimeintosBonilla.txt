@@ -1,9 +1,0 @@
-Bonilla quiere que la proyecto le agregemos un gestor de citas para que los usuarios puedan agendar ademas citas con el psicolog y se puedan manejar todo desde la misma app.
-
-
-En caso de si realizar esta actividad se necesitara
-
--Diseñar un calendario en la base de datos
--Diseño de clases, Genereacion de repositorios, y genereacion de servicios para la API.
--diseño de vistas en la pagina we sobre el calendario que se tiene que manejar.
-

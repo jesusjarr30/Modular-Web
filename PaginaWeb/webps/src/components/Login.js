@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { loginBack } from "./api/Psychologist";
 
 function Login(){
 
@@ -45,30 +46,25 @@ function Login(){
         setPass(event.target.value);
     }
     const fetchData = async () => {
-        console.log("Entra a la funcion");
+      
         setLoading(true);
         try {
-          const response = await axios.get('http://localhost:8080/find/{correo}/{pass}?correo='+correo+'&password='+pass); // Reemplaza con tu URL de API
-          console.log(response.data);
-          console.log("El correo es "+response.data.email +" y la contrasela es "+response.data.pass);
-
-          console.log()
-          if (response.data.email === correo && response.data.password === pass) {
-            
-            console.log("entrar al inicio");
-            console.log("Se ingreso a la siguiebtre direccion");
+          //response = await addPsychologist(newPsychologist);
+          const response = await loginBack(correo,pass); // Reemplaza con tu URL de API
+          if (response.status=== 200 && correo === response.data.email) {
+          //si entra aqui ya se loggio de manera correcta
             navigate('/Inicio', { state: { data: response.data } });
-          } else {
-            console.log("Todos los datos están mal");
+          }
+           else {
             mostrarAlerta();
           }
-          
 
           setLoading(false);
         } catch (error) {
           console.error('Error al obtener los datos:', error);
           setLoading(false);
         }
+        
       };
     return (
         <div className="flex w-full h-screen">

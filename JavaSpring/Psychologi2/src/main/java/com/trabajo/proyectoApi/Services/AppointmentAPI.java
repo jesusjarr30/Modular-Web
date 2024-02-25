@@ -18,7 +18,7 @@ public class AppointmentAPI {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
-
+/*
     @PostMapping("/AddAppointment")
     public String addAppointment(@RequestBody Appointment appointment){
         appointment.generateId();
@@ -42,6 +42,8 @@ public class AppointmentAPI {
         appointmentRepository.save(appointment);
         return appointment.getId();
     }
+    */
+
     @GetMapping("/GetAppointment/{id}")
     public List<Appointment> getCustomerAppointment(){
         return appointmentRepository.findAll();

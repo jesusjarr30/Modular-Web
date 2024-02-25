@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,9 +21,9 @@ import java.util.UUID;
 public class Appointment {
     @Id
     private String id;
-    private Date start;
-    private Date end;
-    private String idPsycologist;
+    private Date startDate;
+    private Date endDate;
+    private String idPsychologist;
     private String idCustomer;
 
     public Appointment(){

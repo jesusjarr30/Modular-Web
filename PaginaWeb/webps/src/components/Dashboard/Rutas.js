@@ -1,14 +1,13 @@
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Personalizar from "./Personalizar";
 import AddUser from "./AddUser";
 import Support from "./Support";
 import Userlist from "./Userlist";
-import Ppc from '../Ppc';
-import Estadisticas from './Estadisticas';
-import ViewUser from './ViewUser';
+import Ppc from "../Ppc";
+import Estadisticas from "./Estadisticas";
+import ViewUser from "./ViewUser";
 
 function Rutas() {
   /*return (

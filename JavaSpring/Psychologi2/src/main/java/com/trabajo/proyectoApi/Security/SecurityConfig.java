@@ -28,8 +28,11 @@ public class SecurityConfig {
         return http
                 .authorizeRequests()
                 .antMatchers("/addPsychologist","/hola","/GetCustomerid","/verificatedGame",
-                        "/verificateGame2", "/find/{correo}/{pass}","/BuscarPorNombres/{id}/{name}", "/deletCustomer/{id}", "GetCustomerId/{id}"
-                        //, "/AddNote"
+                        "/verificateGame2", "/find/{correo}/{pass}","/BuscarPorNombres/{id}/{name}", "/deletCustomer/{id}", "GetCustomerId/{id}",
+                        "/getPsychologist","/getUser/{id}","/getUser/{correo}","/UpdatePsy/{id}",
+                        "/AddCustomer","/getCustomer","/GetCustomerPsicologo/{id}","/deletCustomer/{id}","/UpdateCustomer/{id}","/GetCustomerId/{id}","/BuscarPorNombres/{id}/{name}",
+                        "/addGame/{idUsuario}","/GetGame","/UpdateGame/{id}","/GetCustomerid/{id}","/verificatedGame/{codigo}","/verificateGame2/{codigo}","/GetCustomerGame/{id}"
+                        
                 ).permitAll() // Permitir acceso sin autorización a estas rutas
                 .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 .and()

@@ -5,6 +5,7 @@ import { Button } from "bootstrap";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import AlertaDefinida from "../Alertas/AlertaDefinidas";
+import { getCustomerGame, GenerarCodigo } from "../api/Game";
 
 const ViewUser = () => {
   const location = useLocation();
@@ -28,7 +29,6 @@ const ViewUser = () => {
   const [year2, setYear2] = useState(rowData && rowData.year);
 
   const [gameList, setGameList] = useState([]);
-
   const [editable, setEditable] = useState(false);
   const navigate = useNavigate();
   //funcion para rditar o no los atributos
@@ -124,12 +124,20 @@ const ViewUser = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/GetCustomerid/{id}?id=" + id
+        console.log(
+          "Dentro del useEffect estoy llamando la función y lo quiero retornar desde aqui"
         );
-        console.log(response);
-        console.log("Esta es la informacion que se debe de imprimir");
-        setGameList(response.data);
+        const game = await getCustomerGame(id);
+        console.log(game);
+        if (game.datos !== undefined) {
+          setGameList(game.datos);
+        } else if (game.error) {
+          // Manejar el error aquí
+          console.error("Error fetching data:", game.error);
+        } else {
+          // Manejar el caso en el que no haya datos
+          console.warn("No se encontraron datos");
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -138,29 +146,8 @@ const ViewUser = () => {
     fetchData();
   }, []);
 
-  const GenerarCodigo = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/addGame/{idUsuario}?idUsuario=" + id
-      );
-      if (response.status === 200) {
-        //mostrarAlerta("Exito");
-        console.log("Operacion realizada con exito");
-        AlertaDefinida.CodigoRegitroExito();
-      }
-      // Aquí puedes realizar cualquier acción adicional después de registrar al psicólogo.
-    } catch (error) {
-      console.error("Error al hacer la consulta", error);
-      // Aquí puedes manejar el error o mostrar un mensaje al usuario en caso de fallo.
-      if (error.code === "ECONNABORTED") {
-        //mostrarAlerta('Servidor');
-        console.log("Aqui van los errores perzonalizados");
-      } else {
-        //mostrarAlerta("Error desconocido");
-        console.log("error desconocido");
-        AlertaDefinida.ContactoServidor();
-      }
-    }
+  const GenerarCodigoCliente = async () => {
+    GenerarCodigo(id);
   };
 
   return (
@@ -246,7 +233,7 @@ const ViewUser = () => {
           </button>
           <button
             className="py-2 px-4 rounded  bg-red-500"
-            onClick={GenerarCodigo}
+            onClick={GenerarCodigoCliente}
           >
             {" "}
             Genera codigo juego

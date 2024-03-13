@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
+@CrossOrigin("http://localhost:3000")
 @RestController
 public class GameAPI {
     @Autowired
@@ -80,7 +80,7 @@ public class GameAPI {
 
         return gameRepository.save(game);
     }
-    @GetMapping("/GetCustomerid/{id}")
+    @GetMapping("/GetCustomerGame/{id}")
     public List<Game> getGameById(@RequestParam String id){
        return gameRepository.searchByGame(id);
     }

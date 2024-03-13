@@ -20,7 +20,7 @@ const Perzonalizar = ({ nombre, id }) => {
 
   const toggleEditable = () => {
     setEditable(!editable);
-    if (editable === false) {
+    if (editable === true) {
       ModificarClick();
     }
   };
@@ -40,10 +40,6 @@ const Perzonalizar = ({ nombre, id }) => {
     if (Psicologo.telephone !== Telephone) {
       console.log("El teléfono fue modificado");
       newData.telephone = Telephone; // Agregar el teléfono al objeto newData
-    }
-    if (Psicologo.password === Password && Current === Confirmation) {
-      console.log("Las contraseñas ingresadas son iguales");
-      newData.password = Password; // Agregar la contraseña al objeto newData
     }
     if (Object.keys(newData).length > 0) {
       // newData tiene datos, por lo tanto, se han realizado modificaciones
@@ -154,12 +150,12 @@ const Perzonalizar = ({ nombre, id }) => {
         <div className="flex flex-row mb-4">
           {" "}
           {/* Agregamos otro div para el segundo par de campos */}
-          <div className="mr-5 flex flex-col w-full md:w-10/12">
+          <div className="mr-5 flex flex-col w-full md:w-10/12 ">
             <label className="text-lg font-medium">Correo</label>
             <input
-              className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent"
+              className="w-full border-2 rounded-xl p-3 mt-1 bg-transparent bg-green-500"
               value={Email}
-              readOnly={!editable}
+              readOnly={true}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -184,6 +180,42 @@ const Perzonalizar = ({ nombre, id }) => {
             >
               {editable ? "Guardar" : "Editar"}
             </button>
+          </div>
+        </div>
+        <h2 className="font-semibold">Cambiar password</h2>
+        <div className="w-full md:w-11/12 bg-white px-8 py-10 rounded-3xl border-2 border-gray-200 mt-8 flex flex-col p-6">
+          {" "}
+          {/* Cambiamos a 'flex-col' */}
+          <div className="flex flex-row mb-4">
+            <div className="mr-5 flex flex-col w-full md:w-10/12">
+              <label className="text-lg font-medium">Contraseña Actual</label>
+              <input
+                className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent"
+                value={Name}
+                readOnly={!editable}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="mr-5 flex flex-col w-full md:w-10/12">
+              <label className="text-lg font-medium">Nueva contraseña</label>
+              <input
+                className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent"
+                value={Apellidos}
+                readOnly={!editable}
+                onChange={(e) => setApellidos(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="mr-5 flex flex-col w-full md:w-10/12">
+            <label className="text-lg font-medium">
+              confirmar su nueva contraseña
+            </label>
+            <input
+              className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent"
+              value={Apellidos}
+              readOnly={!editable}
+              onChange={(e) => setApellidos(e.target.value)}
+            />
           </div>
         </div>
       </div>

@@ -102,7 +102,7 @@ const AddUser = ({ nombre, id }) => {
     }
     //validar un año de nacimiento valido
     const yearNumber = parseInt(Year, 10);
-    if (isNaN(yearNumber) || yearNumber < 1900 || yearNumber > 2023) {
+    if (isNaN(yearNumber) || yearNumber < 1800 || yearNumber > 2023) {
       //poner aqui la validacion del numero
       AlertasDefinidas.RegistroErroryear();
       return;
@@ -143,7 +143,6 @@ const AddUser = ({ nombre, id }) => {
       }
     }
   };
-
   return (
     <div className="flex flex-col items-center w-full h-screen justify-center">
       <h1 className="text-4xl font-semibold mt-1">Registar clientes</h1>
@@ -191,7 +190,7 @@ const AddUser = ({ nombre, id }) => {
             <input
               className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1 bg-transparent"
               placeholder="Numero de celular o Casa"
-              //type="number"
+              type="number"
               value={Telephone.substring(0, 12)}
               onChange={(e) => setTelephone(e.target.value.substring(0, 12))}
             />
@@ -225,7 +224,7 @@ const AddUser = ({ nombre, id }) => {
           <div className="mr-5 flex flex-col w-full md:w-2/12 bg-red-700 rounded-xl p-3 text-white active:scale-[.85] active:duration-75 hover:scale-[1.10]">
             <button
               onClick={handleCancelarClick}
-              sclassName=" text-lg font-medium "
+              sclassname=" text-lg font-medium "
             >
               Cancelar
             </button>

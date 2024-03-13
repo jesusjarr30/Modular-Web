@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-
-
 @RestController
 public class AppointmentAPI {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
-/*
+/*enfermedad
     @PostMapping("/AddAppointment")
     public String addAppointment(@RequestBody Appointment appointment){
         appointment.generateId();
@@ -38,12 +36,10 @@ public class AppointmentAPI {
             // Puedes manejar esta situación según tus requerimientos
             throw new ExceptionPe("Fechas iguales por favor de verificar");
         }
-
         appointmentRepository.save(appointment);
         return appointment.getId();
     }
     */
-
     @GetMapping("/GetAppointment/{id}")
     public List<Appointment> getCustomerAppointment(){
         return appointmentRepository.findAll();

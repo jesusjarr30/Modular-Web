@@ -93,7 +93,6 @@ public class PsychologistAPI {
                 throw new ResourceNotFoundException("Field value can't be null");
             if (fieldName.equals("id"))
                 throw new ResourceNotFoundException("Id can't be changed");
-
             try {
                 Field field = Psychologist.class.getDeclaredField(fieldName);
                 field.setAccessible(true);

@@ -3,7 +3,7 @@
 Test de Wais. Hello everyone, this is a project dedicated to psychology in which we aim to automate the Wais psychologist test for children. Essentially, we provide psychologists with tools to 
 streamline their work through automation and remote pattern detection, without the need to be in the office with the patient.
 
-##Requirements
+## Requirements
    - Install Apache Maven and set it in environment variables.
    - Download Java Development Kit 17.
    - Download Docker.

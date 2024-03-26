@@ -1,6 +1,7 @@
 package com.trabajo.proyectoApi.Services;
 
 import com.trabajo.proyectoApi.Exception.ExceptionPe;
+import com.trabajo.proyectoApi.Exception.ForbiddenException;
 import com.trabajo.proyectoApi.Exception.ResourceNotFoundException;
 import com.trabajo.proyectoApi.Models.Customer;
 import com.trabajo.proyectoApi.Models.Game;
@@ -23,7 +24,7 @@ public class PsychologistAPI {
     public ResponseEntity<String> addPsychologist(@RequestBody Psychologist p){
         p.generateId();
         if(psychologistRepository.VerificarCorreo(p.getEmail())!=0){
-            throw new ExceptionPe("El Correo no es valido, ya esta registrado con otra cuenta");
+            throw new ForbiddenException("El Correo no es valido, ya esta registrado con otra cuenta");
         }
         //encrypt password
         p.encrypt();
@@ -34,7 +35,6 @@ public class PsychologistAPI {
 
     @DeleteMapping("/deletePsychologist")
     public void deletePsychologist(@RequestParam String id){
-
         psychologistRepository.deleteById(id);
     }
     @GetMapping("/getPsychologist")
@@ -72,7 +72,6 @@ public class PsychologistAPI {
     public Optional<Psychologist> getPsyC(@RequestParam String correo){
         return Optional.ofNullable(psychologistRepository.getByEmail(correo));
     }
-    //no funciona
     @PutMapping("/UpdatePsy/{id}")
     public Psychologist editPsychologistAPI(@PathVariable String id, @RequestBody Map<String, Object> updates) {
 

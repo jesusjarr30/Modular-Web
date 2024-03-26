@@ -29,6 +29,7 @@ public class CustomerAPI {
 
     @PostMapping("/AddCustomer")
     public String addCustsomer(@RequestBody Customer customer){
+
         customer.generateId();
 
         if(!customerRepository.searchDuplicateName(customer.getName()).isEmpty()){//check if the name is equal to other people
